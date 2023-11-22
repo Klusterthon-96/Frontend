@@ -1,14 +1,17 @@
-import React, { useState } from "react";
-import { FaSpinner } from "react-icons/fa";
+// import React, { useState } from "react";
+import { Link } from "react-router-dom";
+// import { FaSpinner } from "react-icons/fa";
 import PasswordInput, { TextInput } from "../../components/input";
+import ImageOne from "../../asset/Frame 1618868309.png";
 
 export default function Register() {
-  const [isLoadingButton, setIsLoadingButton] = useState(false);
+  // const [isLoadingButton, setIsLoadingButton] = useState(false);
 
   return (
-    <div className="grid place-items-center w-[90%] h-screen mx-auto">
-      <div className="font-sans flex justify-between p-5 w-full">
-        <div className="p-5">
+    <div className="h-screen overflow-hidden">
+      <div className="font-sans flex justify-between items-center">
+        {/* <div className="w-1/2 mx-auto flex justify-center items-center"></div> */}
+        <div className="p-10">
           <div className="">
             <h2 className="font-normal text-3xl ">Create Account</h2>
             <p className=" text-xl">
@@ -25,34 +28,36 @@ export default function Register() {
                 <PasswordInput label={"Password"} />
               </div>
               <div className="justify-center flex text-white items-center mt-5">
-                {isLoadingButton ? (
-                  <button
+                {/* {isLoadingButton ? ( */}
+                {/* <button
                     type="button"
                     disabled
                     className="flex min-h-[auto] h-14 items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-[32px] w-full mt-5"
                   >
                     <FaSpinner className="text-xl animate-spin mr-2" /> Register
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    // onClick={handleLogin}
-                    className="bg-black min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5"
-                  >
-                    Register
-                  </button>
-                )}
+                  </button> */}
+                {/* ) : ( */}
+                <button
+                  type="button"
+                  // onClick={handleLogin}
+                  className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5"
+                >
+                  Register
+                </button>
+                {/* )} */}
               </div>
 
               <span className="flex items-center justify-center my-3">or</span>
             </form>{" "}
-            {/* <Link href="/auth/register" className="mt-3 text-right"> */}
-            {`Already have an account?`}{" "}
-            <span className="font-bold">Sign In</span>
-            {/* </Link> */}
+            <Link to="/auth/login" className="mt-3 text-right">
+              {`Already have an account?`}{" "}
+              <span className="font-bold">Sign In</span>
+            </Link>
           </div>
         </div>
-        <div className="p-5 border rounded-[32px] w-1/2 bg-[#D2D2D2]"></div>
+        <div className="border rounded-[32px] bg-[#D2D2D2]">
+          <img src={ImageOne} alt="" className="h-screen max-w-full" />
+        </div>
       </div>
     </div>
   );
