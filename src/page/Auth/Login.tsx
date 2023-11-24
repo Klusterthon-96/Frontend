@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 // import { FaSpinner } from "react-icons/fa";
 import PasswordInput, { TextInput } from "../../components/input";
 import ImageOne from "../../asset/Frame 1618868308.png";
+import { FcGoogle } from "react-icons/fc";
 
 export default function LoginPage() {
   // const [isLoadingButton, setIsLoadingButton] = useState(false);
 
   return (
-    <div className="h-screen overflow-hidden">
-      <div className="font-sans flex justify-between items-center">
-        {/* <div className="w-1/2 mx-auto flex justify-center items-center"> */}
-          <div className="p-10">
+    <div className="lg:h-screen overflow-hidden">
+      <div className="font-sans flex flex-col-reverse md:flex-row justify-between items-center">
+        <div className="lg:w-1/2 mx-auto flex justify-center items-center">
+          <div className="p-4 lg:p-10 my-5 sm:mb-0">
             <div className="">
               <h2 className="font-normal text-3xl ">Welcome back</h2>
               <p className=" text-xl">
@@ -29,7 +30,7 @@ export default function LoginPage() {
                 </div>
                 <div className="justify-center flex text-white items-center mt-5">
                   {/* {isLoadingButton ? ( */}
-                    {/* <button
+                  {/* <button
                       type="button"
                       disabled
                       className="flex min-h-[auto] h-14 items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-[32px] w-full mt-5"
@@ -38,38 +39,44 @@ export default function LoginPage() {
                       In
                     </button> */}
                   {/* ) : ( */}
-                    <button
-                      type="button"
-                      // onClick={handleLogin}
-                      className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5"
-                    >
-                      Sign In
-                    </button>
+                  <button
+                    type="button"
+                    // onClick={handleLogin}
+                    className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5"
+                  >
+                    Sign In
+                  </button>
                   {/* )} */}
                 </div>
 
-                <span className="flex items-center justify-center my-3">
+                <span className="flex items-center uppercase justify-center my-3">
                   or
                 </span>
 
                 <button
                   type="button"
                   // onClick={handleLogin}
-                  className="border min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mb-5"
+                  className="border border-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full flex justify-center mb-5 items-center"
                 >
-                  Continue with Google
+                  <FcGoogle className="mr-3 text-xl" /> Continue with Google
                 </button>
-              </form>{" "}
-              <Link to="/auth/register" className="mt-3 text-right">
-                {`Don't have an account?`}{" "}
-                <span className="font-bold">Sign up</span>
-              </Link>
+              </form>
+              <div className="flex justify-between text-sm">
+                {" "}
+                <Link to="/auth/register" className="mt-3 text-right">
+                  {`Don't have an account?`}{" "}
+                  <span className="font-bold">Sign up</span>
+                </Link>
+                <Link to="/auth/register" className="mt-3 text-right">
+                  <span className="font-bold">Forget Password?</span>
+                </Link>
+              </div>
             </div>
           </div>
-        {/* </div> */}
+        </div>
 
         <div className="border rounded-[32px] bg[#D2D2D2]">
-          <img src={ImageOne} alt="" className="h-screen max-w-full" />
+          <img src={ImageOne} alt="" className="lg:h-screen lg:max-w-full" />
         </div>
       </div>
     </div>

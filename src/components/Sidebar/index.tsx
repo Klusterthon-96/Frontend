@@ -1,5 +1,5 @@
 import React from "react";
-import { CiHome } from "react-icons/ci";
+// import { CiHome } from "react-icons/ci";
 import { MdInput } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { MdOutlineHeadsetMic } from "react-icons/md";
@@ -10,15 +10,15 @@ import { Link } from "react-router-dom";
 
 export default function SideBar() {
   const navItems = [
+    // {
+    //   id: 0,
+    //   name: "Home",
+    //   to: "/dashboard",
+    //   icon: <CiHome className="text-xl" />,
+    // },
     {
       id: 0,
-      name: "Home",
-      to: "/dashboard",
-      icon: <CiHome className="text-xl" />,
-    },
-    {
-      id: 1,
-      name: "Input farm Details",
+      name: "enter crop Details",
       to: "/dashboard/inputs",
       icon: <MdInput className="text-xl" />,
     },
@@ -45,22 +45,23 @@ export default function SideBar() {
     },
   ];
   return (
-    <aside className="h-full w-[18%] absolute overflow-hidden top-0 left-0 transition duration-150 ease-in">
-      <nav className="grid p-2.5">
-        <ul>
+    <aside className="hidden lg:flex w-[250px] p-3 fixed h-[90%] top-[72px] bg-white z-1">
+      <nav className="flex flex-col">
+        <ul className="">
           {navItems.map((item) => (
             <Link
               key={item.id}
               to={item.to}
-              className="py-3 px-2 flex items-center text-base gap-4 w-full capitalize"
+              className="py-4 px-2.5 flex items-center rounded-xl text-base gap-4 w-full capitalize bg-[#8AB88A]"
             >
               <span className="">{item.icon}</span>
               <span className="hidden md:flex">{item.name}</span>
             </Link>
           ))}
         </ul>
-        <div className="absolute gap-5 mb-10 bottom-0">
-          <ul>
+
+        <div className="mt-auto">
+          <ul className="">
             {navList.map((item) => (
               <Link
                 key={item.id}
@@ -73,7 +74,7 @@ export default function SideBar() {
             ))}
           </ul>
 
-          <div className="flex flex-row mt-14 justify-between items-center">
+          <div className="flex flex-row mt-10 justify-between items-center">
             <div className="flex flex-row space-x-2 items-center">
               <img src={Avatar} alt="" className="h-10 w-10 rounded-full" />
 

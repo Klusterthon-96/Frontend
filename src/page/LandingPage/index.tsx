@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../components/Button";
+// import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
@@ -9,7 +9,12 @@ export default function LandingPage() {
         <div className="flex ml-auto items-center justify-between w-3/5">
           <h2 className="">Agro Assistance</h2>
           <div className="">
-            <Button title={"Get Started"} />
+            <Link
+              className="px-6 py-2 flex items-center text-white w-[150px] justify-center bg-black rounded-[32px]"
+              to={"/dashboard"}
+            >
+              Get Started
+            </Link>
           </div>
         </div>
       </header>
