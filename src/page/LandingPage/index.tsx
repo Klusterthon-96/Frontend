@@ -90,12 +90,12 @@ export default function LandingPage() {
               <img
                 src={ImageOne}
                 className="h-auto w-full col"
-                alt="image is loading"
+                alt="picture is loading"
               />
               <img
                 src={ImageThree}
                 className="h-auto w-full"
-                alt="image is loading"
+                alt="picture is loading"
               />
             </div>
 
@@ -103,17 +103,17 @@ export default function LandingPage() {
               <img
                 src={ImageTwo}
                 className="h-auto w-full"
-                alt="image is loading"
+                alt="picture is loading"
               />
               <img
                 src={ImageFour}
                 className="h-auto w-full"
-                alt="image is loading"
+                alt="picture is loading"
               />
               <img
                 src={ImageFour}
                 className="h-auto w-full"
-                alt="image is loading"
+                alt="picture is loading"
               />
             </div>
           </div>
