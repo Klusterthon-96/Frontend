@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 export function Home() {
   return (
-    <main className="flex flex-col h-screen max-w-[1380px] mx-auto">
+    <main className="flex flex-col h-screen max-w-5xl mx-auto">
       <Header />
       <div className="flex flex-row">
         <SideBar />
@@ -19,7 +19,7 @@ export function Home() {
 
 export function Landing() {
   return (
-    <main className="bg-neutral-200/30 max-w-[1380px] mx-auto">
+    <main className="bg-neutral-200/30 max-w-[1440px] mx-auto lg:h-screen">
       <Outlet />
     </main>
   );
