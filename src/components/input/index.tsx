@@ -1,17 +1,35 @@
 import { useState } from "react";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
-export function TextInput({ value, onChange, label }: any) {
+export function TextInput({ value, onChange, label, placeholder }: any) {
   return (
-    <label htmlFor="Email">
+    <label htmlFor="Email" className="">
       {label}
       <input
         type="text"
         value={value}
         onChange={onChange}
-        className="min-h-[auto] mt-3 h-14 rounded-[32px] border bg-transparent py-2 px-6 outline-none transition-all duration-200 ease-linear text-black text-lg d bg-[#D2D2D2] w-full"
-        placeholder="your@email.com"
+        className="min-h-[auto] mt-1.5 h-14 rounded-[32px] border py-2 px-6 outline-none transition-all duration-200 ease-linear text-black text-lg d bg-white w-full"
+        placeholder={placeholder}
       />
+    </label>
+  );
+}
+
+export function Select({ arr, option, label }: any) {
+  return (
+    <label htmlFor="">
+      {label}
+      <select className="min-h-[auto] mt-1.5 h-14 rounded-[32px] border py-2 px-6 outline-none transition-all duration-200 ease-linear text-black text-lg d bg-white w-full">
+        <option value="">{option}</option>
+        {arr.map((item: any) => {
+          return (
+            <option key={item.key} value={item.value}>
+              {item.label}
+            </option>
+          );
+        })}
+      </select>
     </label>
   );
 }
@@ -26,7 +44,7 @@ export default function PasswordInput({ value, onChange, label }: any) {
           type={showPassword ? "text" : "password"}
           value={value}
           onChange={onChange}
-          className="min-h-[auto] h-14 mt-3 rounded-[32px] shadow-md border bg-transparent py-2 px-6 outline-none transition-all duration-200 text-black text-lg ease-linear bg-[#D2D2D2] w-full"
+          className="min-h-[auto] h-14 mt-3 rounded-[32px] shadow-md border py-2 px-6 outline-none transition-all duration-200 text-black text-lg ease-linear bg-white w-full"
           placeholder="********"
         />
         {showPassword === false ? (

@@ -1,199 +1,88 @@
-import cloud from "../../asset/Moon cloud mid rain.svg";
-import Button from "../../components/Button";
-import ImageOne from "../../asset/Frame 1618868329.svg";
-import ImageTwo from "../../asset/Frame 1618868330.svg";
-import ImageThree from "../../asset/Frame 1618868331.svg";
-import ImageFour from "../../asset/Frame 1618868333.svg";
+import ImageOne from "../../asset/sun.png";
+import ImageTwo from "../../asset/humid.png";
+import ImageThree from "../../asset/temp.png";
+import ImageFour from "../../asset/water.png";
+import ImageFive from "../../asset/PH.png";
+import ImageSix from "../../asset/country.png";
 
 export default function HomePage() {
-  const TITLE = [
-    "Crop",
-    "Temperature",
-    "Humidity",
-    "PH",
-    "Country",
-    "Optimal Planting",
-    "Optimal Planting",
-  ];
-  const tableData = [
+  const cardData = [
     {
       id: 0,
-      cropImage:
-        "http://www.plantgrower.org/uploads/6/5/5/4/65545169/croppedimage570400-19690129-lsweetcorn_orig.jpg",
-
-      cropName: "maize",
-      temp: [
-        { temp_min: 297.56, temp_max: 300.05, pressure: 1015, humidity: 64 },
-      ],
-      country: "Nigeria",
-      soil: [{ ph_min: 5.5, ph_max: 6.5 }],
-      times: [{ time_min: "march", time_max: "may" }],
+      image: ImageOne,
+      title: "humidity",
+      text: "Humidity plays a pivotal role in precision farming, influencing optimal planting and harvesting",
     },
     {
       id: 1,
-      cropImage:
-        "https://feelgoodfoodie.net/wp-content/uploads/2022/01/how-to-cook-lentils-7.jpg",
-      cropName: "lentil",
-      temp: [
-        { temp_min: 297.56, temp_max: 300.05, pressure: 1015, humidity: 64 },
-      ],
-      country: "kenya",
-      soil: [{ ph_min: 6.0, ph_max: 7.0 }],
-      times: [{ time_min: "october", time_max: "november" }],
+      image: ImageTwo,
+      title: "temperature",
+      text: "Optimizing your yields by aligning cultivation with the perfect thermal conditions.",
     },
     {
       id: 2,
-      cropImage:
-        "https://i5.walmartimages.com/seo/Fresh-Seedless-Watermelon-Each_e2ec527d-fe7b-4309-9373-186de34557cf.1c562d1a69a2a8f4cb7b5de8f125fc76.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF",
-      cropName: "watermelon",
-      temp: [
-        { temp_min: 297.56, temp_max: 300.05, pressure: 1015, humidity: 64 },
-      ],
-      country: "Nigeria",
-      soil: [{ ph_min: 6.0, ph_max: 6.8 }],
-      times: [{ time_min: "september", time_max: "november" }],
+      image: ImageThree,
+      title: "season",
+      text: "Seasonal intelligence is the cornerstone of precision agriculture.",
+    },
+    {
+      id: 3,
+      image: ImageFour,
+      title: "water availability",
+      text: "Optimizing agricultural outcomes and contributing to sustainable and resilient farming practices.",
+    },
+    {
+      id: 4,
+      image: ImageFive,
+      title: "PH",
+      text: "Delve into the critical role of pH levels in determining precise planting and harvesting times.",
+    },
+    {
+      id: 5,
+      image: ImageSix,
+      title: "country",
+      text: "Tailor your approach to specific geographical conditions, unlocking the full potential of your crops",
     },
   ];
   return (
-    <div className="h-full gap-5 p-5">
+    <div className="lg:h-full gap-5 p-3 lg:p-5 font-sans">
       <div className="flex flex-col">
         <h1 className="text-[28px] font-semibold leading-10">Welcome</h1>
         <p className="ml-4">John Doe</p>
       </div>
 
-      <div className="flex flex-col mt-5 gap-5">
-        <div className="flex space-x-3">
-          <div className="rounded-xl p-3 w-[70%] bg-white">
-            <img
-              src={ImageOne}
-              alt=""
-              className="w-[150px] h-[150px] absolute left-[45%] top-[10%]"
-            />
-            <img
-              src={ImageTwo}
-              alt=""
-              className="w-[150px] h-[150px] absolute left-[30%] top-[14%]"
-            />
-            <img
-              src={ImageThree}
-              alt=""
-              className="w-[150px] h-[150px] absolute left-[10%] top-[33%]"
-            />
-            <img
-              src={ImageFour}
-              alt=""
-              className="w-[150px] h-[150px] absolute left-[30%] top-[35%]"
-            />
+      <div className="flex flex-col">
+          <p className="text-[22px] lg:text-[28px] max-w-[323px] text-center mx-auto font-medium my-8 leading-8 lg:leading-10">
+            Precision Farming: Boost Yields with Smart Planting and Harvesting
+            predictions
+          </p>
 
-            <p className="text-[20px] font-medium mb-20 leading-8">
-              Precision Farming: <br /> Boost Yields with <br /> Smart Planting
-              and <br /> Harvesting predictions
-            </p>
-
-            <div className="flex justify-end mt-5">
-              <Button title={"Get Started"} />
-            </div>
+          <div className="grid lg:grid-cols-3 gap-4 flex-wrap">
+            {cardData.map((item) => (
+              <div
+                key={item.id}
+                className="flex flex-row rounded-lg bg-white p-3 md:max-w-xl h[100px]"
+              >
+                <img
+                  className="w-16 h-16 mx-auto rounded-t-lg object-cover md:rounded-none md:rounded-l-lg"
+                  src={item.image}
+                  alt=""
+                />
+                <div className="flex flex-col justify-between px-2">
+                  <h5 className="mb-2 text-xl font-semibold capitalize">
+                    {item.title}
+                  </h5>
+                  <p className="text-sm lg:text-base">{item.text}</p>
+                </div>
+              </div>
+            ))}
           </div>
-
-          {/* DIV 2 */}
-          <div className="rounded-xl p-3 w-[35%] h-[174px] bg-white">
-            {/* DAY & TIME */}
-            <div className="flex justify-between">
-              <span className="">Monday</span>
-              <span className="uppercase">11:32pm</span>
-            </div>
-
-            <div className="flex justify-between">
-              <span className="uppercase">16&deg;c</span>
-              <img src={cloud} alt="" />
-            </div>
-
-            <div className="flex justify-between">
-              <div className="">
-                <span className="">humidity: 51%</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="">sunrise: 6:03am</span>
-                <span className="">sunrise: 9:18pm</span>
-              </div>
-            </div>
+          <div className="flex justify-center items-center my-5">
+            <button className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white">
+              enter crop details
+            </button>
           </div>
         </div>
-
-        <div className="rounded-xl p-3 w-full bg-white">
-          <h3 className="">Top Crops</h3>
-          {/* TABLE ELEMENT */}
-          <div className="overflow-hidden overflow-x-auto border-gray-200 shadow-md m-5">
-            <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
-              <thead className="bg-gray-300">
-                <tr>
-                  {TITLE.map((item) => (
-                    <th
-                      key={item}
-                      scope="col"
-                      className="px-6 py-4 font-medium text-gray-900"
-                    >
-                      {item}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-                {tableData.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50">
-                    <th className="flex gap-3 px-6 py-4 font-normal items-center text-gray-900">
-                      <div className="relative h-10 w-10">
-                        <img
-                          className="h-10 w-10 rounded-full object-cover object-center"
-                          src={item.cropImage}
-                          alt=""
-                        />
-                      </div>
-                      <div className="text-sm">
-                        <div className="font-medium text-gray-700">
-                          {item.cropName}
-                        </div>
-                      </div>
-                    </th>
-                    <td className="px-6 py-4">
-                      <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold ">
-                        <span className="uppercase">
-                          {Math.round(item.temp[0].temp_min - 273.15)}&deg;c
-                        </span>{" "}
-                        <span className="">to</span>
-                        <span className="uppercase">
-                          {Math.round(item.temp[0].temp_max - 273.15)}&deg;c
-                        </span>
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold ">
-                        <span className="">{item.temp[0].humidity}%</span>
-                        <span className=""> to </span>
-                        <span className="">{item.temp[0].pressure}%</span>
-                      </span>
-                    </td>
-                    <td className="px-6 py-4">
-                      <span className="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold ">
-                        <span className="">{item.soil[0].ph_min}</span>
-                        <span className=""> to </span>
-                        <span className="">{item.soil[0].ph_max}</span>
-                      </span>
-                    </td>
-                    <td className="px-6 capitalize py-4">{item.country}</td>
-                    <td className="px-6 py-4 capitalize">
-                      {item.times[0].time_min}
-                    </td>
-                    <td className="px-6 py-4 capitalize">
-                      {item.times[0].time_max}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
