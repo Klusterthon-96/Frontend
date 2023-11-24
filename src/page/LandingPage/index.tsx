@@ -91,12 +91,12 @@ export default function LandingPage() {
               <img
                 src={ImageOne}
                 className="h-auto w-full col"
-                alt="picture is loading"
+                alt="Farmers tilling the ground"
               />
               <img
                 src={ImageThree}
                 className="h-auto w-full"
-                alt="picture is loading"
+                alt="women farmers carrying farm produce"
               />
             </div>
 
@@ -104,17 +104,17 @@ export default function LandingPage() {
               <img
                 src={ImageTwo}
                 className="h-auto w-full"
-                alt="picture is loading"
+                alt="A lady holding a ripe tomato fruit"
               />
               <img
                 src={ImageFour}
                 className="h-auto w-full"
-                alt="picture is loading"
+                alt="A farmer tending to a cassava plant"
               />
               <img
                 src={ImageEight}
                 className="h-auto w-full"
-                alt="picture is loading"
+                alt="A smiling farmer"
               />
             </div>
           </div>
