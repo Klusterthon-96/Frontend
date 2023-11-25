@@ -44,9 +44,10 @@ export default function SideBar() {
       icon: <HiOutlineGift />,
     },
   ];
+  // hidden lg:flex w-[250px] p-3 fixed h-[90%] top-[72px] bg-white z-1
   return (
-    <aside className="hidden lg:flex w-[250px] p-3 fixed h-[90%] top-[72px] bg-white z-1">
-      <nav className="flex flex-col">
+    <aside className="absolute top-[100px] h-screen">
+      <nav className="flex flex-col justify-between h-[82%] w-[252px] p-2">
         <ul className="">
           {navItems.map((item) => (
             <Link

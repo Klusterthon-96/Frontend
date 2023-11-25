@@ -45,44 +45,44 @@ export default function HomePage() {
     },
   ];
   return (
-    <div className="lg:h-full gap-5 p-3 lg:p-5 font-sans">
-      <div className="flex flex-col">
-        <h1 className="text-[28px] font-semibold leading-10">Welcome</h1>
-        <p className="ml-4">John Doe</p>
+    <div className="">
+      <div className="flex items-center">
+        <h1 className="text-[28px] font-semibold leading-10">Welcome,</h1>{" "}
+        <span className="ml-4 text-xl">John Doe</span>
       </div>
 
-      <div className="flex flex-col">
-          <p className="text-[22px] lg:text-[28px] max-w-[323px] text-center mx-auto font-medium my-8 leading-8 lg:leading-10">
-            Precision Farming: Boost Yields with Smart Planting and Harvesting
-            predictions
-          </p>
+      <div className="flex flex-col mb-10">
+        <p className="text-[22px] lg:text-[28px] max-w-[323px] text-center lg:mx-auto font-medium my-8 leading-8 lg:leading-[42px]">
+          Precision Farming: Boost Yields with Smart Planting and Harvesting
+          predictions
+        </p>
 
-          <div className="grid lg:grid-cols-3 gap-4 flex-wrap">
-            {cardData.map((item) => (
-              <div
-                key={item.id}
-                className="flex flex-row rounded-lg bg-white p-3 md:max-w-xl h[100px]"
-              >
-                <img
-                  className="w-16 h-16 mx-auto rounded-t-lg object-cover md:rounded-none md:rounded-l-lg"
-                  src={item.image}
-                  alt=""
-                />
-                <div className="flex flex-col justify-between px-2">
-                  <h5 className="mb-2 text-xl font-semibold capitalize">
-                    {item.title}
-                  </h5>
-                  <p className="text-sm lg:text-base">{item.text}</p>
-                </div>
+        <div className="grid lg:grid-cols-3 gap-4 flex-wrap">
+          {cardData.map((item) => (
+            <div
+              key={item.id}
+              className="flex flex-row rounded-lg bg-white p-3 max-w-sm h-40"
+            >
+              <img
+                className="w-16 h-16 mx-auto rounded-t-lg object-cover md:rounded-none md:rounded-l-lg"
+                src={item.image}
+                alt=""
+              />
+              <div className="px-2">
+                <h5 className="mb-2 text-xl font-semibold capitalize">
+                  {item.title}
+                </h5>
+                <p className="text-sm lg:text-base">{item.text}</p>
               </div>
-            ))}
-          </div>
-          <div className="flex justify-center items-center my-5">
-            <button className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white">
-              enter crop details
-            </button>
-          </div>
+            </div>
+          ))}
         </div>
+        <div className="mr-auto lg:flex lg:justify-center lg:items-center my-5 lg:mr-0">
+          <button className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white">
+            enter crop details
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

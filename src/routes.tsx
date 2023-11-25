@@ -7,6 +7,7 @@ import ErrorPage from "./page/404Page";
 import LandingPage from "./page/LandingPage";
 import HomePage from "./page/HomePage";
 import InputForm from "./page/InputForm";
+import Response from "./page/InputForm/response";
 
 export const router = createBrowserRouter([
   {
@@ -43,15 +44,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/settings",
-        element: <Home />,
+        element: <Response />,
       },
       {
         path: "/dashboard/help-center",
-        element: <Home />,
+        element: <InputForm />,
       },
       {
         path: "/dashboard/refer",
-        element: <Home />,
+        element: <InputForm />,
       },
     ],
   },

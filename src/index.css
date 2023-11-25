@@ -11,3 +11,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll {
+  scrollbar-width: none;
+}

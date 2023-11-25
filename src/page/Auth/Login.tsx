@@ -11,7 +11,7 @@ export default function LoginPage() {
   return (
     <div className="grid gap-5 lg:grid-cols-2 lg:place-items-center lg:h-screen">
       <div className="order-last lg:order-1 mx-auto flex justify-center items-center">
-        <div className="p-5 my-5">
+        <div className="p-2 sm:p-4 my-5">
           <div className="">
             <h2 className="font-normal text-3xl ">Welcome back</h2>
             <p className=" text-xl">

@@ -4,9 +4,9 @@ import ImageTwo from "../../asset/Frame 24 (1).png";
 import ImageThree from "../../asset/Group 2.png";
 import ImageFour from "../../asset/Frame 24 (2).png";
 import ImageEight from "../../asset/Smile.png";
-import ImageFive from "../../asset/Frame 65.png";
-import ImageSix from "../../asset/Rectangle 1.png";
-import ImageSeven from "../../asset/Union.png";
+import ImageFive from "../../asset/Frame 65.svg";
+import ImageSix from "../../asset/Rectangle 1.svg";
+import ImageSeven from "../../asset/Union.svg";
 
 export default function LandingPage() {
   const cardData = [
@@ -30,9 +30,9 @@ export default function LandingPage() {
     },
   ];
   return (
-    <div>
+    <div className="h-screen">
       <header className="items-center py-4 px-6 shadow-md ">
-        <nav className="flex items-center select-none justify-between">
+        <nav className="flex items-center select-none lg:w-3/5 justify-between ml-auto">
           <div className=" font-Lacq text-2xl">
             <h1 className="capitalize">Agro Assistance</h1>
           </div>
@@ -41,17 +41,9 @@ export default function LandingPage() {
             <li>
               <Link
                 to="/auth/login"
-                className="hover:bg-neutral-500 py-2 px-3 rounded-lg hover:underline hover:underline-offset-[0.3em]"
+                className="text-white py-2 px-6 bg-[#006400] rounded-[32px] "
               >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/auth/register"
-                className="hover:bg-neutral-500 py-2 px-3 rounded-lg hover:underline hover:underline-offset-[0.3em]"
-              >
-                Sign up
+                Sign In
               </Link>
             </li>
           </ul>
@@ -60,16 +52,16 @@ export default function LandingPage() {
 
       <div className="flex flex-col px-4 pt-10">
         {/* UP ELEMENT */}
-        <div className="flex flex-col lg:flex-row gap-5 w[90%] mx-auto">
+        <div className="flex flex-col lg:flex-row gap-5 justify-between">
           {/* LEFT TEXT */}
           {/* <div className=""> */}
-          <div className="font-sans w-[90%] flex flex-col justify-center items-center">
-            <h1 className="font-normal text-4xl lg:text-[44px]">
+          <div className="font-sans w-[350px] lg:w-[634px] flex flex-col justify-center items-center">
+            <h1 className="font-normal text-3xl leading-[35px] lg:text-[44px] lg:leading-[66px]">
               Precision Agriculture: Enhance Crop Yields through Intelligent
               Planting and Harvest Predictions.
             </h1>
 
-            <p className="mt-3 text-sm lg:text-base line-clamp-3">
+            <p className="mt-3 text-sm lg:text-base leading-5 lg:leading-[30px] line-clamp-3">
               Empower your fields with advanced technology for precise planting
               and harvesting, maximizing efficiency and yield outcomes in every
               season.
@@ -86,7 +78,7 @@ export default function LandingPage() {
           {/* </div> */}
 
           {/* RIGHT IMAGE VIEW */}
-          <div className="grid gap-4 grid-cols-2 w-full">
+          <div className="grid gap-4 grid-cols-2 w-[350px] lg:w-[550px]">
             <div className="flex flex-col justify-between gap-4">
               <img
                 src={ImageOne}
