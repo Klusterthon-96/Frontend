@@ -10,20 +10,22 @@ export default function Header() {
     { id: 3, value: "Igbo", label: "IGB", flag: FlagOne },
   ];
   return (
-    <header className="bg-white px-3 py-5 fixed left-0 top-0 w-full">
-      <div className="flex justify-end items-center">
-        <GoBell className="text-xl " />
-        <div className="ml-3">
-          <select className="bg-[#F5F5F5] rounded-xl px-3 py-1 outline-none border-none">
-            {flag.map((item: any) => (
-              <option key={item.id} value={item.value}>
-                {/* {item.flag} */}
-                {item.label}
-              </option>
-            ))}
-          </select>
+    <div className="flex flex-col flex-1 overflow-hidden w-full">
+      <header className="bg-white p-5 w-ull shadow-md">
+        <div className="flex justify-end items-center">
+          <GoBell className="text-xl " />
+          <div className="ml-3">
+            <select className="bg-[#F5F5F5] rounded-xl px-3 py-1 outline-none border-none">
+              {flag.map((item: any) => (
+                <option key={item.id} value={item.value}>
+                  {/* {item.flag} */}
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
