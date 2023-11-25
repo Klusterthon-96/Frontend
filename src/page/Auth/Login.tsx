@@ -9,6 +9,7 @@ export default function LoginPage() {
   // const [isLoadingButton, setIsLoadingButton] = useState(false);
 
   return (
+
     <div className="grid gap-5 lg:grid-cols-2 lg:place-items-center lg:h-screen">
       <div className="order-last lg:order-1 mx-auto flex justify-center items-center">
         <div className="p-2 sm:p-4 my-5">
@@ -40,7 +41,9 @@ export default function LoginPage() {
                       <FaSpinner className="text-xl animate-spin mr-2" /> Sign
                       In
                     </button> */}
+
                 {/* ) : ( */}
+
                 <button
                   type="button"
                   // onClick={handleLogin}
@@ -49,6 +52,7 @@ export default function LoginPage() {
                   Sign In
                 </button>
                 {/* )} */}
+
               </div>
 
               <span className="flex items-center uppercase justify-center my-3">
