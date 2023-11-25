@@ -7,7 +7,10 @@ import ErrorPage from "./page/404Page";
 import LandingPage from "./page/LandingPage";
 import HomePage from "./page/HomePage";
 import InputForm from "./page/InputForm";
+import HelpCenter from "./components/HelpCenter";
+import ForgotPassword from "./page/Auth/ForgotPassword";
 import Response from "./page/InputForm/response";
+
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/auth/register",
         element: <Register />,
+      },
+      {
+        path: "/auth/forgot-password",
+        element: <ForgotPassword />,
       },
     ],
   },
@@ -48,7 +55,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/help-center",
-        element: <InputForm />,
+        element: <HelpCenter />,
+
       },
       {
         path: "/dashboard/refer",
