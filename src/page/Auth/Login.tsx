@@ -64,7 +64,7 @@ export default function LoginPage() {
                 <Link to="/auth/register" className="mt-3 text-right">
                   {`Don't have an account?`} <span className="font-bold">Sign up</span>
                 </Link>
-                <Link to="/auth/register" className="mt-3 text-right">
+                <Link to="/auth/forgot-password" className="mt-3 text-right">
                   <span className="font-bold">Forget Password?</span>
                 </Link>
               </div>

@@ -8,6 +8,7 @@ import LandingPage from "./page/LandingPage";
 import HomePage from "./page/HomePage";
 import InputForm from "./page/InputForm";
 import HelpCenter from "./components/HelpCenter";
+import ForgotPassword from "./page/Auth/ForgotPassword";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/auth/register",
         element: <Register />,
+      },
+      {
+        path: "/auth/forgot-password",
+        element: <ForgotPassword />,
       },
     ],
   },
