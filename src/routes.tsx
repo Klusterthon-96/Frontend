@@ -7,6 +7,7 @@ import ErrorPage from "./page/404Page";
 import LandingPage from "./page/LandingPage";
 import HomePage from "./page/HomePage";
 import InputForm from "./page/InputForm";
+import HelpCenter from "./components/HelpCenter";
 
 export const router = createBrowserRouter([
   {
@@ -47,7 +48,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/help-center",
-        element: <Home />,
+        element: <HelpCenter />,
       },
       {
         path: "/dashboard/refer",

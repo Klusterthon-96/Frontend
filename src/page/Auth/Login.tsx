@@ -15,9 +15,7 @@ export default function LoginPage() {
           <div className="p-4 lg:p-10 my-5 sm:mb-0">
             <div className="">
               <h2 className="font-normal text-3xl ">Welcome back</h2>
-              <p className=" text-xl">
-                Its’s easy just take a minute and provide the details
-              </p>
+              <p className=" text-xl">Its’s easy just take a minute and provide the details</p>
             </div>
 
             <div className="">
@@ -39,19 +37,19 @@ export default function LoginPage() {
                       In
                     </button> */}
                   {/* ) : ( */}
-                  <button
-                    type="button"
-                    // onClick={handleLogin}
-                    className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5"
-                  >
-                    Sign In
-                  </button>
+                  <Link className="w-full" to="/dashboard">
+                    <button
+                      type="button"
+                      // onClick={handleLogin}
+                      className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5"
+                    >
+                      Sign In
+                    </button>
+                  </Link>
                   {/* )} */}
                 </div>
 
-                <span className="flex items-center uppercase justify-center my-3">
-                  or
-                </span>
+                <span className="flex items-center uppercase justify-center my-3">or</span>
 
                 <button
                   type="button"
@@ -64,8 +62,7 @@ export default function LoginPage() {
               <div className="flex justify-between text-sm">
                 {" "}
                 <Link to="/auth/register" className="mt-3 text-right">
-                  {`Don't have an account?`}{" "}
-                  <span className="font-bold">Sign up</span>
+                  {`Don't have an account?`} <span className="font-bold">Sign up</span>
                 </Link>
                 <Link to="/auth/register" className="mt-3 text-right">
                   <span className="font-bold">Forget Password?</span>
