@@ -21,7 +21,7 @@ export function Home() {
 
 export function Landing() {
   return (
-    <main className="max-w-[1440px] mx-auto lg:h-screen">
+    <main className="max-w-[1440px] mx-auto h-screen">
       <Outlet />
     </main>
   );
