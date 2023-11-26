@@ -10,6 +10,10 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleLogin=async()=>{
+    
+  }
+
   return (
     <>
       <div className="grid place-items-center h-[inherit] gap-5 lg:grid-cols-2">
@@ -50,7 +54,7 @@ export default function LoginPage() {
                 <div className="justify-center flex text-white items-center mt-5">
                   <button
                     type="button"
-                    // onClick={handleLogin}
+                    onClick={handleLogin}
                     className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5"
                   >
                     Sign In
@@ -102,7 +106,7 @@ export default function LoginPage() {
             <div className="justify-center flex text-white items-center mt-5">
               <button
                 type="button"
-                // onClick={handleLogin}
+                onClick={handleLogin}
                 className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5"
               >
                 Sign In
