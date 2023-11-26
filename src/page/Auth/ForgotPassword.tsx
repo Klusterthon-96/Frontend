@@ -1,36 +1,92 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import forgotPasswordIcon from "../../asset/Sent Message-bro 1.png";
 import { TextInput } from "../../components/input";
+import emailConfirm from "../../asset/Confirmed-cuate 1.svg";
+import { AiOutlineClose } from "react-icons/ai";
 
 function ForgotPassword() {
+  const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="w-full min-h-fit  bg-white  ">
-        {/* header */}
-        <div className=" w-full pr-[72px]  pt-[20px] items-center flex  justify-between   ">
-          <h3 className="text-[28px] lg:w-[63%] lg:flex lg:justify-end text-[#000] font-sans font-normal ">Agro Assistance</h3>
-          <Link to="/auth/login">
-            <div className=" w-[195px] font-sans flex justify-center items-center h-[48px] rounded-[32px] border-[1px] border-[#006400] text-center text-[14px] font-[400] text-[#121212] ">Sign In</div>
-          </Link>
-        </div>
-        {/* Forgot password Container */}
-        <div className="mt-[82px] w-full  flex justify-center items-center">
-          <div>
-            <h2 className="text-[28px] text-center  text-[#000] font-sans font-[600] ">Forget Password</h2>
-            <p className="text-[20px] text-center mt-[20px] mb-[12px] text-[#000] font-sans font-[400] ">Enter email to reset password</p>
-            <div className="flex justify-center">
-              <img className="w-[50%]" src={forgotPasswordIcon} alt="icon" />
-            </div>
-            <p className="text-[20px] text-left mt-[32px] text-[#000] font-sans font-[400] ">Enter your email</p>
-            <div className="mt-5">
-              <TextInput color="#000" placeholder={" you@email.com"} />
-              <Link to="/auth/email-confirmation">
-                <button className=" mt-[24px] font-[400] text-[14px] text-[#fff] flex items-center justify-center h-[46px] w-[416px] rounded-[32px] bg-[#006400] ">Continue</button>
+      {/* header */}
+      <header className="items-center py-4 px-6 shadow-md ">
+        <nav className="flex items-center select-none lg:w-3/5 justify-between ml-auto">
+          <div className=" font-Lacq text-2xl">
+            <h1 className="capitalize">Agro Assistance</h1>
+          </div>
+
+          <ul className="ml-2 flex items-center text-black">
+            <li>
+              <Link
+                to="/auth/login"
+                className="hover:text-white py-2 px-6 border border-[#006400] text-black hover:bg-[#006400] rounded-[32px] "
+              >
+                Sign In
               </Link>
-            </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Forgot password Container */}
+      <div className="font-sans px-5 pb-5 grid place-items-center h-[90vh] lg:max-w-[450px] mx-auto">
+        <div>
+          <h2 className="text-[28px] text-center  font-[600] ">
+            Forget Password
+          </h2>
+          <p className="text-[20px] text-center mt-[20px] mb-[12px] font-[400]">
+            Enter email to reset password
+          </p>
+          <div className="flex justify-center">
+            <img className="w-[50%]" src={forgotPasswordIcon} alt="icon" />
+          </div>
+          <div className="">
+            <label htmlFor="Email">
+              Enter your email
+              <TextInput placeholder={"you@email.com"} />
+            </label>
+
+            <button
+              className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5 text-white"
+              onClick={() => setOpen(true)}
+            >
+              Continue
+            </button>
           </div>
         </div>
       </div>
+
+      {open && (
+        <div className="absolute top-0 bottom-0 left-0 right-0 bg-black/90 overflow-hidden h-screen w-full outline-none font-sans">
+          <div className="pointer-events-none relative flex m-2 min-h-screen w-auto translate-y-[-50px] items-center transition-all duration-300 ease-in-out md:my-7 md:mx-auto md:h-auto">
+            <div className="pointer-events-auto relative bg-clip-padding lg:w-[400px] p-4 mx-auto bg-white rounded-lg text-center">
+              <div className="flex items-center justify-end mb-8">
+                <button
+                  type="button"
+                  className="box-content rounded-none p-1 border-none opacity-50 text-xl "
+                  aria-label="Close"
+                  onClick={() => setOpen(false)}
+                >
+                  <AiOutlineClose size={26} color="#000" />
+                </button>
+              </div>
+              <div className="">
+                <h2 className="text-[28px] font-semibold">
+                  Email has been sent
+                </h2>
+                <p className="text-xl my-5">
+                  Your Password Reset Request is in Motion Check your email for
+                  confirm
+                </p>
+                <div className="flex justify-center">
+                  <img className="" src={emailConfirm} alt="icon" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
