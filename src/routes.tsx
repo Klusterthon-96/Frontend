@@ -11,6 +11,8 @@ import HelpCenter from "./components/HelpCenter";
 import ForgotPassword from "./page/Auth/ForgotPassword";
 import EmailConfirmation from "./page/Auth/EmailConfirmation";
 import ResetPassword from "./page/Auth/ResetPassword";
+import Response from "./page/InputForm/response";
+
 
 export const router = createBrowserRouter([
   {
@@ -59,15 +61,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/settings",
-        element: <Home />,
+        element: <Response />,
       },
       {
         path: "/dashboard/help-center",
         element: <HelpCenter />,
+
       },
       {
         path: "/dashboard/refer",
-        element: <Home />,
+        element: <InputForm />,
       },
     ],
   },

@@ -6,7 +6,7 @@ import { MdOutlineHeadsetMic } from "react-icons/md";
 import { SlSettings } from "react-icons/sl";
 import { HiOutlineGift } from "react-icons/hi";
 import Avatar from "../../asset/Avatar.png";
-import { Link } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 
 export default function SideBar() {
   const navItems = [
@@ -44,33 +44,42 @@ export default function SideBar() {
       icon: <HiOutlineGift />,
     },
   ];
+  // hidden lg:flex w-[250px] p-3 fixed h-[90%] top-[72px] bg-white z-1
   return (
-    <aside className="hidden lg:flex w-[250px] p-3 fixed h-[90%] top-[72px] bg-white z-1">
-      <nav className="flex flex-col">
+    <aside className="absolute top-[100px] h-screen">
+      <nav className="flex flex-col justify-between h-[82%] w-[252px] p-2">
         <ul className="">
           {navItems.map((item) => (
-            <Link
+            <NavLink
               key={item.id}
               to={item.to}
-              className="py-4 px-2.5 flex items-center rounded-xl text-base gap-4 w-full capitalize bg-[#8AB88A]"
+              className={({ isActive }) =>
+              isActive
+                ? "bg-[#8AB88A] py-3 px-2 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
+                : "py-3 px-2 flex items-center text-base gap-4 w-full capitalize"
+            }
             >
               <span className="">{item.icon}</span>
               <span className="hidden md:flex">{item.name}</span>
-            </Link>
+            </NavLink>
           ))}
         </ul>
 
         <div className="mt-auto">
           <ul className="">
             {navList.map((item) => (
-              <Link
+              <NavLink
                 key={item.id}
                 to={item.to}
-                className="py-3 px-2 flex items-center text-base gap-4 w-full capitalize"
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-[#8AB88A] py-3 px-2 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
+                    : "py-3 px-2 flex items-center text-base gap-4 w-full capitalize"
+                }
               >
                 <span className="">{item.icon}</span>
                 <span className="hidden md:flex">{item.name}</span>
-              </Link>
+              </NavLink>
             ))}
           </ul>
 

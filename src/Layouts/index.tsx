@@ -5,12 +5,14 @@ import { Outlet } from "react-router-dom";
 
 export function Home() {
   return (
-    <main className="flex flex-col h-screen max-w-[1380px] mx-auto">
+    <main className="flex flex-col h-screen flex-1 overflowhidden max-w-[1440px] fixed w-full mx-auto left-0 right-0">
       <Header />
-      <div className="flex flex-row">
+      <div className="">
         <SideBar />
-        <div className="flex-1 flex-col bg-neutral-500/30 lg:ml-[252px] mt-[72px]">
-          <Outlet />
+        <div className="">
+          <div className="scroll absolute top-[72px] left-[258px] w-[82%] h-screen bg-[#F5F5F5] p-4 font-sans overflow-y-auto">
+            <Outlet />
+          </div>
         </div>
       </div>
     </main>
@@ -19,7 +21,7 @@ export function Home() {
 
 export function Landing() {
   return (
-    <main className="bg-neutral-200/30 max-w-[1380px] mx-auto">
+    <main className="max-w-[1440px] mx-auto h-screen">
       <Outlet />
     </main>
   );

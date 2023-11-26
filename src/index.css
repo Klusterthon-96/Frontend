@@ -11,3 +11,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll {
+  scrollbar-width: none;
+}
+
+.react-select__control {
+  height: 42px;
+}
+
+.react-select__value-container {
+  padding: 8px 12px;
+}
