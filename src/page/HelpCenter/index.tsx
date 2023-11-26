@@ -297,7 +297,7 @@ export default function HelpCenter() {
             </ul>
           </div>
           {/* NO TITLE */}
-          <div className="mt-5 text-xs items-center flex justify-center leading-[20px]">
+          {/* <div className="mt-5 text-xs items-center flex justify-center leading-[20px]">
             <div className="w-[70%]  ">
               <div>
                 <p className=" font-normal">1. Headline: Revolutionoze your farming with AI powered crop management</p>
@@ -318,7 +318,7 @@ export default function HelpCenter() {
                 </p>
               </div>
               <div className=" w-full flex justify-center items-center ">
-                <div className="   ">
+                <div className=" ">
                   <div>
                     <li className=" list-none mt-4 ">
                       <b className="  ">Temperature:</b>
@@ -367,7 +367,7 @@ export default function HelpCenter() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
