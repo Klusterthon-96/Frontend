@@ -9,6 +9,8 @@ import HomePage from "./page/HomePage";
 import InputForm from "./page/InputForm";
 import HelpCenter from "./components/HelpCenter";
 import ForgotPassword from "./page/Auth/ForgotPassword";
+import EmailConfirmation from "./page/Auth/EmailConfirmation";
+import ResetPassword from "./page/Auth/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
       {
         path: "/auth/forgot-password",
         element: <ForgotPassword />,
+      },
+      {
+        path: "/auth/email-confirmation",
+        element: <EmailConfirmation />,
+      },
+      {
+        path: "/auth/reset-password",
+        element: <ResetPassword />,
       },
     ],
   },
