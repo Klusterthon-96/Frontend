@@ -1,6 +1,4 @@
 import ImageOne from "../../asset/Frame 1618868343.svg";
-import Like from "../../asset/elements.svg";
-import Unlike from "../../asset/Frame 1618868343.svg";
 
 export default function Response() {
   return (

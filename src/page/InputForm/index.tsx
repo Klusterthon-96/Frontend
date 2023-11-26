@@ -1,5 +1,4 @@
 import Select from "react-select";
-// import { Select } from "../../components/input";
 import { cropType } from "./shared";
 
 const selectStyles = {

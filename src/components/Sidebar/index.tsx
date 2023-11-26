@@ -6,7 +6,7 @@ import { MdOutlineHeadsetMic } from "react-icons/md";
 import { SlSettings } from "react-icons/sl";
 import { HiOutlineGift } from "react-icons/hi";
 import Avatar from "../../asset/Avatar.png";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 
 export default function SideBar() {
   const navItems = [
