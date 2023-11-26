@@ -10,7 +10,7 @@ export function Home() {
       <div className="">
         <SideBar />
         <div className="">
-          <div className="scroll absolute top-[72px] left-[258px] w-[82%] h-screen bg-[#F5F5F5] p-4 font-sans overflow-y-auto">
+          <div className="scroll absolute top-[72px] w-full lg:left-[258px] lg:w-[75%] xl:w-[82%] h-screen bg-[#F5F5F5] p-4 font-sans overflow-y-auto">
             <Outlet />
           </div>
         </div>

@@ -6,10 +6,10 @@ export default function Response() {
       <img src={ImageOne} alt="" className="h-auto" />
 
       <div className="mt-4 font-sans">
-        <p className="">Nigeria</p>
-        <p className="mt-1.5">Maize (Corn)</p>
+        <p className="w-fit px-2">Nigeria</p>
+        <p className="w-fit px-2 mt-1.5">Maize (Corn)</p>
 
-        <ul className=" list-discmy-3">
+        <ul className=" list-disc mb-3 w-fit p-3">
           <li style={{ marginTop: "2px", marginLeft: "20px" }}>
             Average Temperature Level 25&deg;C to 35&deg;C
           </li>
@@ -17,7 +17,7 @@ export default function Response() {
             Average Humidity: 70% to 80%
           </li>
           <li style={{ marginTop: "2px", marginLeft: "20px" }}>
-            Optimal Soil pH: 5.5 t0 6.5
+            Optimal Soil pH: 5.5 to 6.5
           </li>
           <li style={{ marginTop: "2px", marginLeft: "20px" }}>
             Water Availability: Adequate
@@ -33,7 +33,7 @@ export default function Response() {
           </li>
         </ul>
 
-        <div className="bg-white rounded-xl p-4 w-[508px]">
+        <div className="bg-white mb-[100px] rounded-xl p-4 w-[450px]">
           <div className="font-normal break-words text-base">
             <p className=""> Was this response better or worse?</p>
           </div>

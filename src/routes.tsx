@@ -7,10 +7,9 @@ import ErrorPage from "./page/404Page";
 import LandingPage from "./page/LandingPage";
 import HomePage from "./page/HomePage";
 import InputForm from "./page/InputForm";
-import HelpCenter from "./components/HelpCenter";
+import HelpCenter from "./page/HelpCenter";
 import ForgotPassword from "./page/Auth/ForgotPassword";
 import Response from "./page/InputForm/response";
-
 
 export const router = createBrowserRouter([
   {
@@ -50,17 +49,12 @@ export const router = createBrowserRouter([
         element: <InputForm />,
       },
       {
-        path: "/dashboard/settings",
-        element: <Response />,
-      },
-      {
-        path: "/dashboard/help-center",
+        path: "/dashboard/support",
         element: <HelpCenter />,
-
       },
       {
         path: "/dashboard/refer",
-        element: <InputForm />,
+        element: <Response />,
       },
     ],
   },

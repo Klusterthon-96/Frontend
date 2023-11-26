@@ -10,6 +10,7 @@ export default function LoginPage() {
   return (
     <>
       <div className="grid place-items-center h-[inherit] gap-5 lg:grid-cols-2">
+        {/* MOBILE VIEW */}
         <div className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden pointer-events-none z-[-1] bg-cover bg-center bg-wallpaper w-full h-screen lg:hidden"></div>
         <div
           className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden lg:hidden"
@@ -73,6 +74,7 @@ export default function LoginPage() {
           </div>
         </div>
 
+        {/* DESKTOP VIEW */}
         <div className="p-4 hidden lg:block">
           <div className="text-center lg:text-start text-white lg:text-black">
             <h2 className="font-semibold text-3xl xl:text-[44px] ">
@@ -103,18 +105,6 @@ export default function LoginPage() {
                 Sign In
               </button>
             </div>
-
-            {/* <span className="flex items-center uppercase justify-center my-3">
-                  or
-                </span> */}
-
-            {/* <button
-                  type="button"
-                  // onClick={handleLogin}
-                  className="border border-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full flex justify-center mb-5 items-center"
-                >
-                  <FcGoogle className="mr-3 text-xl" /> Continue with Google
-                </button> */}
           </form>
 
           <div className="flex flex-col items-center justify-center text-sm text-white lg:text-black">
