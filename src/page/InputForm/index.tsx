@@ -55,7 +55,7 @@ export default function InputForm() {
         </div>
       </div>
 
-      <div className="mb-8 max-w-lg">
+      <div className="mb-[100px] max-w-lg">
         <form onSubmit={handleSubmit}>
           <div className="mt-5">
             <label htmlFor="Crop">
@@ -132,7 +132,7 @@ export default function InputForm() {
             />
           </div>
 
-          <div className="flex lg:hidden justify-center items-center mt-8 mb-[80px]">
+          <div className="flex lg:hidden justify-center items-center mt-8">
             {isLoadingButton ? (
               <button className="bg-[darkgrey] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white cursor-not-allowed ">
                 <FaSpinner className="text-xl animate-spin mr-2" /> enter

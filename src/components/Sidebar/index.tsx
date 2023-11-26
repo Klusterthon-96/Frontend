@@ -1,20 +1,11 @@
-import React from "react";
-// import { CiHome } from "react-icons/ci";
 import { MdInput } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { MdOutlineHeadsetMic } from "react-icons/md";
-import { SlSettings } from "react-icons/sl";
 import { HiOutlineGift } from "react-icons/hi";
 import Avatar from "../../asset/Avatar.png";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const navItems = [
-  // {
-  //   id: 0,
-  //   name: "Home",
-  //   to: "/dashboard",
-  //   icon: <CiHome className="text-xl" />,
-  // },
   {
     id: 0,
     name: "enter crop Details",

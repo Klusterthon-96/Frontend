@@ -4,27 +4,52 @@ import PasswordInput from "../../components/input";
 function ResetPassword() {
   return (
     <>
-      <div className="w-full min-h-fit pb-[50px] bg-white  ">
-        {/* header */}
-        <div className=" w-full pr-[72px] pt-[20px] items-center flex  justify-between   ">
-          <h3 className="text-[28px] w-[63%] flex justify-end text-[#000] font-sans font-normal ">Agro Assistance</h3>
-          <Link to="/auth/login">
-            <div className=" w-[195px] font-sans flex justify-center items-center h-[48px] rounded-[32px] border-[1px] border-[#006400] text-center text-[14px] font-[400] text-[#121212] ">Sign In</div>
-          </Link>
-        </div>
-        {/* Reset Password Container */}
-        <div className="mt-[82px] w-full  flex justify-center items-center">
-          <div className="">
-            <h2 className="text-[28px] text-center  text-[#000] font-sans font-[600] ">Reset Password</h2>
-            <p className="text-[20px] w-[400px] text-center mt-[24px] mb-[32px] text-[#000] font-sans font-[400] ">The password must be different from before.</p>
-            <PasswordInput label={"New Password"} />
-            <div className="mt-[24px]">
-              <PasswordInput label={"Confirm Password"} />
-            </div>
-            <Link to="/dashboard">
-              <button className=" mt-[24px] font-[400] text-[14px] text-[#fff] flex items-center justify-center h-[46px] w-[416px] rounded-[32px] bg-[#006400] ">Continue</button>
-            </Link>
+      {/* header */}
+      <header className="items-center py-4 px-6 shadow-md ">
+        <nav className="flex items-center select-none lg:w-3/5 justify-between ml-auto">
+          <div className=" font-Lacq text-2xl">
+            <h1 className="capitalize">Agro Assistance</h1>
           </div>
+
+          <ul className="ml-2 flex items-center text-black">
+            <li>
+              <Link
+                to="/auth/login"
+                className="hover:text-white py-2 px-6 border border-[#006400] text-black hover:bg-[#006400] rounded-[32px] "
+              >
+                Sign In
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Reset Password Container */}
+      <div className="font-sans px-5 pb-5 grid place-items-center h-[90vh] lg:max-w-[450px] mx-auto">
+        <div className="">
+          <h2 className="text-[28px] text-center font-[600]">Reset Password</h2>
+          <p className="text-[20px] text-center mt-[20px] mb-[12px] font-[400]">
+            The password must be different from before.
+          </p>
+          <form>
+            <div className="mt-5">
+              <label htmlFor="new-password">
+                New Password
+                <PasswordInput />
+              </label>
+            </div>
+
+            <div className="mt-5">
+              <label htmlFor="confirm password">
+                Confirm Password
+                <PasswordInput />
+              </label>
+            </div>
+          </form>
+
+          <button className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full mt-5 text-white">
+            Continue
+          </button>
         </div>
       </div>
     </>
