@@ -5,11 +5,10 @@ import { cropType } from "./shared";
 const selectStyles = {
   control: (styles: any) => ({
     ...styles,
-    backgroundColor: "transparent",
+    backgroundColor: "white",
     color: "black",
     outline: "none",
     borderRadius: "32px !important",
-    innerHeight: "56px",
   }),
   // option: (provided: any, state: any) => ({
   //   ...provided,
@@ -48,11 +47,13 @@ export default function InputForm() {
           </button>
         </div>
       </div>
-      <div className=" max-w-lg mb-40">
+      <div className=" max-w-lg">
         <div className="mt-5">
           <label htmlFor="Crop">
             Crop
             <Select
+              className="react-select-container"
+              classNamePrefix="react-select"
               options={cropType}
               styles={selectStyles}
               placeholder={"Select crop"}
@@ -62,54 +63,61 @@ export default function InputForm() {
         <div className="mt-5">
           <label htmlFor="">Temperature Level</label>
           <Select
+            className="react-select-container"
+            classNamePrefix="react-select"
             placeholder={"Select Temperature"}
-            // label={""}
             options={cropType}
-            // styles={selectStyles}
+            styles={selectStyles}
           />
         </div>
         <div className="mt-5">
-          <label htmlFor=""></label>
+          <label htmlFor="">Humidity</label>
           <Select
-            // label={"Humidity"}
+            className="react-select-container"
+            classNamePrefix="react-select"
             options={cropType}
-            // styles={selectStyles}
-            //  option={"Select Humidity"}
+            styles={selectStyles}
+            placeholder={"Select Humidity"}
           />
         </div>
         <div className="mt-5">
-          <label htmlFor=""></label>
+          <label htmlFor="">PH Level</label>
           <Select
-            // label={"PH Level"}
+            className="react-select-container"
+            classNamePrefix="react-select"
             options={cropType}
-            // styles={selectStyles}
-            //  option={"Select PH level"}
+            styles={selectStyles}
+            placeholder={"Select PH level"}
           />
         </div>
         <div className="mt-5">
-          <label htmlFor=""></label>
+          <label htmlFor="">Water Availability</label>
           <Select
-            // label={"Water Availability"}
+            className="react-select-container"
+            classNamePrefix="react-select"
             options={cropType}
-            // styles={selectStyles}
-            //  option={"Water Availability?"}
+            styles={selectStyles}
+            placeholder={"Water Availability?"}
           />
         </div>
         <div className="mt-5">
-          <label htmlFor=""></label>
+          <label htmlFor="">Country</label>
           <Select
-            // label={"Country"}
+            className="react-select-container"
+            classNamePrefix="react-select"
             options={cropType}
-            // styles={selectStyles}
-            //  option={"Select country"}
+            styles={selectStyles}
+            placeholder={"Select Country"}
           />
         </div>
         <div className="mt-5 mb-[30px]">
+          <label htmlFor="">Season</label>
           <Select
-            // label={"Season"}
+            className="react-select-container"
+            classNamePrefix="react-select"
             options={cropType}
-            // styles={selectStyles}
-            //  option={"Select Season"}
+            styles={selectStyles}
+            placeholder={"Select Season"}
           />
         </div>
 

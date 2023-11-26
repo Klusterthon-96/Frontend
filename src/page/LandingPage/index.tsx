@@ -41,7 +41,7 @@ export default function LandingPage() {
             <li>
               <Link
                 to="/auth/login"
-                className="text-white py-2 px-6 bg-[#006400] rounded-[32px] "
+                className="hover:text-white py-2 px-6 border border-[#006400] text-black hover:bg-[#006400] rounded-[32px] "
               >
                 Sign In
               </Link>
@@ -69,7 +69,7 @@ export default function LandingPage() {
             <div className="mt-5 mr-auto">
               <Link
                 className="px-6 py-2 flex items-center text-white w-[150px] justify-center bg-[#006400] rounded-[32px]"
-                to={"/dashboard"}
+                to={"/auth/register"}
               >
                 Get Started
               </Link>
@@ -78,7 +78,7 @@ export default function LandingPage() {
           {/* </div> */}
 
           {/* RIGHT IMAGE VIEW */}
-          <div className="grid gap-4 grid-cols-2 w-[350px] lg:w-[550px]">
+          <div className="grid gap-4 grid-cols-2 w-[350px] lg:w-[550px] xl:w-[530px]">
             <div className="flex flex-col justify-between gap-4">
               <img
                 src={ImageOne}
@@ -113,7 +113,7 @@ export default function LandingPage() {
         </div>
 
         {/* DOWN SECTION */}
-        <div className="my-8">
+        <div className="mt-8">
           <div className="grid lg:grid-cols-3 gap-4 flex-wrap">
             {cardData.map((item) => (
               <div
@@ -125,11 +125,11 @@ export default function LandingPage() {
                   src={item.image}
                   alt=""
                 />
-                <div className="flex flex-col justify-between px-2">
-                  <h5 className="mb-2 text-sm lg:text-xl font-semibold capitalize">
+                <div className="px-2">
+                  <h5 className="mb-2 text- font-semibold capitalize">
                     {item.title}
                   </h5>
-                  <p className="text-xs lg:text-base">{item.text}</p>
+                  <p className="text-xs lg:text-base mt-3 line-clamp-4">{item.text}</p>
                 </div>
               </div>
             ))}

@@ -8,6 +8,10 @@ module.exports = {
         Lacq: ["Lacquer", "cursive"],
         new: ["Yeon Sung", "cursive"],
       },
+      backgroundImage: {
+        wallpaper: "url('/src/asset/Frame 1618868308.png')",
+        RegWallpaper: "url('/src/asset/Frame 1618868309.png')",
+      },
     },
   },
   plugins: [],
