@@ -10,7 +10,62 @@ export default function Register() {
   return (
     <>
       <div className="grid place-items-center h-[inherit] gap-5 lg:grid-cols-2">
-        <div className="p-4">
+        {/* MOBILE VIEW */}
+        <div className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden pointer-events-none z-[-1] bg-cover bg-center bg-RegWallpaper w-full h-screen lg:hidden"></div>
+        <div
+          className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden lg:hidden"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
+        >
+          <div className="flex justify-center items-center h-screen">
+            <div className="p-4 md:w-3/5 mx-auto">
+              <div className="text-center lg:text-start text-white lg:text-black">
+                <h2 className="font-semibold text-3xl xl:text-[44px] ">
+                  Create Account
+                </h2>
+                <p className="mt-2 text-sm lg:text-base xl:text-xl">
+                  Its’s easy just take a minute and provide the details
+                </p>
+              </div>
+
+              {/* FORM */}
+              <form action="">
+                <div className="mt-5">
+                  <TextInput label={"Full Name"} placeholder={"John Doe"} />
+                </div>
+
+                <div className="mt-5">
+                  <TextInput
+                    label={"Email Address"}
+                    placeholder={"you@email.com"}
+                  />
+                </div>
+
+                <div className="mt-5">
+                  <PasswordInput label={"Password"} />
+                </div>
+                <div className="justify-center flex text-white items-center mt-5">
+                  <button
+                    type="button"
+                    // onClick={handleLogin}
+                    className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
+
+              <div className="flex flex-col items-center justify-center text-sm text-white lg:text-black">
+                <Link to="/auth/login" className="mt-3 text-sm text-right">
+                  {`Already have an account?`}{" "}
+                  <span className="font-bold">Sign In</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* DESKTOP VIEW */}
+        <div className="p-4 hidden lg:block">
           <div className="text-center lg:text-start">
             <h2 className="font-normal text-3xl xl:text-[44px]">
               Create Account

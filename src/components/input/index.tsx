@@ -4,7 +4,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 export function TextInput({ value, onChange, label, placeholder }: any) {
   return (
     <label htmlFor="Email" className="">
-      {label}
+      <span className="text-white lg:text-black">{label}</span>
       <input
         type="text"
         value={value}
@@ -20,11 +20,9 @@ export function TextInput({ value, onChange, label, placeholder }: any) {
 
 export function Select({ arr, option, label }: any) {
   return (
-
     <label htmlFor="">
       {label}
       <select className="min-h-[auto] mt-1.5 h-14 rounded-[32px] border py-2 px-6 outline-none transition-all duration-200 ease-linear text-black text-lg d bg-[#f5f5f5] w-full">
-
         <option value="">{option}</option>
         {arr.map((item: any) => {
           return (
@@ -41,8 +39,8 @@ export function Select({ arr, option, label }: any) {
 export default function PasswordInput({ value, onChange, label }: any) {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <label htmlFor="password" className="mb-5">
-      {label}{" "}
+    <label htmlFor="password">
+      <span className="text-white lg:text-black">{label}</span>
       <div className="mb-4 relative flex justify-center items-center">
         <input
           type={showPassword ? "text" : "password"}
