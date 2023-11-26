@@ -18,9 +18,9 @@ export function TextInput({ value, onChange, label, placeholder }: any) {
 
 export function Select({ arr, option, label }: any) {
   return (
-    <label htmlFor="">
-      {label}
-      <select className="min-h-[auto] mt-1.5 h-14 rounded-[32px] border py-2 px-6 outline-none transition-all duration-200 ease-linear text-black text-lg d bg-white w-full">
+    <label className="" htmlFor="">
+      <span className="text-white">{label}</span>
+      <select className="min-h-[auto] mt-1.5 h-14 rounded-[32px] border py-2 px-6 outline-none transition-all duration-200 ease-linear textblack text-lg d bg-white w-full">
         <option value="">{option}</option>
         {arr.map((item: any) => {
           return (

@@ -1,6 +1,6 @@
-import ImageOne from "../../asset/sun.png";
-import ImageTwo from "../../asset/humid.png";
-import ImageThree from "../../asset/temp.png";
+import ImageOne from "../../asset/humid.png";
+import ImageTwo from "../../asset/temp.png";
+import ImageThree from "../../asset/sun.png";
 import ImageFour from "../../asset/water.png";
 import ImageFive from "../../asset/PH.png";
 import ImageSix from "../../asset/country.png";
@@ -57,11 +57,11 @@ export default function HomePage() {
           predictions
         </p>
 
-        <div className="grid lg:grid-cols-3 gap-4 flex-wrap">
+        <div className="flex flex-wrap gap-4 lg:justify-center">
           {cardData.map((item) => (
             <div
               key={item.id}
-              className="flex flex-row rounded-lg bg-white p-3 max-w-sm h-40"
+              className="flex flex-row rounded-lg bg-white p-3 max-w-xs"
             >
               <img
                 className="w-16 h-16 mx-auto rounded-t-lg object-cover md:rounded-none md:rounded-l-lg"
