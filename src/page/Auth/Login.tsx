@@ -1,4 +1,4 @@
-// import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 // import { FaSpinner } from "react-icons/fa";
 import PasswordInput, { TextInput } from "../../components/input";
@@ -6,6 +6,9 @@ import PasswordInput, { TextInput } from "../../components/input";
 
 export default function LoginPage() {
   // const [isLoadingButton, setIsLoadingButton] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <>
@@ -32,11 +35,17 @@ export default function LoginPage() {
                 <div className="mt-5">
                   <TextInput
                     label={"Email Address"}
+                    value={email}
+                    onChange={(e: any) => setEmail(e.target.value)}
                     placeholder={"you@email.com"}
                   />
                 </div>
                 <div className="mt-5">
-                  <PasswordInput label={"Password"} />
+                  <PasswordInput
+                    label={"Password"}
+                    value={password}
+                    onChange={(e: any) => setPassword(e.target.value)}
+                  />
                 </div>
                 <div className="justify-center flex text-white items-center mt-5">
                   <button
@@ -47,18 +56,6 @@ export default function LoginPage() {
                     Sign In
                   </button>
                 </div>
-
-                {/* <span className="flex items-center uppercase justify-center my-3">
-                  or
-                </span> */}
-
-                {/* <button
-                  type="button"
-                  // onClick={handleLogin}
-                  className="border border-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full flex justify-center mb-5 items-center"
-                >
-                  <FcGoogle className="mr-3 text-xl" /> Continue with Google
-                </button> */}
               </form>
 
               <div className="flex flex-col items-center justify-center text-sm text-white lg:text-black">
@@ -90,11 +87,17 @@ export default function LoginPage() {
             <div className="mt-5">
               <TextInput
                 label={"Email Address"}
+                value={email}
+                onChange={(e: any) => setEmail(e.target.value)}
                 placeholder={"you@email.com"}
               />
             </div>
             <div className="mt-5">
-              <PasswordInput label={"Password"} />
+              <PasswordInput
+                label={"Password"}
+                value={password}
+                onChange={(e: any) => setPassword(e.target.value)}
+              />
             </div>
             <div className="justify-center flex text-white items-center mt-5">
               <button
