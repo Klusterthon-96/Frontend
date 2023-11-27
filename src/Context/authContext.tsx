@@ -1,13 +1,16 @@
 import React, { ReactNode, useState, useEffect } from "react";
 type User = {
-  accessToken: string;
-  createdAt: string;
-  email: string;
-  isVerified: boolean;
-  name: string;
-  role: string;
-  updatedAt: string;
+  [key: string]: any;
 };
+// type User = {
+//   accessToken: string;
+//   createdAt: string;
+//   email: string;
+//   isVerified: boolean;
+//   name: string;
+//   role: string;
+//   updatedAt: string;
+// };
 
 type AuthProps = {
   register: (name: string, email: string, password: string) => Promise<string>;
@@ -28,8 +31,7 @@ const defaultState: AuthProps = {
   user: {} as User,
 };
 
-const domainUrl: string =
-  "https://0fbc-41-217-75-148.ngrok-free.app/api/v1" || "";
+const domainUrl: string = "https://backend-8fbc.onrender.com/api/v1" || "";
 
 // const domainUrl: string = process.env.REACT_APP_BACKEND_URL || "";
 
