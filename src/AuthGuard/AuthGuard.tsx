@@ -1,16 +1,19 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/authContext";
 
-export default function AuthGuard() {
+export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
-  // if (isLogged === true) {
-  //   return <Navigate to="/" />;
-  //   // navigate("/", { replace: true });
-  // }
-  return (
-    <>
-      {/* <Navigate /> */}
-    </>
-  );
+  const token = user.data.accessToken;
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!user && !token) {
+      return navigate("/auth/login", { replace: true });
+    } else if (user && token) {
+      return navigate("/dashboard", { replace: true });
+    }
+  }, [user, token]);
+
+  return <>{children}</>;
 }

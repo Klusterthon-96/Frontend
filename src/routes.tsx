@@ -11,6 +11,7 @@ import HelpCenter from "./page/HelpCenter";
 import ForgotPassword from "./page/Auth/ForgotPassword";
 import ResetPassword from "./page/Auth/ResetPassword";
 import Response from "./page/InputForm/response";
+import ReferPage from "./page/Referral";
 
 export const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/refer",
-        element: <Response />,
+        element: <ReferPage />,
       },
     ],
   },

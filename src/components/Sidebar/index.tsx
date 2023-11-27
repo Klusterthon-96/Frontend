@@ -5,7 +5,7 @@ import { FiLogOut } from "react-icons/fi";
 import { MdOutlineHeadsetMic } from "react-icons/md";
 import { HiOutlineGift } from "react-icons/hi";
 import Avatar from "../../asset/Avatar.png";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/authContext";
 
 const navItems = [
@@ -21,7 +21,7 @@ const navList = [
   {
     id: 0,
     name: "help center",
-    to: "/dashboard/help-center",
+    to: "/dashboard/support",
     icon: <MdOutlineHeadsetMic className="text-xl" />,
   },
   {
@@ -47,32 +47,40 @@ export default function SideBar() {
     }
   };
   return (
-    <aside className="hidden lg:flex w-[250px] p-3 fixed h-[90%] top-[72px] bg-white z-1">
-      <nav className="flex flex-col">
+    <aside className="hidden lg:flex lg:absolute top-[100px] h-screen">
+      <nav className="flex flex-col justify-between h-[82%] w-[252px] p-2">
         <ul className="">
           {navItems.map((item) => (
-            <Link
+            <NavLink
               key={item.id}
               to={item.to}
-              className="py-4 px-2.5 flex items-center rounded-xl text-base gap-4 w-full capitalize bg-[#8AB88A]"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
+                  : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize"
+              }
             >
-              <span className="">{item.icon}</span>
-              <span className="">{item.name}</span>
-            </Link>
+              <span>{item.icon}</span>
+              <span>{item.name}</span>
+            </NavLink>
           ))}
         </ul>
 
         <div className="mt-auto">
           <ul className="">
             {navList.map((item) => (
-              <Link
+              <NavLink
                 key={item.id}
                 to={item.to}
-                className="py-3 px-2 flex items-center text-base gap-4 w-full capitalize"
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
+                    : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize"
+                }
               >
-                <span className="">{item.icon}</span>
-                <span className="">{item.name}</span>
-              </Link>
+                <span>{item.icon}</span>
+                <span>{item.name}</span>
+              </NavLink>
             ))}
           </ul>
 

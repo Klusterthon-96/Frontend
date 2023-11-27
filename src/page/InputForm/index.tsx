@@ -93,15 +93,15 @@ export default function InputForm() {
         }
       );
       setIsLoadingButton(false);
-      console.log(response);
+      setFormData(formData);
+
       Swal.fire({
         icon: "success",
-        title: "Predictions",
-        text: `${response.data.data.result}`,
+        title: `Your result is: ${response.data.data.result}`,
         padding: "3em",
-        color: "#FFF",
+        color: "##006400",
         backdrop: `
-    rgba(0,0,123,0.4)
+        rgba(0,102,0.4)
     left top
     no-repeat
   `,
@@ -128,7 +128,7 @@ export default function InputForm() {
           ) : (
             <button
               onClick={handleSubmit}
-              className="bg-[#006400] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white"
+              className="bg-[#006600] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white"
             >
               enter details
             </button>
@@ -142,6 +142,7 @@ export default function InputForm() {
             <label htmlFor="Crop">
               Crop
               <Select
+                required={true}
                 className="react-select-container"
                 classNamePrefix="react-select"
                 name="label"
@@ -159,6 +160,7 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
+              required={true}
               name="temperature"
               onChange={(selectedOption) =>
                 handleChange(selectedOption, { name: "temperature" })
@@ -173,6 +175,7 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
+              required={true}
               name="humidity"
               onChange={(selectedOption) =>
                 handleChange(selectedOption, { name: "humidity" })
@@ -187,6 +190,7 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
+              required={true}
               name="ph"
               onChange={(selectedOption) =>
                 handleChange(selectedOption, { name: "ph" })
@@ -201,6 +205,7 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
+              required={true}
               name="water_availability"
               onChange={(selectedOption) =>
                 handleChange(selectedOption, { name: "water_availability" })
@@ -215,6 +220,7 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
+              required={true}
               name="country"
               onChange={(selectedOption) =>
                 handleChange(selectedOption, { name: "country" })
