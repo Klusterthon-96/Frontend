@@ -46,8 +46,6 @@ export default function InputForm() {
 
   const token = user?.data.accessToken;
 
-  console.log(token);
-
   useEffect(() => {
     const initSession = async () => {
       await fetch("https://backend-8fbc.onrender.com/api/v1/session", {

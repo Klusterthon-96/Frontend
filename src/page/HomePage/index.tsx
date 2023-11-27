@@ -5,6 +5,7 @@ import ImageFour from "../../asset/water.png";
 import ImageFive from "../../asset/PH.png";
 import ImageSix from "../../asset/country.png";
 import { useAuth } from "../../Context/authContext";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 const cardData = [
@@ -51,11 +52,22 @@ export default function HomePage() {
 
   const firstName = user?.data?.user?.name.split(" ")[0];
 
+  if (user.data.user.isVerified === false) {
+    Swal.fire({
+      icon: "error",
+      title: "Email Verification!",
+      text: `Please check your inbox for your verification link!`,
+      confirmButtonColor: "#006400",
+    }).then(() => {
+      window.open("https://mail.google.com/", "_system");
+    });
+  }
+
   return (
     <div className="">
       <div className="flex items-center">
         <h1 className="text-[28px] font-semibold leading-10">Welcome,</h1>
-        <span className="text-[22px]">{firstName}</span>
+        <span className="ml-1 font-semibold text-[22px]">{firstName}</span>
       </div>
 
       <div className="flex flex-col mb-10">
