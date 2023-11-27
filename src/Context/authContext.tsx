@@ -1,4 +1,6 @@
 import React, { ReactNode, useState, useEffect } from "react";
+import axios from "axios";
+
 type User = {
   [key: string]: any;
 };
@@ -51,16 +53,14 @@ export const AuthProvider = ({ children }: Props) => {
   }, [user]);
 
   const register = async (name: string, email: string, password: string) => {
-    const response = await fetch(`${domainUrl}/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({ name, email, password }),
+    const response = await axios.post(`${domainUrl}/auth/register`, {
+      name,
+      email,
+      password,
+      withCredentials: true,
     });
 
-    const registeredUser = await response.json();
+    const registeredUser = response.data;
 
     // Update the user state
     setUser(registeredUser);
@@ -68,16 +68,13 @@ export const AuthProvider = ({ children }: Props) => {
     return `${domainUrl}/auth/register`;
   };
   const login = async (email: string, password: string) => {
-    const response = await fetch(`${domainUrl}/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({ email, password }),
+    const response = await axios.post(`${domainUrl}/auth/login`, {
+      email,
+      password,
+      withCredentials: true,
     });
 
-    const data = await response.json();
+    const data = response.data;
 
     // Handle the data, update state, or perform any other necessary actions
     setUser(data);

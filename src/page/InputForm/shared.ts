@@ -1,24 +1,24 @@
 export const cropType = [
-  { value: "Blackgram", label: "Blackgram", key: "Blackgram" },
-  { value: "Chickpea", label: "Chickpea", key: "Chickpea" },
-  { value: "cotton", label: "cotton", key: "cotton" },
-  { value: "Jute", label: "Jute", key: "Jute" },
-  { value: "Kidneybeans", label: "Kidneybeans", key: "Kidneybeans" },
-  { value: "Lentil", label: "Lentil", key: "Lentil" },
-  { value: "Maize", label: "Maize", key: "Maize" },
-  { value: "Mothbeans", label: "Mothbeans", key: "Mothbeans" },
-  { value: "Munbean", label: "Munbean", key: "Munbean" },
-  { value: "Muskmelon", label: "Muskmelon", key: "Muskmelon" },
-  { value: "Pigeonpeas", label: "Pigeonpeas", key: "Pigeonpeas" },
-  { value: "Rice", label: "Rice", key: "Rice" },
-  { value: "Watermelon", label: "Watermelon", key: "Watermelon" },
+  { label: "Blackgram", value: "blackgram", key: "Blackgram" },
+  { label: "Chickpea", value: "chickpea", key: "Chickpea" },
+  { label: "cotton", value: "cotton", key: "cotton" },
+  { label: "Jute", value: "jute", key: "Jute" },
+  { label: "Kidneybeans", value: "kidneybeans", key: "Kidneybeans" },
+  { label: "Lentil", value: "lentil", key: "Lentil" },
+  { label: "Maize", value: "maize", key: "Maize" },
+  { label: "Mothbeans", value: "mothbeans", key: "Mothbeans" },
+  { label: "Munbean", value: "munbean", key: "Munbean" },
+  { label: "Muskmelon", value: "muskmelon", key: "Muskmelon" },
+  { label: "Pigeonpeas", value: "pigeonpeas", key: "Pigeonpeas" },
+  { label: "Rice", value: "rice", key: "Rice" },
+  { label: "Watermelon", value: "watermelon", key: "Watermelon" },
 ];
 
 export const countries = [
-  { value: "Kenya", label: "Kenya" },
-  { value: "Nigeria", label: "Nigeria" },
-  { value: "South Africa", label: "South Africa" },
-  { value: "Sudan", label: "Sudan" },
+  { value: "kenya", label: "Kenya" },
+  { value: "nigeria", label: "Nigeria" },
+  { value: "south africa", label: "South Africa" },
+  { value: "sudan", label: "Sudan" },
 ];
 
 export const temperatureType = [
@@ -37,11 +37,11 @@ export const humidityType = [
 ];
 
 export const pHType = [
-  { value: "Strongly Acidic", label: "Strongly Acidic (0-1.99)" },
-  { value: "Moderately Acidic", label: "Moderately Acidic (2-5.99)" },
-  { value: "Neutral", label: "Neutral (6-6.99)" },
-  { value: "Moderately Alkaline", label: "Moderately Alkaline (7-9.99)" },
-  { value: "Highly Alkaline", label: "Highly Alkaline (10 and above)" },
+  { value: "strongly acidic", label: "Strongly Acidic (0-1.99)" },
+  { value: "moderately acidic", label: "Moderately Acidic (2-5.99)" },
+  { value: "neutral", label: "Neutral (6-6.99)" },
+  { value: "moderately alkaline", label: "Moderately Alkaline (7-9.99)" },
+  { value: "highly alkaline", label: "Highly Alkaline (10 and above)" },
 ];
 
 export const waterType = [
