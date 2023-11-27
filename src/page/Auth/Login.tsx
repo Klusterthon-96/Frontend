@@ -54,6 +54,7 @@ export default function LoginPage() {
       );
       return;
     }
+
     try {
       await login(formData.email, formData.password);
 
@@ -61,8 +62,9 @@ export default function LoginPage() {
         icon: "success",
         text: `Sign in successfully!`,
       });
+      navigate("/dashboard");
 
-      return navigate("/dashboard");
+      setIsLoadingButton(false);
     } catch (error) {
       console.error(error);
     } finally {

@@ -57,7 +57,7 @@ export default function SideBar() {
               className="py-4 px-2.5 flex items-center rounded-xl text-base gap-4 w-full capitalize bg-[#8AB88A]"
             >
               <span className="">{item.icon}</span>
-              <span className="hidden md:flex">{item.name}</span>
+              <span className="">{item.name}</span>
             </Link>
           ))}
         </ul>
@@ -71,7 +71,7 @@ export default function SideBar() {
                 className="py-3 px-2 flex items-center text-base gap-4 w-full capitalize"
               >
                 <span className="">{item.icon}</span>
-                <span className="hidden md:flex">{item.name}</span>
+                <span className="">{item.name}</span>
               </Link>
             ))}
           </ul>
@@ -80,7 +80,7 @@ export default function SideBar() {
             <div className="flex flex-row space-x-2 items-center">
               <img src={Avatar} alt="" className="h-10 w-10 rounded-full" />
 
-              <span className="hidden md:flex flex-col w-[132px]">
+              <span className="flex flex-col w-[132px]">
                 <span className="font-semibold">{user?.data.user.name}</span>
                 <span className="break-all text-sm text-[grey/60]">
                   {user?.data.user.email}
@@ -88,7 +88,9 @@ export default function SideBar() {
               </span>
             </div>
 
-            <FiLogOut className="hidden md:flex text-xl mr-2 text-end" />
+            <button type="submit" onClick={handleLogOut}>
+              <FiLogOut className=" text-xl mr-2 text-end" />
+            </button>
           </div>
         </div>
       </nav>
