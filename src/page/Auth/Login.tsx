@@ -125,7 +125,7 @@ export default function LoginPage() {
                     </button>
                   )}
                 </div>
-                <p className="text-[red] w-3/5 mt-3 text-sm">
+                <p className="text-[cyan] w-4/5 mx-auto mt-3 text-sm">
                   {error && error}
                 </p>
               </form>
@@ -189,7 +189,9 @@ export default function LoginPage() {
                 </button>
               )}
             </div>
-            <p className="text-[red] w-3/5 mt-3 text-sm">{error && error}</p>
+            <p className="text-[cyan] w-4/5 mx-auto mt-3 text-sm">
+              {error && error}
+            </p>
           </form>
 
           <div className="flex flex-col items-center justify-center text-sm text-white lg:text-black">

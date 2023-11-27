@@ -64,7 +64,7 @@ export default function Register() {
         icon: "success",
         text: `Registration successfully!`,
       });
-      
+
       return navigate("/auth/login");
     } catch (error) {
       console.error(error);
@@ -169,6 +169,7 @@ export default function Register() {
           <form onSubmit={handleRegister}>
             <div className="mt-5">
               <TextInput
+                name={"name"}
                 label={"Full Name"}
                 value={formData.name}
                 onChange={handleChange}
@@ -178,6 +179,7 @@ export default function Register() {
 
             <div className="mt-5">
               <TextInput
+                name={"email"}
                 label={"Email Address"}
                 value={formData.email}
                 onChange={handleChange}
@@ -187,6 +189,7 @@ export default function Register() {
 
             <div className="mt-5">
               <PasswordInput
+                name={"password"}
                 label={"Password"}
                 value={formData.password}
                 onChange={handleChange}
