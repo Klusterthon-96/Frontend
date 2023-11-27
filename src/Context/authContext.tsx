@@ -22,6 +22,7 @@ const { REACT_APP_BACKEND_URL } = process.env;
 export const authContext = React.createContext<AuthProps>(defaultState);
 
 export const useAuth = () => React.useContext(authContext);
+
 export const AuthProvider = ({ children }: Props) => {
   const [userName, setUserName] = useState({});
 
