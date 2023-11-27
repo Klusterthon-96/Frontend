@@ -70,7 +70,7 @@ export default function HomePage() {
           }
         )
         .then((result) => {
-          const data = result.data;
+          // const data = result.data;
         })
         .catch((error) => console.log("error", error));
     };
