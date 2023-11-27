@@ -27,11 +27,12 @@ export const AuthProvider = ({ children }: Props) => {
   const [userName, setUserName] = useState({});
 
   const register = (payload: object) => {
-    const registerUrl = "";
+    const registerUrl = `${REACT_APP_BACKEND_URL}`;
     return registerUrl;
   };
   const login = (payload: any) => {
     const registerUrl = ``;
+
     return registerUrl;
   };
   const logout = (navigate: any) => {
