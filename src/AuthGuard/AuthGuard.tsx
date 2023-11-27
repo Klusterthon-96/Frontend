@@ -13,7 +13,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     } else if (user && token) {
       return navigate("/dashboard", { replace: true });
     }
-  }, [user, token]);
+  }, [user, token, navigate]);
 
   return <>{children}</>;
 }
