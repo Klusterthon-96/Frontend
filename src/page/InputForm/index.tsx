@@ -35,6 +35,7 @@ export default function InputForm() {
   console.log(user);
 
   const [isLoadingButton, setIsLoadingButton] = useState(false);
+  // const[]
   const [formData, setFormData] = useState({
     label: "",
     temperature: "",
@@ -71,10 +72,19 @@ export default function InputForm() {
     initSession();
   }, [token]);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-
     setIsLoadingButton(true);
+
+    // try {
+    //   await fetch(
+    //     "https://backend-8fbc.onrender.com/api/v1/session/",
+    //     formData
+    //   );
+    // } catch (error) {
+    //   console.error(error);
+    //   setIsLoadingButton(false);
+    // }
 
     console.log(formData);
   };
