@@ -25,8 +25,7 @@ export default function Register() {
   };
 
   const isStrongPassword = (password: string) => {
-    const passwordRegex =
-      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
     return passwordRegex.test(password);
   };
@@ -51,9 +50,7 @@ export default function Register() {
     }
 
     if (!isStrongPassword(formData.password) || formData.password.length < 8) {
-      setError(
-        "Password must contain 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
-      );
+      setError("Password must contain 8 characters, one uppercase letter, one lowercase letter, one number and one special character");
       return;
     }
 
@@ -64,7 +61,7 @@ export default function Register() {
         icon: "success",
         text: `Registration successfully!`,
       });
-      
+
       return navigate("/auth/login");
     } catch (error) {
       console.error(error);
@@ -79,75 +76,44 @@ export default function Register() {
       <div className="grid place-items-center h-[inherit] gap-5 lg:grid-cols-2">
         {/* MOBILE VIEW */}
         <div className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden pointer-events-none z-[-1] bg-cover bg-center bg-RegWallpaper w-full h-screen lg:hidden"></div>
-        <div
-          className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden lg:hidden"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
-        >
+        <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden lg:hidden" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
           <div className="flex justify-center items-center h-screen">
             <div className="p-4 md:w-3/5 mx-auto">
               <div className="text-center lg:text-start text-white lg:text-black">
-                <h2 className="font-semibold text-3xl xl:text-[44px] ">
-                  Create Account
-                </h2>
-                <p className="mt-2 text-sm lg:text-base xl:text-xl">
-                  Its’s easy just take a minute and provide the details
-                </p>
+                <h2 className="font-semibold text-3xl xl:text-[44px] ">Create Account</h2>
+                <p className="mt-2 text-sm lg:text-base xl:text-xl">Its’s easy just take a minute and provide the details</p>
               </div>
 
               {/* FORM */}
               <form onSubmit={handleRegister}>
                 <div className="mt-5">
-                  <TextInput
-                    name={"name"}
-                    label={"Full Name"}
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder={"John Doe"}
-                  />
+                  <TextInput name={"name"} label={"Full Name"} value={formData.name} onChange={handleChange} placeholder={"John Doe"} />
                 </div>
 
                 <div className="mt-5">
-                  <TextInput
-                    name={"email"}
-                    label={"Email Address"}
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder={"you@email.com"}
-                  />
+                  <TextInput name={"email"} label={"Email Address"} value={formData.email} onChange={handleChange} placeholder={"you@email.com"} />
                 </div>
 
                 <div className="mt-5">
-                  <PasswordInput
-                    name={"password"}
-                    label={"Password"}
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
+                  <PasswordInput name={"password"} label={"Password"} value={formData.password} onChange={handleChange} />
                 </div>
                 <div className="justify-center flex text-white items-center mt-5">
                   {isLoadingButton ? (
                     <button className="flex min-h-[auto] h-14 items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-[32px] w-full my-5">
-                      <FaSpinner className="text-xl animate-spin mr-2" />{" "}
-                      Register
+                      <FaSpinner className="text-xl animate-spin mr-2" /> Register
                     </button>
                   ) : (
-                    <button
-                      type="submit"
-                      className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5"
-                    >
+                    <button type="submit" className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5">
                       Register
                     </button>
                   )}
                 </div>
-                <p className="text-[red] w-3/5 mt-3 text-sm">
-                  {error && error}
-                </p>
+                <p className="text-[red] w-3/5 mt-3 text-sm">{error && error}</p>
               </form>
 
               <div className="flex flex-col items-center justify-center text-sm text-white lg:text-black">
                 <Link to="/auth/login" className="mt-3 text-sm text-right">
-                  {`Already have an account?`}{" "}
-                  <span className="font-bold">Sign In</span>
+                  {`Already have an account?`} <span className="font-bold">Sign In</span>
                 </Link>
               </div>
             </div>
@@ -157,40 +123,22 @@ export default function Register() {
         {/* DESKTOP VIEW */}
         <div className="p-4 hidden lg:block">
           <div className="text-center lg:text-start">
-            <h2 className="font-normal text-3xl xl:text-[44px]">
-              Create Account
-            </h2>
-            <p className="mt-2 text-sm lg:text-base xl:text-xl">
-              Its’s easy just take a minute and provide the details
-            </p>
+            <h2 className="font-normal text-3xl xl:text-[44px]">Create Account</h2>
+            <p className="mt-2 text-sm lg:text-base xl:text-xl">Its’s easy just take a minute and provide the details</p>
           </div>
 
           {/* FORM */}
           <form onSubmit={handleRegister}>
             <div className="mt-5">
-              <TextInput
-                label={"Full Name"}
-                value={formData.name}
-                onChange={handleChange}
-                placeholder={"John Doe"}
-              />
+              <TextInput label={"Full Name"} value={formData.name} onChange={handleChange} placeholder={"John Doe"} />
             </div>
 
             <div className="mt-5">
-              <TextInput
-                label={"Email Address"}
-                value={formData.email}
-                onChange={handleChange}
-                placeholder={"you@email.com"}
-              />
+              <TextInput label={"Email Address"} value={formData.email} onChange={handleChange} placeholder={"you@email.com"} />
             </div>
 
             <div className="mt-5">
-              <PasswordInput
-                label={"Password"}
-                value={formData.password}
-                onChange={handleChange}
-              />
+              <PasswordInput label={"Password"} value={formData.password} onChange={handleChange} />
             </div>
             <div className="justify-center flex text-white items-center mt-5">
               {isLoadingButton ? (
@@ -198,10 +146,7 @@ export default function Register() {
                   <FaSpinner className="text-xl animate-spin mr-2" /> Register
                 </button>
               ) : (
-                <button
-                  type="submit"
-                  className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5"
-                >
+                <button type="submit" className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5">
                   Register
                 </button>
               )}
@@ -210,8 +155,7 @@ export default function Register() {
           </form>
 
           <Link to="/auth/login" className="mt-3 text-sm text-right">
-            {`Already have an account?`}{" "}
-            <span className="font-bold">Sign In</span>
+            {`Already have an account?`} <span className="font-bold">Sign In</span>
           </Link>
         </div>
 
