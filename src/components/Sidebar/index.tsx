@@ -5,7 +5,7 @@ import { FiLogOut } from "react-icons/fi";
 import { MdOutlineHeadsetMic } from "react-icons/md";
 import { HiOutlineGift } from "react-icons/hi";
 import Avatar from "../../asset/Avatar.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../Context/authContext";
 
 const navItems = [
