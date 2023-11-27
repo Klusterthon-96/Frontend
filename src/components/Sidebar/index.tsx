@@ -32,7 +32,11 @@ const navList = [
   },
 ];
 
-export default function SideBar() {
+interface Props {
+  show?: boolean;
+}
+
+export default function SideBar({ show = false }: Props) {
   const { user, logout } = useAuth();
 
   const navigate = useNavigate();
@@ -46,8 +50,16 @@ export default function SideBar() {
       console.error(error);
     }
   };
+
+  // show
+  // ? "flex absolute top-[calc(100vh-100px)] h-screen"
+  // : " flex :absolute top-[100px] h-screen bg-white"
   return (
-    <aside className="hidden lg:flex lg:absolute top-[100px] h-screen">
+    <aside
+      className={`absolute top-[72px] bg-white h-screen ${
+        show ? "flex z-10" : "hidden"
+      }`}
+    >
       <nav className="flex flex-col justify-between h-[82%] w-[252px] p-2">
         <ul className="">
           {navItems.map((item) => (
