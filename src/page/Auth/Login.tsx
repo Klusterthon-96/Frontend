@@ -11,7 +11,11 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
 
   const handleLogin=async()=>{
-    
+    // try {
+
+    // } catch (error) {
+    //   console.error(error)
+    // }
   }
 
   return (

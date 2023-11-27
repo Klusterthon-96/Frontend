@@ -9,7 +9,7 @@ export function TextInput({ value, onChange, label, placeholder }: any) {
         type="text"
         value={value}
         onChange={onChange}
-        className="min-h-[auto] mt-1.5 h-14 rounded-[32px] border py-2 px-6 outline-none placeholder:text-[#000] transition-all duration-200 ease-linear text-black text-lg bg-[#f5f5f5] w-full"
+        className="min-h-[auto] mt-1.5 h-14 rounded-[32px] border py-2 px-6 outline-none placeholder:text-[#666666] transition-all duration-200 ease-linear text-black text-lg bg-[#f5f5f5] w-full"
         placeholder={placeholder}
       />
     </label>
@@ -44,7 +44,7 @@ export default function PasswordInput({ value, onChange, label }: any) {
           type={showPassword ? "text" : "password"}
           value={value}
           onChange={onChange}
-          className="min-h-[auto] h-14 mt-3 rounded-[32px] shadow-md border py-2 px-6 outline-none transition-all duration-200 text-black text-lg ease-linear bg-[#F5F5F5] w-full"
+          className="min-h-[auto] h-14 mt-3 rounded-[32px] shadow-md border py-2 px-6 outline-none transition-all duration-200 text-black placeholder:text-[#666666] text-lg ease-linear bg-[#F5F5F5] w-full"
           placeholder="********"
         />
         {showPassword === false ? (

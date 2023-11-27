@@ -2,8 +2,8 @@ import React, { useState,useEffect, createContext } from "react";
 
 const AuthContext = createContext({
   isLoggedIn: false,
-  onLogOut:()=>{},
-  onLogin:()=>{},
+//   onLogOut:()=>{},
+//   onLogin:()=>{},
 });
 
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {

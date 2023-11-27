@@ -1,11 +1,24 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-// import { FaSpinner } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa";
 import PasswordInput, { TextInput } from "../../components/input";
-// import ImageOne from "../../asset/Frame 1618868309.png";
 
 export default function Register() {
-  // const [isLoadingButton, setIsLoadingButton] = useState(false);
+  const [isLoadingButton, setIsLoadingButton] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    setIsLoadingButton(true);
+
+    try {
+
+    } catch (error) {
+console.error(error)
+    }
+  };
 
   return (
     <>
@@ -30,27 +43,45 @@ export default function Register() {
               {/* FORM */}
               <form action="">
                 <div className="mt-5">
-                  <TextInput label={"Full Name"} placeholder={"John Doe"} />
+                  <TextInput
+                    label={"Full Name"}
+                    value={name}
+                    onChange={(e: any) => setName(e.target.value)}
+                    placeholder={"John Doe"}
+                  />
                 </div>
 
                 <div className="mt-5">
                   <TextInput
                     label={"Email Address"}
+                    value={email}
+                    onChange={(e: any) => setEmail(e.target.value)}
                     placeholder={"you@email.com"}
                   />
                 </div>
 
                 <div className="mt-5">
-                  <PasswordInput label={"Password"} />
+                  <PasswordInput
+                    label={"Password"}
+                    value={password}
+                    onChange={(e: any) => setPassword(e.target.value)}
+                  />
                 </div>
                 <div className="justify-center flex text-white items-center mt-5">
-                  <button
-                    type="button"
-                    // onClick={handleLogin}
-                    className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5"
-                  >
-                    Register
-                  </button>
+                  {isLoadingButton ? (
+                    <button className="flex min-h-[auto] h-14 items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-[32px] w-full my-5">
+                      <FaSpinner className="text-xl animate-spin mr-2" />{" "}
+                      Register
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      // onClick={handleLogin}
+                      className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5"
+                    >
+                      Register
+                    </button>
+                  )}
                 </div>
               </form>
 
@@ -78,27 +109,44 @@ export default function Register() {
           {/* FORM */}
           <form action="">
             <div className="mt-5">
-              <TextInput label={"Full Name"} placeholder={"John Doe"} />
+              <TextInput
+                label={"Full Name"}
+                value={name}
+                onChange={(e: any) => setName(e.target.value)}
+                placeholder={"John Doe"}
+              />
             </div>
 
             <div className="mt-5">
               <TextInput
                 label={"Email Address"}
+                value={email}
+                onChange={(e: any) => setEmail(e.target.value)}
                 placeholder={"you@email.com"}
               />
             </div>
 
             <div className="mt-5">
-              <PasswordInput label={"Password"} />
+              <PasswordInput
+                label={"Password"}
+                value={password}
+                onChange={(e: any) => setPassword(e.target.value)}
+              />
             </div>
             <div className="justify-center flex text-white items-center mt-5">
-              <button
-                type="button"
-                // onClick={handleLogin}
-                className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5"
-              >
-                Register
-              </button>
+              {isLoadingButton ? (
+                <button className="flex min-h-[auto] h-14 items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-[32px] w-full my-5">
+                  <FaSpinner className="text-xl animate-spin mr-2" /> Register
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  // onClick={handleLogin}
+                  className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5"
+                >
+                  Register
+                </button>
+              )}
             </div>
           </form>
 

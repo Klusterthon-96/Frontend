@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { cropType } from "./shared";
+import {
+  country,
+  cropType,
+  humidityType,
+  pHType,
+  temperatureType,
+  waterType,
+} from "./shared";
 import { FaSpinner } from "react-icons/fa6";
 
 const selectStyles = {
@@ -63,6 +70,7 @@ export default function InputForm() {
               <Select
                 className="react-select-container"
                 classNamePrefix="react-select"
+                // onChange={()}
                 options={cropType}
                 styles={selectStyles}
                 placeholder={"Select crop"}
@@ -74,8 +82,9 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
+              // onChange={()}
               placeholder={"Select Temperature"}
-              options={cropType}
+              options={temperatureType}
               styles={selectStyles}
             />
           </div>
@@ -84,7 +93,8 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              options={cropType}
+              // onChange={()}
+              options={humidityType}
               styles={selectStyles}
               placeholder={"Select Humidity"}
             />
@@ -94,7 +104,8 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              options={cropType}
+              // onChange={()}
+              options={pHType}
               styles={selectStyles}
               placeholder={"Select PH level"}
             />
@@ -104,31 +115,21 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              options={cropType}
+              // onChange={()}
+              options={waterType}
               styles={selectStyles}
               placeholder={"Water Availability?"}
             />
           </div>
-          <div className="mt-5">
+          <div className="mt-5 mb-[30px]">
             <label htmlFor="Country">Country</label>
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              options={cropType}
+              // onChange={()}
+              options={country}
               styles={selectStyles}
               placeholder={"Select Country"}
-            />
-          </div>
-          <div className="mt-5 mb-[30px]">
-            <label htmlFor="Season">
-              <span className="text-black">Season</span>
-            </label>
-            <Select
-              className="react-select-container"
-              classNamePrefix="react-select"
-              options={cropType}
-              styles={selectStyles}
-              placeholder={"Select Season"}
             />
           </div>
 
