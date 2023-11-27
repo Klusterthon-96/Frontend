@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -130,15 +130,15 @@ export default function Register() {
           {/* FORM */}
           <form onSubmit={handleRegister}>
             <div className="mt-5">
-              <TextInput label={"Full Name"} value={formData.name} onChange={handleChange} placeholder={"John Doe"} />
+              <TextInput name={"name"} label={"Full Name"} value={formData.name} onChange={handleChange} placeholder={"John Doe"} />
             </div>
 
             <div className="mt-5">
-              <TextInput label={"Email Address"} value={formData.email} onChange={handleChange} placeholder={"you@email.com"} />
+              <TextInput name={"email"} label={"Email Address"} value={formData.email} onChange={handleChange} placeholder={"you@email.com"} />
             </div>
 
             <div className="mt-5">
-              <PasswordInput label={"Password"} value={formData.password} onChange={handleChange} />
+              <PasswordInput name={"password"} label={"Password"} value={formData.password} onChange={handleChange} />
             </div>
             <div className="justify-center flex text-white items-center mt-5">
               {isLoadingButton ? (
