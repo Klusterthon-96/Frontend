@@ -68,9 +68,9 @@ export default function InputForm() {
             },
           }
         )
-        .then((result) => {
-          const data = result.data;
-        })
+        // .then((result) => {
+        //   const data = result.data;
+        // })
         .catch((error) => console.log("error", error));
     };
 

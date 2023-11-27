@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { ReactNode, useState, useEffect } from "react";
 import axios from "axios";
 
