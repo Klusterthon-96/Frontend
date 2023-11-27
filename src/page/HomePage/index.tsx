@@ -5,6 +5,7 @@ import ImageFour from "../../asset/water.png";
 import ImageFive from "../../asset/PH.png";
 import ImageSix from "../../asset/country.png";
 import { useAuth } from "../../Context/authContext";
+import { Link } from "react-router-dom";
 
 const cardData = [
   {
@@ -54,7 +55,7 @@ export default function HomePage() {
     <div className="">
       <div className="flex items-center">
         <h1 className="text-[28px] font-semibold leading-10">Welcome,</h1>
-        <span className="text-[22px]"> {firstName}</span>
+        <span className="text-[22px]">{firstName}</span>
       </div>
 
       <div className="flex flex-col mb-10">
@@ -84,9 +85,12 @@ export default function HomePage() {
           ))}
         </div>
         <div className="mr-auto lg:flex lg:justify-center lg:items-center my-5 lg:mr-0">
-          <button className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white">
+          <Link
+            to={"/dashboard/inputs"}
+            className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white"
+          >
             enter crop details
-          </button>
+          </Link>
         </div>
       </div>
     </div>

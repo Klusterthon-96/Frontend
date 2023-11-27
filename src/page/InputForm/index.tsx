@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import {
   countries,
@@ -9,6 +9,7 @@ import {
   waterType,
 } from "./shared";
 import { FaSpinner } from "react-icons/fa6";
+import { useAuth } from "../../Context/authContext";
 
 const selectStyles = {
   control: (styles: any) => ({
@@ -30,23 +31,54 @@ const selectStyles = {
 };
 
 export default function InputForm() {
+  const { user } = useAuth();
+  console.log(user);
+
   const [isLoadingButton, setIsLoadingButton] = useState(false);
+  const [formData, setFormData] = useState({
+    label: "",
+    temperature: "",
+    humidity: "",
+    ph: "",
+    water_availability: "",
+    country: "",
+  });
 
-  const [crop,setCrop]=useState()
-  const [temperature,setTemperature]=useState()
-  const [humidity,setHumidity]=useState()
-  const [phLevel, setPhLevel]=useState()
-  const [water,setWater]=useState()
-  const [country, setCountry]=useState()
+  const handleChange = (selectedOption: any, { name }: { name: string }) => {
+    setFormData({
+      ...formData,
+      [name]: selectedOption.value,
+    });
+  };
 
-  const handleChange=(e:any)=>{
+  const token = user?.data.accessToken;
 
-  }
+  console.log(token);
+
+  useEffect(() => {
+    const initSession = async () => {
+      await fetch("https://backend-8fbc.onrender.com/api/v1/session", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          const data = result;
+          console.log(data);
+        })
+        .catch((error) => console.log("error", error));
+    };
+
+    initSession();
+  }, []);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
     setIsLoadingButton(true);
+
+    console.log(formData);
   };
   return (
     <>
@@ -81,7 +113,10 @@ export default function InputForm() {
               <Select
                 className="react-select-container"
                 classNamePrefix="react-select"
-                onChange={handleChange}
+                name="label"
+                onChange={(selectedOption) =>
+                  handleChange(selectedOption, { name: "label" })
+                }
                 options={cropType}
                 styles={selectStyles}
                 placeholder={"Select crop"}
@@ -93,7 +128,10 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              onChange={handleChange}
+              name="temperature"
+              onChange={(selectedOption) =>
+                handleChange(selectedOption, { name: "temperature" })
+              }
               placeholder={"Select Temperature"}
               options={temperatureType}
               styles={selectStyles}
@@ -104,7 +142,10 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              onChange={handleChange}
+              name="humidity"
+              onChange={(selectedOption) =>
+                handleChange(selectedOption, { name: "humidity" })
+              }
               options={humidityType}
               styles={selectStyles}
               placeholder={"Select Humidity"}
@@ -115,7 +156,10 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              onChange={handleChange}
+              name="ph"
+              onChange={(selectedOption) =>
+                handleChange(selectedOption, { name: "ph" })
+              }
               options={pHType}
               styles={selectStyles}
               placeholder={"Select PH level"}
@@ -126,7 +170,10 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              onChange={handleChange}
+              name="water_availability"
+              onChange={(selectedOption) =>
+                handleChange(selectedOption, { name: "water_availability" })
+              }
               options={waterType}
               styles={selectStyles}
               placeholder={"Water Availability?"}
@@ -137,7 +184,10 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              onChange={handleChange}
+              name="country"
+              onChange={(selectedOption) =>
+                handleChange(selectedOption, { name: "country" })
+              }
               options={countries}
               styles={selectStyles}
               placeholder={"Select Country"}

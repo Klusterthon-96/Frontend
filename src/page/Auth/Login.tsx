@@ -56,12 +56,13 @@ export default function LoginPage() {
     }
     try {
       await login(formData.email, formData.password);
-      navigate("/dashboard");
 
       Swal.fire({
         icon: "success",
         text: `Sign in successfully!`,
       });
+
+      return navigate("/dashboard");
     } catch (error) {
       console.error(error);
     } finally {
