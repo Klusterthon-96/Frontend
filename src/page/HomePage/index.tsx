@@ -67,7 +67,7 @@ export default function HomePage() {
     <div className="">
       <div className="flex items-center">
         <h1 className="text-[28px] font-semibold leading-10">Welcome,</h1>
-        <span className="ml-1 text-[22px]">{firstName}</span>
+        <span className="ml-1 font-semibold text-[22px]">{firstName}</span>
       </div>
 
       <div className="flex flex-col mb-10">
