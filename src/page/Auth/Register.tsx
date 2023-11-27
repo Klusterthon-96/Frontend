@@ -1,22 +1,77 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
+import Swal from "sweetalert2";
 import PasswordInput, { TextInput } from "../../components/input";
+import { useAuth } from "../../Context/authContext";
 
 export default function Register() {
-  const [isLoadingButton, setIsLoadingButton] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register } = useAuth();
 
-  const handleSubmit = async (event: any) => {
+  const navigate = useNavigate();
+
+  const [isLoadingButton, setIsLoadingButton] = useState(false);
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+
+    return emailRegex.test(email);
+  };
+
+  const isStrongPassword = (password: string) => {
+    const passwordRegex =
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+
+    return passwordRegex.test(password);
+  };
+
+  const handleChange = (e: any) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    setIsLoadingButton(false);
+    setError("");
+  };
+
+  const handleRegister = async (event: any) => {
     event.preventDefault();
+
     setIsLoadingButton(true);
+   
+
+    if (!isValidEmail(formData.email)) {
+      setError("Email is Invalid");
+      return;
+    }
+
+    if (!isStrongPassword(formData.password) || formData.password.length < 8) {
+      setError(
+        "Password must contain 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
+      );
+      return;
+    }
 
     try {
+      await register(formData.name, formData.email, formData.password);
 
+      navigate("/auth/login");
+
+      Swal.fire({
+        icon: "success",
+        text: `Registration successfully!`,
+      });
     } catch (error) {
-console.error(error)
+      console.error(error);
+      setIsLoadingButton(false);
+    } finally {
+      setIsLoadingButton(false);
     }
   };
 
@@ -41,30 +96,33 @@ console.error(error)
               </div>
 
               {/* FORM */}
-              <form action="">
+              <form onSubmit={handleRegister}>
                 <div className="mt-5">
                   <TextInput
+                    name={"name"}
                     label={"Full Name"}
-                    value={name}
-                    onChange={(e: any) => setName(e.target.value)}
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder={"John Doe"}
                   />
                 </div>
 
                 <div className="mt-5">
                   <TextInput
+                    name={"email"}
                     label={"Email Address"}
-                    value={email}
-                    onChange={(e: any) => setEmail(e.target.value)}
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder={"you@email.com"}
                   />
                 </div>
 
                 <div className="mt-5">
                   <PasswordInput
+                    name={"password"}
                     label={"Password"}
-                    value={password}
-                    onChange={(e: any) => setPassword(e.target.value)}
+                    value={formData.password}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="justify-center flex text-white items-center mt-5">
@@ -75,14 +133,16 @@ console.error(error)
                     </button>
                   ) : (
                     <button
-                      type="button"
-                      // onClick={handleLogin}
+                      type="submit"
                       className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5"
                     >
                       Register
                     </button>
                   )}
                 </div>
+                <p className="text-[red] w-3/5 mt-3 text-sm">
+                  {error && error}
+                </p>
               </form>
 
               <div className="flex flex-col items-center justify-center text-sm text-white lg:text-black">
@@ -107,12 +167,12 @@ console.error(error)
           </div>
 
           {/* FORM */}
-          <form action="">
+          <form onSubmit={handleRegister}>
             <div className="mt-5">
               <TextInput
                 label={"Full Name"}
-                value={name}
-                onChange={(e: any) => setName(e.target.value)}
+                value={formData.name}
+                onChange={handleChange}
                 placeholder={"John Doe"}
               />
             </div>
@@ -120,8 +180,8 @@ console.error(error)
             <div className="mt-5">
               <TextInput
                 label={"Email Address"}
-                value={email}
-                onChange={(e: any) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleChange}
                 placeholder={"you@email.com"}
               />
             </div>
@@ -129,8 +189,8 @@ console.error(error)
             <div className="mt-5">
               <PasswordInput
                 label={"Password"}
-                value={password}
-                onChange={(e: any) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={handleChange}
               />
             </div>
             <div className="justify-center flex text-white items-center mt-5">
@@ -140,14 +200,14 @@ console.error(error)
                 </button>
               ) : (
                 <button
-                  type="button"
-                  // onClick={handleLogin}
+                  type="submit"
                   className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5"
                 >
                   Register
                 </button>
               )}
             </div>
+            <p className="text-[red] mt-3 text-sm w-3/5">{error && error}</p>
           </form>
 
           <Link to="/auth/login" className="mt-3 text-sm text-right">

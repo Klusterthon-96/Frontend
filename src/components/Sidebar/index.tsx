@@ -4,6 +4,7 @@ import { MdOutlineHeadsetMic } from "react-icons/md";
 import { HiOutlineGift } from "react-icons/hi";
 import Avatar from "../../asset/Avatar.png";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/authContext";
 
 const navItems = [
   {
@@ -29,12 +30,20 @@ const navList = [
   },
 ];
 export default function SideBar() {
+  const { user, logout } = useAuth();
+
   const navigate = useNavigate();
 
-  const handleLogOut = () => {
-    return navigate("/");
+  const handleLogOut = async () => {
+    try {
+      logout(() => {
+        navigate("/");
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
-
+  // console.log(user);
   return (
     <aside className="hidden lg:flex lg:absolute top-[100px] h-screen">
       <nav className="flex flex-col justify-between h-[82%] w-[252px] p-2">
@@ -43,7 +52,11 @@ export default function SideBar() {
             <NavLink
               key={item.id}
               to={item.to}
-              className={({ isActive }) => (isActive ? "bg-[#8AB88A] py-3 px-2 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]" : "py-3 px-2 flex items-center text-base gap-4 w-full capitalize")}
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#8AB88A] py-3 px-2 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
+                  : "py-3 px-2 flex items-center text-base gap-4 w-full capitalize"
+              }
             >
               <span>{item.icon}</span>
               <span>{item.name}</span>
@@ -57,7 +70,11 @@ export default function SideBar() {
               <NavLink
                 key={item.id}
                 to={item.to}
-                className={({ isActive }) => (isActive ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]" : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize")}
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
+                    : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize"
+                }
               >
                 <span>{item.icon}</span>
                 <span>{item.name}</span>
@@ -70,8 +87,10 @@ export default function SideBar() {
               <img src={Avatar} alt="" className="h-10 w-10 rounded-full" />
 
               <span className="flex flex-col w-[132px]">
-                <span className="font-semibold">John Doe</span>
-                <span className="break-all text-sm text-[grey/60]">example@gmail.com</span>
+                <span className="font-semibold">{user?.data.user.name}</span>
+                <span className="break-all text-sm text-[grey/60]">
+                  {user?.data.user.email}
+                </span>
               </span>
             </div>
             <button type="submit" onClick={handleLogOut}>

@@ -4,51 +4,57 @@ import ImageThree from "../../asset/sun.png";
 import ImageFour from "../../asset/water.png";
 import ImageFive from "../../asset/PH.png";
 import ImageSix from "../../asset/country.png";
+import { useAuth } from "../../Context/authContext";
+
+const cardData = [
+  {
+    id: 0,
+    image: ImageOne,
+    title: "humidity",
+    text: "Humidity plays a pivotal role in precision farming, influencing optimal planting and harvesting",
+  },
+  {
+    id: 1,
+    image: ImageTwo,
+    title: "temperature",
+    text: "Optimizing your yields by aligning cultivation with the perfect thermal conditions.",
+  },
+  {
+    id: 2,
+    image: ImageThree,
+    title: "season",
+    text: "Seasonal intelligence is the cornerstone of precision agriculture.",
+  },
+  {
+    id: 3,
+    image: ImageFour,
+    title: "water availability",
+    text: "Optimizing agricultural outcomes and contributing to sustainable and resilient farming practices.",
+  },
+  {
+    id: 4,
+    image: ImageFive,
+    title: "PH",
+    text: "Delve into the critical role of pH levels in determining precise planting and harvesting times.",
+  },
+  {
+    id: 5,
+    image: ImageSix,
+    title: "country",
+    text: "Tailor your approach to specific geographical conditions, unlocking the full potential of your crops",
+  },
+];
 
 export default function HomePage() {
-  const cardData = [
-    {
-      id: 0,
-      image: ImageOne,
-      title: "humidity",
-      text: "Humidity plays a pivotal role in precision farming, influencing optimal planting and harvesting",
-    },
-    {
-      id: 1,
-      image: ImageTwo,
-      title: "temperature",
-      text: "Optimizing your yields by aligning cultivation with the perfect thermal conditions.",
-    },
-    {
-      id: 2,
-      image: ImageThree,
-      title: "season",
-      text: "Seasonal intelligence is the cornerstone of precision agriculture.",
-    },
-    {
-      id: 3,
-      image: ImageFour,
-      title: "water availability",
-      text: "Optimizing agricultural outcomes and contributing to sustainable and resilient farming practices.",
-    },
-    {
-      id: 4,
-      image: ImageFive,
-      title: "PH",
-      text: "Delve into the critical role of pH levels in determining precise planting and harvesting times.",
-    },
-    {
-      id: 5,
-      image: ImageSix,
-      title: "country",
-      text: "Tailor your approach to specific geographical conditions, unlocking the full potential of your crops",
-    },
-  ];
+  const { user } = useAuth();
+
+  const firstName = user?.data?.user?.name.split(" ")[0];
+
   return (
     <div className="">
       <div className="flex items-center">
-        <h1 className="text-[28px] font-semibold leading-10">Welcome,</h1>{" "}
-        <span className="ml-4 text-xl">John Doe</span>
+        <h1 className="text-[28px] font-semibold leading-10">Welcome,</h1>
+        <span className="text-[22px]"> {firstName}</span>
       </div>
 
       <div className="flex flex-col mb-10">
