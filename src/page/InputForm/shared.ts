@@ -14,7 +14,7 @@ export const cropType = [
   { value: "Watermelon", label: "Watermelon", key: "Watermelon" },
 ];
 
-export const country = [
+export const countries = [
   { value: "Kenya", label: "Kenya" },
   { value: "Nigeria", label: "Nigeria" },
   { value: "South Africa", label: "South Africa" },

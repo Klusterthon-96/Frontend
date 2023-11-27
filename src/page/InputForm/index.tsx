@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import {
-  country,
+  countries,
   cropType,
   humidityType,
   pHType,
@@ -31,6 +31,17 @@ const selectStyles = {
 
 export default function InputForm() {
   const [isLoadingButton, setIsLoadingButton] = useState(false);
+
+  const [crop,setCrop]=useState()
+  const [temperature,setTemperature]=useState()
+  const [humidity,setHumidity]=useState()
+  const [phLevel, setPhLevel]=useState()
+  const [water,setWater]=useState()
+  const [country, setCountry]=useState()
+
+  const handleChange=(e:any)=>{
+
+  }
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -70,7 +81,7 @@ export default function InputForm() {
               <Select
                 className="react-select-container"
                 classNamePrefix="react-select"
-                // onChange={()}
+                onChange={handleChange}
                 options={cropType}
                 styles={selectStyles}
                 placeholder={"Select crop"}
@@ -82,7 +93,7 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              // onChange={()}
+              onChange={handleChange}
               placeholder={"Select Temperature"}
               options={temperatureType}
               styles={selectStyles}
@@ -93,7 +104,7 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              // onChange={()}
+              onChange={handleChange}
               options={humidityType}
               styles={selectStyles}
               placeholder={"Select Humidity"}
@@ -104,7 +115,7 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              // onChange={()}
+              onChange={handleChange}
               options={pHType}
               styles={selectStyles}
               placeholder={"Select PH level"}
@@ -115,7 +126,7 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              // onChange={()}
+              onChange={handleChange}
               options={waterType}
               styles={selectStyles}
               placeholder={"Water Availability?"}
@@ -126,8 +137,8 @@ export default function InputForm() {
             <Select
               className="react-select-container"
               classNamePrefix="react-select"
-              // onChange={()}
-              options={country}
+              onChange={handleChange}
+              options={countries}
               styles={selectStyles}
               placeholder={"Select Country"}
             />
