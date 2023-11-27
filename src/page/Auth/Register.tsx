@@ -44,7 +44,6 @@ export default function Register() {
     event.preventDefault();
 
     setIsLoadingButton(true);
-   
 
     if (!isValidEmail(formData.email)) {
       setError("Email is Invalid");
@@ -61,12 +60,12 @@ export default function Register() {
     try {
       await register(formData.name, formData.email, formData.password);
 
-      navigate("/auth/login");
-
       Swal.fire({
         icon: "success",
         text: `Registration successfully!`,
       });
+      
+      return navigate("/auth/login");
     } catch (error) {
       console.error(error);
       setIsLoadingButton(false);
