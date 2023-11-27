@@ -25,7 +25,6 @@ const selectStyles = {
 
 export default function InputForm() {
   const { user } = useAuth();
-  console.log(user);
 
   const [isLoadingButton, setIsLoadingButton] = useState(false);
   // const[]
