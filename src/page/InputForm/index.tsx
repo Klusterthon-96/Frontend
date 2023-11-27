@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import { cropType } from "./shared";
+import { countries, cropType, humidityType, pHType, temperatureType, waterType } from "./shared";
 import { FaSpinner } from "react-icons/fa6";
+import { useAuth } from "../../Context/authContext";
 
 const selectStyles = {
   control: (styles: any) => ({
@@ -23,12 +24,54 @@ const selectStyles = {
 };
 
 export default function InputForm() {
+  const { user } = useAuth();
+  console.log(user);
+
   const [isLoadingButton, setIsLoadingButton] = useState(false);
+  const [formData, setFormData] = useState({
+    label: "",
+    temperature: "",
+    humidity: "",
+    ph: "",
+    water_availability: "",
+    country: "",
+  });
+
+  const handleChange = (selectedOption: any, { name }: { name: string }) => {
+    setFormData({
+      ...formData,
+      [name]: selectedOption.value,
+    });
+  };
+
+  const token = user?.data.accessToken;
+
+  console.log(token);
+
+  useEffect(() => {
+    const initSession = async () => {
+      await fetch("https://backend-8fbc.onrender.com/api/v1/session", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          const data = result;
+          console.log(data);
+        })
+        .catch((error) => console.log("error", error));
+    };
+
+    initSession();
+  }, [token]);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
     setIsLoadingButton(true);
+
+    console.log(formData);
   };
   return (
     <>
@@ -50,42 +93,76 @@ export default function InputForm() {
         </div>
       </div>
 
-      <div className="mb-8 max-w-lg">
+      <div className="mb-[100px] max-w-lg">
         <form onSubmit={handleSubmit}>
           <div className="mt-5">
             <label htmlFor="Crop">
               Crop
-              <Select className="react-select-container" classNamePrefix="react-select" options={cropType} styles={selectStyles} placeholder={"Select crop"} />
+              <Select
+                className="react-select-container"
+                classNamePrefix="react-select"
+                name="label"
+                onChange={(selectedOption) => handleChange(selectedOption, { name: "label" })}
+                options={cropType}
+                styles={selectStyles}
+                placeholder={"Select crop"}
+              />
             </label>
           </div>
           <div className="mt-5">
             <label htmlFor="Temperature Level">Temperature Level</label>
-            <Select className="react-select-container" classNamePrefix="react-select" placeholder={"Select Temperature"} options={cropType} styles={selectStyles} />
+            <Select
+              className="react-select-container"
+              classNamePrefix="react-select"
+              name="temperature"
+              onChange={(selectedOption) => handleChange(selectedOption, { name: "temperature" })}
+              placeholder={"Select Temperature"}
+              options={temperatureType}
+              styles={selectStyles}
+            />
           </div>
           <div className="mt-5">
             <label htmlFor="Humidity">Humidity</label>
-            <Select className="react-select-container" classNamePrefix="react-select" options={cropType} styles={selectStyles} placeholder={"Select Humidity"} />
+            <Select
+              className="react-select-container"
+              classNamePrefix="react-select"
+              name="humidity"
+              onChange={(selectedOption) => handleChange(selectedOption, { name: "humidity" })}
+              options={humidityType}
+              styles={selectStyles}
+              placeholder={"Select Humidity"}
+            />
           </div>
           <div className="mt-5">
             <label htmlFor="PH Level">PH Level</label>
-            <Select className="react-select-container" classNamePrefix="react-select" options={cropType} styles={selectStyles} placeholder={"Select PH level"} />
+            <Select className="react-select-container" classNamePrefix="react-select" name="ph" onChange={(selectedOption) => handleChange(selectedOption, { name: "ph" })} options={pHType} styles={selectStyles} placeholder={"Select PH level"} />
           </div>
           <div className="mt-5">
             <label htmlFor="Water Availability">Water Availability</label>
-            <Select className="react-select-container" classNamePrefix="react-select" options={cropType} styles={selectStyles} placeholder={"Water Availability?"} />
-          </div>
-          <div className="mt-5">
-            <label htmlFor="Country">Country</label>
-            <Select className="react-select-container" classNamePrefix="react-select" options={cropType} styles={selectStyles} placeholder={"Select Country"} />
+            <Select
+              className="react-select-container"
+              classNamePrefix="react-select"
+              name="water_availability"
+              onChange={(selectedOption) => handleChange(selectedOption, { name: "water_availability" })}
+              options={waterType}
+              styles={selectStyles}
+              placeholder={"Water Availability?"}
+            />
           </div>
           <div className="mt-5 mb-[30px]">
-            <label htmlFor="Season">
-              <span className="text-black">Season</span>
-            </label>
-            <Select className="react-select-container" classNamePrefix="react-select" options={cropType} styles={selectStyles} placeholder={"Select Season"} />
+            <label htmlFor="Country">Country</label>
+            <Select
+              className="react-select-container"
+              classNamePrefix="react-select"
+              name="country"
+              onChange={(selectedOption) => handleChange(selectedOption, { name: "country" })}
+              options={countries}
+              styles={selectStyles}
+              placeholder={"Select Country"}
+            />
           </div>
 
-          <div className="flex lg:hidden justify-center items-center mt-8 mb-[80px]">
+          <div className="flex lg:hidden justify-center items-center mt-8">
             {isLoadingButton ? (
               <button className="bg-[darkgrey] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white cursor-not-allowed ">
                 <FaSpinner className="text-xl animate-spin mr-2" /> enter details
