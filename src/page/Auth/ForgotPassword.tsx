@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import forgotPasswordIcon from "../../asset/Sent Message-bro 1.png";
 import { TextInput } from "../../components/input";
 import emailConfirm from "../../asset/Confirmed-cuate 1.svg";
 import { AiOutlineClose } from "react-icons/ai";
@@ -39,7 +38,11 @@ function ForgotPassword() {
             Enter email to reset password
           </p>
           <div className="flex justify-center">
-            <img className="w-[50%]" src={forgotPasswordIcon} alt="icon" />
+            <img
+              className="w-[50%]"
+              src="/asset/Sent Message-bro 1.png"
+              alt="icon"
+            />
           </div>
           <div className="">
             <label htmlFor="Email">
