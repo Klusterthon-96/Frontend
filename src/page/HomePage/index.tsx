@@ -71,36 +71,21 @@ export default function HomePage() {
       </div>
 
       <div className="flex flex-col mb-10">
-        <p className="text-[22px] lg:text-[28px] max-w-[323px] text-center lg:mx-auto font-medium my-8 leading-8 lg:leading-[42px]">
-          Precision Farming: Boost Yields with Smart Planting and Harvesting
-          predictions
-        </p>
+        <p className="text-[22px] lg:text-[28px] max-w-[323px] text-center lg:mx-auto font-medium my-8 leading-8 lg:leading-[42px]">Precision Farming: Boost Yields with Smart Planting and Harvesting predictions</p>
 
         <div className="flex flex-wrap gap-4 lg:justify-center">
           {cardData.map((item) => (
-            <div
-              key={item.id}
-              className="flex flex-row rounded-lg bg-white p-3 max-w-xs"
-            >
-              <img
-                className="w-16 h-16 mx-auto rounded-t-lg object-cover md:rounded-none md:rounded-l-lg"
-                src={item.image}
-                alt=""
-              />
+            <div key={item.id} className="flex flex-row rounded-lg bg-white p-3 max-w-xs">
+              <img className="w-16 h-16 mx-auto rounded-t-lg object-cover md:rounded-none md:rounded-l-lg" src={item.image} alt="" />
               <div className="px-2">
-                <h5 className="mb-2 text-xl font-semibold capitalize">
-                  {item.title}
-                </h5>
+                <h5 className="mb-2 text-xl font-semibold capitalize">{item.title}</h5>
                 <p className="text-sm lg:text-base">{item.text}</p>
               </div>
             </div>
           ))}
         </div>
         <div className="mr-auto lg:flex lg:justify-center lg:items-center my-5 lg:mr-0">
-          <Link
-            to={"/dashboard/inputs"}
-            className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white"
-          >
+          <Link to={"/dashboard/inputs"} className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white">
             enter crop details
           </Link>
         </div>
