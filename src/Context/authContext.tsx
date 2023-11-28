@@ -76,9 +76,7 @@ export const AuthProvider = ({ children }: Props) => {
         title: `Registration successfully!`,
                 text: `Please check your inbox for your verification link!`,
                confirmButtonColor: "#006400",
-      }).then(() => {
-      window.open("https://mail.google.com/", "_system");
-    });
+      })
     
 
           return `${domainUrl}/auth/register`;
