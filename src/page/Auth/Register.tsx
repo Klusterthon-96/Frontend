@@ -57,7 +57,7 @@ export default function Register() {
     try {
       await register(formData.name, formData.email, formData.password);
 
-      navigate("/auth/login", { replace: true });
+  //    navigate("/auth/login", { replace: true });
 
       return Swal.fire({
         icon: "success",
