@@ -51,7 +51,7 @@ const navigate = useNavigate()
     };
 
     simulateApiCall();
-  }, [urlToken, user.data.accessToken, setUser]); // Dependency on urlToken ensures the effect runs when the token changes
+  }, [urlToken, user.data.accessToken, setUser,navigate]); // Dependency on urlToken ensures the effect runs when the token changes
 
   return (
     <>
