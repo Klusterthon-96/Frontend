@@ -6,52 +6,52 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios"; // Import axios
 
 function EmailVerification() {
- const { user, setUser } = useAuth();
- const { token: urlToken } = useParams();
- const [apiError, setApiError] = useState<string | null>(null);
- const [isLoading, setIsLoading] = useState(true);
+  const { user, setUser } = useAuth();
+  const { token: urlToken } = useParams();
+  const [apiError, setApiError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
- useEffect(() => {
-   const simulateApiCall = async () => {
-     try {
-       await axios.put(
-         `${process.env.REACT_APP_BACKEND_URL}/auth/email`,
-         {
-           verifyToken: urlToken,
-         },
-         {
-           withCredentials: true,
-           headers: {
-             Authorization: `Bearer ${user.data.accessToken}`,
-           },
-         }
-       );
+  useEffect(() => {
+    const simulateApiCall = async () => {
+      try {
+        await axios.put(
+          `${process.env.REACT_APP_BACKEND_URL}/auth/email`,
+          {
+            verifyToken: urlToken,
+          },
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${user.data.accessToken}`,
+            },
+          }
+        );
 
-       const response = await axios.get(
-         `${process.env.REACT_APP_BACKEND_URL}/user/me`,
-         {
-           withCredentials: true,
-           headers: {
-             Authorization: `Bearer ${user.data.accessToken}`,
-           },
-         }
-       );
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/user/me`,
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${user.data.accessToken}`,
+            },
+          }
+        );
+        console.log(response.data);
+        const data = {
+          user: response.data.user,
+          accessToken: user.data.accessToken,
+        };
+        localStorage.removeItem("user");
+        setUser(data);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        setApiError("An error occurred while verifying email.");
+      }
+    };
 
-       const data = {
-         user: response.data.user,
-         accessToken: user.data.accessToken,
-       };
-
-       setUser(data);
-       setIsLoading(false);
-     } catch (error) {
-       setIsLoading(false);
-       setApiError("An error occurred while verifying email.");
-     }
-   };
-
-   simulateApiCall();
- }, [urlToken, user.data.accessToken, setUser]); // Dependency on urlToken ensures the effect runs when the token changes
+    simulateApiCall();
+  }, [urlToken, user.data.accessToken, setUser]); // Dependency on urlToken ensures the effect runs when the token changes
 
   return (
     <>
