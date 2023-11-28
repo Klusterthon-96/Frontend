@@ -2,6 +2,8 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import axios from "axios";
 
+import Swal from "sweetalert2";
+
 type User = {
   [key: string]: any;
 };
@@ -34,7 +36,7 @@ const defaultState: AuthProps = {
   user: {} as User,
 };
 
-const domainUrl: string = "https://backend-8fbc.onrender.com/api/v1" || "";
+const domainUrl: string = process.env.REACT_APP_BACKEND_URL || "";
 
 // const domainUrl: string = process.env.REACT_APP_BACKEND_URL || "";
 
@@ -54,38 +56,67 @@ export const AuthProvider = ({ children }: Props) => {
   }, [user]);
 
   const register = async (name: string, email: string, password: string) => {
-    const response = await axios.post(`${domainUrl}/auth/register`, {
-      name,
-      email,
-      password,
-      withCredentials: true,
-    });
-
-    const registeredUser = response.data;
-
-    // Update the user state
-    setUser(registeredUser);
-
-    return `${domainUrl}/auth/register`;
+     await axios
+      .post(
+        ${domainUrl}/auth/register,
+        {
+          name,
+          email,
+          password,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          const registeredUser = res.data;
+          setUser(registeredUser);
+          return ${domainUrl}/auth/register;
+        }
+        return Promise.resolve(${domainUrl}/auth/register);
+      })
+      .catch(async (e) => {
+        await Swal.fire({
+          icon: "error",
+          text: ${e.response.data.message},
+        });
+        return Promise.resolve(${domainUrl}/auth/register);
+      });
+  return Promise.resolve(${domainUrl}/auth/register);
   };
   const login = async (email: string, password: string) => {
-    const response = await axios.post(`${domainUrl}/auth/login`, {
-      email,
-      password,
-      withCredentials: true,
-    });
-
-    const data = response.data;
-
+     await axios
+      .post(
+        ${domainUrl}/auth/login,
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          const data = res.data;
+          setUser(data);
+          return ${domainUrl}/auth/login;
+        }
+      })
+      .catch(async (e) => {
+        await Swal.fire({
+          icon: "error",
+          text: ${e.response.data.message},
+        });
+      });
+   return Promise.resolve(${domainUrl}/auth/register);
     // Handle the data, update state, or perform any other necessary actions
-    setUser(data);
-
-    return `${domainUrl}/auth/login`;
   };
-  const logout = (navigate: any) => {
-    localStorage.removeItem("user");
-    setUser(user);
-    navigate();
+  const logout = async (navigate: any) => {
+    await axios
+      .delete(${domainUrl}/auth/logout, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        localStorage.removeItem("user");
+        navigate(/auth/login);
+      });
   };
 
   const values = {
