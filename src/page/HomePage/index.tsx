@@ -89,7 +89,7 @@ export default function HomePage() {
       text: `Please check your inbox for your verification link!`,
       confirmButtonColor: "#006400",
     }).then(() => {
-      window.open("https://mail.google.com/", "_system");
+    navigate("/auth/pending-email-verification");
     });
   }
 

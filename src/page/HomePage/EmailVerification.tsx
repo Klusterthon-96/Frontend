@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import emailConfirm from "../../asset/Confirmed-cuate 1.svg";
 import { useAuth } from "../../Context/authContext";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios"; // Import axios
 
 function EmailVerification() {
@@ -10,7 +10,7 @@ function EmailVerification() {
   const { token: urlToken } = useParams();
   const [apiError, setApiError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-
+const navigate = useNavigate()
   useEffect(() => {
     const simulateApiCall = async () => {
       try {
@@ -43,6 +43,7 @@ function EmailVerification() {
         localStorage.removeItem("user");
         setUser(data);
         setIsLoading(false);
+        navigate('/dashboard')
       } catch (error) {
         setIsLoading(false);
         setApiError("An error occurred while verifying email.");
