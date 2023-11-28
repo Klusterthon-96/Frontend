@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }: Props) => {
         { withCredentials: true }
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         const registeredUser = response.data;
         setUser(registeredUser);
 
