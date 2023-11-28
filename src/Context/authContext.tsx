@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }: Props) => {
       if (response.status === 201) {
         const registeredUser = response.data;
         setUser(registeredUser);
-        localStorage.setItem("isVerified", response.data.user.isVerified);
+        localStorage.setItem("isVerified", response.data.data.user.isVerified);
         Swal.fire({
           icon: "success",
           title: `Registration successfully!`,
