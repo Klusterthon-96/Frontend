@@ -213,7 +213,7 @@ export default function InputForm() {
               placeholder={"Water Availability?"}
             />
           </div>
-          <div className="mt-5 mb-[30px]">
+          <div className="mt-5 mb-[100px]">
             <label htmlFor="Country">Country</label>
             <Select
               className="react-select-container"
