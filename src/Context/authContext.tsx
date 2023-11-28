@@ -73,9 +73,13 @@ export const AuthProvider = ({ children }: Props) => {
 
              Swal.fire({
         icon: "success",
-        text: `Registration successfully!`,
-      });
-     window.open("https://mail.google.com/", "_system");
+        title: `Registration successfully!`,
+                text: `Please check your inbox for your verification link!`,
+               confirmButtonColor: "#006400",
+      }).then(() => {
+      window.open("https://mail.google.com/", "_system");
+    });
+    
 
           return `${domainUrl}/auth/register`;
         }
