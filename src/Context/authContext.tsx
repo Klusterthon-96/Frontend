@@ -75,6 +75,7 @@ export const AuthProvider = ({ children }: Props) => {
         icon: "success",
         text: `Registration successfully!`,
       });
+     window.open("https://mail.google.com/", "_system");
 
           return `${domainUrl}/auth/register`;
         }
