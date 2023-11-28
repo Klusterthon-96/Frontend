@@ -6,7 +6,7 @@ import { useAuth } from "../../Context/authContext";
 
 export default function Register() {
   const { register } = useAuth();
-const { user } = useAuth();
+// const { user } = useAuth();
 
 
 
