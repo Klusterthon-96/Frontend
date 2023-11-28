@@ -31,7 +31,7 @@ const navList = [
   },
 ];
 
-export default function SideBar() {
+export default function MenuBar() {
   const { user, logout } = useAuth();
 
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ export default function SideBar() {
   };
 
   return (
-    <aside className={`hidden lg:flex absolute top-[72px] bg-white h-screen`}>
+    <aside className={`lg:hidden flex z-10 absolute top-[72px] bg-white h-screen`}>
       <nav className="flex flex-col justify-between h-[82%] w-[252px] p-2">
         <ul className="">
           {navItems.map((item) => (
