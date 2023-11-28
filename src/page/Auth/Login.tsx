@@ -57,15 +57,19 @@ export default function LoginPage() {
 
     try {
       await login(formData.email, formData.password);
-      navigate("/dashboard");
-      Swal.fire({
+      setIsLoadingButton(false);
+      navigate("/dashboard", { replace: true });
+      
+      return Swal.fire({
         icon: "success",
         text: `Sign in successfully!`,
       });
-
-      setIsLoadingButton(false);
     } catch (error) {
       console.error(error);
+      return Swal.fire({
+        icon: "error",
+        text: `Sign in failed, please try again!`,
+      });
     } finally {
       setIsLoadingButton(false);
     }

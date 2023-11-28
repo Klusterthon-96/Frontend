@@ -60,12 +60,12 @@ export default function Register() {
     try {
       await register(formData.name, formData.email, formData.password);
 
-      Swal.fire({
+      navigate("/auth/login", { replace: true });
+
+      return Swal.fire({
         icon: "success",
         text: `Registration successfully!`,
       });
-
-      return navigate("/auth/login");
     } catch (error) {
       console.error(error);
       setIsLoadingButton(false);

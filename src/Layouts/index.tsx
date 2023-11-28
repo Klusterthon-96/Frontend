@@ -24,10 +24,10 @@ export function Home() {
 
 export function Landing() {
   return (
-    <AuthGuard>
-      <main className="max-w-[1440px] mx-auto h-screen">
+    <main className="max-w-[1440px] mx-auto h-screen">
+      <AuthGuard>
         <Outlet />
-      </main>
-    </AuthGuard>
+      </AuthGuard>
+    </main>
   );
 }

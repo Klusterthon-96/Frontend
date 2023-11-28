@@ -4,16 +4,16 @@ import { useAuth } from "../Context/authContext";
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
-  const token = user.data.accessToken;
+  // const token = user?.data?.accessToken;
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (!user && !token) {
-      return navigate("/auth/login", { replace: true });
-    } else if (user && token) {
+    if (!user || !user.data) {
+      return navigate("/", { replace: true });
+    } else if (user) {
       return navigate("/dashboard", { replace: true });
     }
-  }, [user, token, navigate]);
+  }, [user, navigate]);
 
   return <>{children}</>;
 }

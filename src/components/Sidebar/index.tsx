@@ -1,5 +1,4 @@
 import React from "react";
-// import { CiHome } from "react-icons/ci";
 import { MdInput } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
 import { MdOutlineHeadsetMic } from "react-icons/md";
@@ -42,18 +41,11 @@ export default function SideBar({ show = false }: Props) {
   const navigate = useNavigate();
 
   const handleLogOut = async () => {
-    try {
-      logout(() => {
-        navigate("/");
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    logout(() => {
+      return navigate("/", { replace: true });
+    });
   };
 
-  // show
-  // ? "flex absolute top-[calc(100vh-100px)] h-screen"
-  // : " flex :absolute top-[100px] h-screen bg-white"
   return (
     <aside
       className={`absolute top-[72px] bg-white h-screen ${
@@ -101,9 +93,11 @@ export default function SideBar({ show = false }: Props) {
               <img src={Avatar} alt="" className="h-10 w-10 rounded-full" />
 
               <span className="flex flex-col w-[132px]">
-                <span className="font-semibold">{user?.data.user.name}</span>
+                <span className="font-semibold">
+                  {user && user?.data.user.name}
+                </span>
                 <span className="break-all text-sm text-[grey/60]">
-                  {user?.data.user.email}
+                  {user && user?.data.user.email}
                 </span>
               </span>
             </div>
