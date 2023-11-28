@@ -1,4 +1,4 @@
-import AuthGuard from "../AuthGuard/AuthGuard";
+import AuthGuard, { GuestGuard } from "../AuthGuard/AuthGuard";
 import Header from "../components/Header";
 import SideBar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";
@@ -24,10 +24,10 @@ export function Home() {
 
 export function Landing() {
   return (
-    <AuthGuard>
-      <main className="max-w-[1440px] mx-auto h-screen">
+    <main className="max-w-[1440px] mx-auto h-screen">
+      <GuestGuard>
         <Outlet />
-      </main>
-    </AuthGuard>
+      </GuestGuard>
+    </main>
   );
 }

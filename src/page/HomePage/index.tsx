@@ -8,7 +8,7 @@ import ImageFive from "../../asset/PH.png";
 import ImageSix from "../../asset/country.png";
 import { useAuth } from "../../Context/authContext";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const cardData = [
   {
@@ -52,7 +52,11 @@ const cardData = [
 export default function HomePage() {
   const { user } = useAuth();
 
-  const token = user?.data.accessToken;
+  const navigate = useNavigate();
+
+  const token = user?.data?.accessToken;
+
+  console.log(user);
 
   const firstName = user?.data?.user?.name.split(" ")[0];
 
@@ -78,7 +82,7 @@ export default function HomePage() {
     initSession();
   }, [token]);
 
-  if (user.data.user.isVerified === false) {
+  if (user?.data.user.isVerified === false) {
     Swal.fire({
       icon: "error",
       title: "Email Verification!",
@@ -87,6 +91,11 @@ export default function HomePage() {
     }).then(() => {
       window.open("https://mail.google.com/", "_system");
     });
+  }
+
+  if (!user || !token) {
+    navigate("/");
+    // <Navigate to="/" />;
   }
 
   return (
