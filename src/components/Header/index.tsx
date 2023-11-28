@@ -3,7 +3,7 @@ import { GoBell } from "react-icons/go";
 import MenuBar from "../Sidebar/menuBar";
 
 export default function Header() {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   return (
     <>
       <div className="flex flex-col flex-1 overflow-hidden w-full">

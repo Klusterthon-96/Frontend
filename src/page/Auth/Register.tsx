@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
-import Swal from "sweetalert2";
 import PasswordInput, { TextInput } from "../../components/input";
 import { useAuth } from "../../Context/authContext";
 
 export default function Register() {
   const { register } = useAuth();
+// const { user } = useAuth();
+
+
 
   const navigate = useNavigate();
 
@@ -57,15 +59,12 @@ export default function Register() {
     try {
       await register(formData.name, formData.email, formData.password);
 
-      navigate("/auth/login", { replace: true });
-
-      return Swal.fire({
-        icon: "success",
-        text: `Registration successfully!`,
-      });
-
-      return navigate("/auth/pending-email-verification");
-
+  //    navigate("/auth/login", { replace: true });
+      // if(user && !user.data.isVerified){
+      //  navigate("/auth/pending-email-verification"); 
+      // }
+    navigate("/auth/pending-email-verification"); 
+    
     } catch (error) {
       console.error(error);
       setIsLoadingButton(false);
@@ -79,7 +78,7 @@ export default function Register() {
       <div className="grid place-items-center h-[inherit] gap-5 lg:grid-cols-2">
         {/* MOBILE VIEW */}
         <div className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden pointer-events-none z-[-1] bg-cover bg-center bg-RegWallpaper w-full h-screen lg:hidden"></div>
-        <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden lg:hidden" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+        <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-[inherit] overflow-hidden lg:hidden" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
           <div className="flex justify-center items-center h-screen">
             <div className="p-4 md:w-3/5 mx-auto">
               <div className="text-center lg:text-start text-white lg:text-black">

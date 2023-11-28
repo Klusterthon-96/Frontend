@@ -81,7 +81,7 @@ export default function LoginPage() {
         {/* MOBILE VIEW */}
         <div className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden pointer-events-none z-[-1] bg-cover bg-center bg-wallpaper w-full h-screen lg:hidden"></div>
         <div
-          className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden lg:hidden"
+          className="absolute top-0 right-0 bottom-0 left-0 w-full h-[inherit] overflow-hidden lg:hidden"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
         >
           <div className="flex justify-center items-center h-screen">

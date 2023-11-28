@@ -95,9 +95,9 @@ export default function InputForm() {
 
       Swal.fire({
         icon: "success",
-        title: `Your result is: ${response.data.data.result}`,
+        title: `Your harvest season is: ${response.data.data.result}`,
         padding: "3em",
-        color: "##006400",
+        color: "#006400",
         backdrop: `
         rgba(0,102,0.4)
     left top
@@ -213,7 +213,7 @@ export default function InputForm() {
               placeholder={"Water Availability?"}
             />
           </div>
-          <div className="mt-5 mb-[30px]">
+          <div className="mt-5 mb-[100px]">
             <label htmlFor="Country">Country</label>
             <Select
               className="react-select-container"
