@@ -62,7 +62,7 @@ export default function Register() {
         text: `Registration successfully!`,
       });
 
-      return navigate("/auth/login");
+      return navigate("/auth/pending-email-verification");
     } catch (error) {
       console.error(error);
       setIsLoadingButton(false);
