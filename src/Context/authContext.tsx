@@ -128,6 +128,7 @@ export const AuthProvider = ({ children }: Props) => {
       .then((res) => {
         console.log(res);
         localStorage.removeItem("user");
+        localStorage.removeItem("isVerified");
         navigate(`/auth/login`);
       });
   };
