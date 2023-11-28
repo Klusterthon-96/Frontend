@@ -79,7 +79,7 @@ export default function Register() {
       <div className="grid place-items-center h-[inherit] gap-5 lg:grid-cols-2">
         {/* MOBILE VIEW */}
         <div className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden pointer-events-none z-[-1] bg-cover bg-center bg-RegWallpaper w-full h-screen lg:hidden"></div>
-        <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden lg:hidden" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+        <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-[inherit] overflow-hidden lg:hidden" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
           <div className="flex justify-center items-center h-screen">
             <div className="p-4 md:w-3/5 mx-auto">
               <div className="text-center lg:text-start text-white lg:text-black">
