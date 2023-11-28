@@ -59,12 +59,6 @@ export default function Register() {
 
   //    navigate("/auth/login", { replace: true });
  navigate("/auth/pending-email-verification");
-
-      return Swal.fire({
-        icon: "success",
-        text: `Registration successfully!`,
-      });
-
     
     } catch (error) {
       console.error(error);
