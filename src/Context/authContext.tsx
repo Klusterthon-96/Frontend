@@ -109,6 +109,7 @@ export const AuthProvider = ({ children }: Props) => {
         if (res.status === 200) {
           const data = res.data;
           setUser(data);
+          localStorage.setItem("isVerified", res.data.data.user.isVerified);
           return `${domainUrl}/auth/login`;
         }
       })
