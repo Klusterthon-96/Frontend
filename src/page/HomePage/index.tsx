@@ -61,6 +61,16 @@ export default function HomePage() {
   useEffect(() => {
     const initSession = async () => {
       try {
+        if (user && localStorage.getItem("isVerified") === "false") {
+          Swal.fire({
+            icon: "error",
+            title: "Email Verification!",
+            text: `Please check your inbox for your verification link!`,
+            confirmButtonColor: "#006400",
+          }).then(() => {
+            navigate("/auth/pending-email-verification");
+          });
+        }
         if (token) {
           await axios.post(
             `${process.env.REACT_APP_BACKEND_URL}/session/`,
@@ -79,17 +89,6 @@ export default function HomePage() {
     };
 
     initSession();
-
-    if (user && !localStorage.getItem("isVerified")) {
-      Swal.fire({
-        icon: "error",
-        title: "Email Verification!",
-        text: `Please check your inbox for your verification link!`,
-        confirmButtonColor: "#006400",
-      }).then(() => {
-        navigate("/auth/pending-email-verification");
-      });
-    }
   }, [token, user, navigate]);
 
   if (!user || !token) {
