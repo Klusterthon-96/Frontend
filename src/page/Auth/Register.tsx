@@ -58,14 +58,14 @@ export default function Register() {
       await register(formData.name, formData.email, formData.password);
 
   //    navigate("/auth/login", { replace: true });
+ navigate("/auth/pending-email-verification");
 
       return Swal.fire({
         icon: "success",
         text: `Registration successfully!`,
       });
 
-      return navigate("/auth/pending-email-verification");
-
+    
     } catch (error) {
       console.error(error);
       setIsLoadingButton(false);
