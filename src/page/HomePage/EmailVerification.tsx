@@ -36,9 +36,8 @@ function EmailVerification() {
             },
           }
         );
-        console.log(response.data);
         const data = {
-          user: response.data.user,
+          user: response.data.data,
           accessToken: user.data.accessToken,
         };
         localStorage.removeItem("user");
