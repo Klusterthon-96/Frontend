@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }: Props) => {
         });
         // return Promise.resolve(`${domainUrl}/auth/register`);
       });
-  return Promise.resolve(`${domainUrl}/auth/register`);
+  // return Promise.resolve(`${domainUrl}/auth/register`);
   };
   const login = async (email: string, password: string) => {
      await axios
