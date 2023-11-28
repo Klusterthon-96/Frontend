@@ -48,31 +48,28 @@ export default function Register() {
 
     if (!isValidEmail(formData.email)) {
       setError("Email is Invalid");
+      setIsLoadingButton(false);
       return;
     }
 
     if (!isStrongPassword(formData.password) || formData.password.length < 8) {
-      setError("Password must contain 8 characters, one uppercase letter, one lowercase letter, one number and one special character");
+      setError(
+        "Password must contain 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
+      );
+      setIsLoadingButton(false);
       return;
     }
 
     try {
       await register(formData.name, formData.email, formData.password);
-
-  //    navigate("/auth/login", { replace: true });
-      // if(user && !user.data.isVerified){
-      //  navigate("/auth/pending-email-verification"); 
-      // }
-    navigate("/auth/pending-email-verification"); 
-    
+      navigate("/auth/pending-email-verification");
     } catch (error) {
       console.error(error);
-      setIsLoadingButton(false);
+      setError(error);
     } finally {
       setIsLoadingButton(false);
     }
   };
-
   return (
     <>
       <div className="grid place-items-center h-[inherit] gap-5 lg:grid-cols-2">
