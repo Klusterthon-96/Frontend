@@ -1,8 +1,56 @@
+import { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-
 import emailConfirm from "../../asset/Confirmed-cuate 1.svg";
+import { useAuth } from "../../Context/authContext";
+import { useParams, Link } from "react-router-dom";
+import axios from "axios"; // Import axios
 
 function EmailVerification() {
+  const { user, setUser } = useAuth();
+  const { token: urlToken } = useParams(); // Rename variable to avoid conflict
+  const [apiError, setApiError] = useState<string | null>(null); // Explicitly type the state
+  const [isLoading, setIsLoading] = useState(true);
+
+  const simulateApiCall = async () => {
+    try {
+      await axios.put(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/email`,
+        {
+          verifyToken: urlToken, // Use the token from the URL
+        },
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${user.data.accessToken}`,
+          },
+        }
+      );
+      await axios
+        .get(`${process.env.REACT_APP_BACKEND_URL}/user/me`, {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${user.data.accessToken}`,
+          },
+        })
+        .then((res) => {
+          const data = {
+            user: res.data.user,
+            accessToken: user.data.accessToken,
+          };
+          setUser(data);
+        });
+
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setApiError("An error occurred while verifying email.");
+    }
+  };
+
+  useEffect(() => {
+    simulateApiCall();
+  }, [urlToken]); // Dependency on urlToken ensures the effect runs when the token changes
+
   return (
     <>
       <div className="absolute top-0 bottom-0 left-0 right-0 bg-white overflow-hidden h-screen w-full outline-none font-sans">
@@ -18,13 +66,29 @@ function EmailVerification() {
                 <AiOutlineClose size={26} color="#000" />
               </button>
             </div>
-            <div className="">
-              <h2 className="text-[28px] font-semibold">Email has been Verified</h2>
-              {/* <p className="text-xl my-5">Email has </p> */}
-              <div className="flex justify-center">
-                <img className="" src={emailConfirm} alt="icon" />
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : apiError ? (
+              <div>
+                <h2 className="text-[28px] font-semibold">Error</h2>
+                <p>{apiError}</p>
               </div>
-            </div>
+            ) : (
+              <div>
+                <h2 className="text-[28px] font-semibold">
+                  Email has been Verified
+                </h2>
+                <div className="flex justify-center">
+                  <img className="" src={emailConfirm} alt="icon" />
+                </div>
+                <Link
+                  to="/dashboard"
+                  className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Go to Dashboard
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
