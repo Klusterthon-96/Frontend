@@ -11,6 +11,8 @@ import HelpCenter from "./page/HelpCenter";
 import ForgotPassword from "./page/Auth/ForgotPassword";
 import ResetPassword from "./page/Auth/ResetPassword";
 import ReferPage from "./page/Referral";
+import EmailVerification from "./page/HomePage/EmailVerification";
+import PendingEmailVerification from "./page/HomePage/PendingEmailVerification";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ export const router = createBrowserRouter([
       {
         path: "/auth/reset-password/:id/:token",
         element: <ResetPassword />,
+      },
+      {
+        path: "/auth/email-verification/:token",
+        element: <EmailVerification />,
+      },
+      {
+        path: "/auth/pending-email-verification",
+        element: <PendingEmailVerification />,
       },
     ],
   },

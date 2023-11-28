@@ -63,6 +63,9 @@ export default function Register() {
         icon: "success",
         text: `Registration successfully!`,
       });
+
+      return navigate("/auth/pending-email-verification");
+
     } catch (error) {
       console.error(error);
       setIsLoadingButton(false);
