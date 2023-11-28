@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import PasswordInput, { TextInput } from "../../components/input";
 import { useAuth } from "../../Context/authContext";
@@ -63,7 +63,7 @@ export default function Register() {
       // if(user && !user.data.isVerified){
       //  navigate("/auth/pending-email-verification"); 
       // }
-    
+    navigate("/auth/pending-email-verification"); 
     
     } catch (error) {
       console.error(error);
