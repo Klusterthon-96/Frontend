@@ -3,12 +3,12 @@ export default function HelpCenter() {
     <>
       <div className="pb-[100px] font-sans w-full ">
         <div className="">
-          <h1 className="text-[22px] font-[600]">Support</h1>
+          <h1 className="text-[22px] lg:text-[32px] font-[600]">Support</h1>
 
           {/* Temperature Container */}
           <div className="mt-5 text-xs leading-[18px]">
-            <h4 className="text-base font-[600]">Temperature</h4>
-            <p className="mt-[12px] font-normal">
+            <h4 className="text-base lg:text-xl font-[600]">Temperature</h4>
+            <p className="mt-[12px] lg:text-base font-normal">
               Farmers often need to monitor temperature levels to make informed
               decisions about their crops and livestock. There are several
               methods to measure temperature on a farm, and the choice depends
@@ -82,8 +82,8 @@ export default function HelpCenter() {
 
           {/* Humidity Container */}
           <div className="mt-5 text-xs leading-[18px]">
-            <h4 className="text-base font-[600]">Humidity</h4>
-            <p className="mt-[12px] font-normal">
+            <h4 className="text-base lg:text-xl font-[600]">Humidity</h4>
+            <p className="mt-[12px] lg:text-base font-normal">
               Measuring humidity is essential for farmers as it directly
               influences plant growth, disease development, and the overall
               health of crops. Here are several methods farmers can use to
@@ -173,8 +173,8 @@ export default function HelpCenter() {
 
           {/* PH LEVEL CONTAINER */}
           <div className="mt-5 text-xs leading-[18px]">
-            <h4 className="text-base font-[600]">PH Level</h4>
-            <p className="mt-[12px] font-normal">
+            <h4 className="text-base lg:text-xl font-[600]">PH Level</h4>
+            <p className="mt-[12px] lg:text-base font-normal">
               Measuring the pH level of soil is crucial for farmers as it
               directly affects nutrient availability to plants. Here's how
               farmers can measure pH:
@@ -319,9 +319,9 @@ export default function HelpCenter() {
             </ul>
           </div>
           {/* WATER LEVEL CONTAINER */}
-          <div className="mt-5 text-xs leading-[18px]">
-            <h4 className="text-base font-[600]">Water Availability</h4>
-            <p className="mt-[12px] font-normal">
+          <div className="mt-5 mb-[100px] text-xs leading-[18px]">
+            <h4 className="text-base lg:text-xl font-[600]">Water Availability</h4>
+            <p className="mt-[12px] lg:text-base font-normal">
               Measuring water availability is crucial for farmers to ensure
               proper irrigation and optimize water use. Several methods can be
               employed to assess water availability on a farm:
