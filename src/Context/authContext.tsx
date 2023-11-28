@@ -88,7 +88,7 @@ export const AuthProvider = ({ children }: Props) => {
           icon: "error",
           text: `${e.response.data.message}`,
         });
-        return Promise.resolve(`${domainUrl}/auth/register`);
+        // return Promise.resolve(`${domainUrl}/auth/register`);
       });
   return Promise.resolve(`${domainUrl}/auth/register`);
   };
