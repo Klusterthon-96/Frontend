@@ -97,7 +97,7 @@ export default function InputForm() {
         icon: "success",
         title: `Your harvest season is: ${response.data.data.result}`,
         padding: "3em",
-        color: "##006400",
+        color: "#006400",
         backdrop: `
         rgba(0,102,0.4)
     left top
