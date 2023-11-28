@@ -6,50 +6,52 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios"; // Import axios
 
 function EmailVerification() {
-  const { user, setUser } = useAuth();
-  const { token: urlToken } = useParams(); // Rename variable to avoid conflict
-  const [apiError, setApiError] = useState<string | null>(null); // Explicitly type the state
-  const [isLoading, setIsLoading] = useState(true);
+ const { user, setUser } = useAuth();
+ const { token: urlToken } = useParams();
+ const [apiError, setApiError] = useState<string | null>(null);
+ const [isLoading, setIsLoading] = useState(true);
 
-  const simulateApiCall = async () => {
-    try {
-      await axios.put(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/email`,
-        {
-          verifyToken: urlToken, // Use the token from the URL
-        },
-        {
-          withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${user.data.accessToken}`,
-          },
-        }
-      );
-      await axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/user/me`, {
-          withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${user.data.accessToken}`,
-          },
-        })
-        .then((res) => {
-          const data = {
-            user: res.data.user,
-            accessToken: user.data.accessToken,
-          };
-          setUser(data);
-        });
+ useEffect(() => {
+   const simulateApiCall = async () => {
+     try {
+       await axios.put(
+         `${process.env.REACT_APP_BACKEND_URL}/auth/email`,
+         {
+           verifyToken: urlToken,
+         },
+         {
+           withCredentials: true,
+           headers: {
+             Authorization: `Bearer ${user.data.accessToken}`,
+           },
+         }
+       );
 
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      setApiError("An error occurred while verifying email.");
-    }
-  };
+       const response = await axios.get(
+         `${process.env.REACT_APP_BACKEND_URL}/user/me`,
+         {
+           withCredentials: true,
+           headers: {
+             Authorization: `Bearer ${user.data.accessToken}`,
+           },
+         }
+       );
 
-  useEffect(() => {
-    simulateApiCall();
-  }, [urlToken]); // Dependency on urlToken ensures the effect runs when the token changes
+       const data = {
+         user: response.data.user,
+         accessToken: user.data.accessToken,
+       };
+
+       setUser(data);
+       setIsLoading(false);
+     } catch (error) {
+       setIsLoading(false);
+       setApiError("An error occurred while verifying email.");
+     }
+   };
+
+   simulateApiCall();
+ }, [urlToken, user.data.accessToken, setUser]); // Dependency on urlToken ensures the effect runs when the token changes
 
   return (
     <>
