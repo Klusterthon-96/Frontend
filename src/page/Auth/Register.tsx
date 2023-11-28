@@ -60,9 +60,9 @@ const { user } = useAuth();
       await register(formData.name, formData.email, formData.password);
 
   //    navigate("/auth/login", { replace: true });
-      if(user && !user.data.isVerified){
-       navigate("/auth/pending-email-verification"); 
-      }
+      // if(user && !user.data.isVerified){
+      //  navigate("/auth/pending-email-verification"); 
+      // }
     
     
     } catch (error) {
