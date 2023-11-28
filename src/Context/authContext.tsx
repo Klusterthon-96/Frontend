@@ -70,6 +70,12 @@ export const AuthProvider = ({ children }: Props) => {
         if (res.status === 200) {
           const registeredUser = res.data;
           setUser(registeredUser);
+
+             Swal.fire({
+        icon: "success",
+        text: `Registration successfully!`,
+      });
+
           return `${domainUrl}/auth/register`;
         }
         return Promise.resolve(`${domainUrl}/auth/register`);
