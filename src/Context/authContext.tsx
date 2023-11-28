@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }: Props) => {
         // Handle other status codes
         throw new Error(`Registration failed with status ${response.status}`);
       }
-    } catch (error) {
+    } catch (error:any) {
       const errorMessage =
         error.response?.data?.message || "Registration failed";
       await Swal.fire({

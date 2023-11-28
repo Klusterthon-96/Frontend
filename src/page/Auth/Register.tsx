@@ -63,7 +63,7 @@ export default function Register() {
     try {
       await register(formData.name, formData.email, formData.password);
       navigate("/auth/pending-email-verification");
-    } catch (error) {
+    } catch (error:any) {
       console.error(error);
       setError(error);
     } finally {
