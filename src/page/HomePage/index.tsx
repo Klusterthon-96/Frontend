@@ -72,19 +72,26 @@ export default function HomePage() {
           });
         }
         if (token) {
-          await axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/session/`,
-            {},
-            {
-              withCredentials: true,
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
+          await axios
+            .post(
+              `${process.env.REACT_APP_BACKEND_URL}/session/`,
+              {},
+              {
+                withCredentials: true,
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              }
+            )
+            .catch((error) => {
+              localStorage.clear();
+              navigate("/auth/login");
+            });
         }
       } catch (error) {
         console.error("Error initializing session:", error);
+        localStorage.clear();
+        navigate("/auth/login");
       }
     };
 
