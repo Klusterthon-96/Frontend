@@ -96,31 +96,39 @@ export const AuthProvider = ({ children }: Props) => {
     }
   };
   const login = async (email: string, password: string) => {
-    await axios
-      .post(
+    try {
+      const response = await axios.post(
         `${domainUrl}/auth/login`,
         {
           email,
           password,
         },
         { withCredentials: true }
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          const data = res.data;
-          setUser(data);
-          localStorage.setItem("isVerified", res.data.data.user.isVerified);
-          return `${domainUrl}/auth/login`;
-        }
-      })
-      .catch(async (e) => {
-        await Swal.fire({
-          icon: "error",
-          text: `${e.response.data.message}`,
+      );
+
+      if (response.status === 200) {
+        const data = response.data;
+        setUser(data);
+        localStorage.setItem("isVerified", response.data.data.user.isVerified);
+        Swal.fire({
+          icon: "success",
+          text: `Sign in successfully!`,
         });
+        return `${domainUrl}/auth/login`;
+      } else {
+        throw new Error(`Registration failed with status ${response.status}`);
+      }
+    } catch (error: any) {
+      const errorMessage =
+        error.response?.data?.message || "Registration failed";
+      await Swal.fire({
+        icon: "error",
+        text: errorMessage,
       });
-    return Promise.resolve(`${domainUrl}/auth/register`);
-    // Handle the data, update state, or perform any other necessary actions
+
+      // You can return a Promise with the error message or handle it differently
+      return Promise.reject(errorMessage);
+    }
   };
   const logout = async (navigate: any) => {
     await axios
