@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import PasswordInput, { TextInput } from "../../components/input";
 import { useAuth } from "../../Context/authContext";
+import { useAuth } from "../Context/authContext"
 
 export default function Register() {
   const { register } = useAuth();
+const { user } = useAuth();
 
-  // const navigate = useNavigate();
+
 
   const [isLoadingButton, setIsLoadingButton] = useState(false);
   const [error, setError] = useState("");
@@ -57,7 +59,10 @@ export default function Register() {
       await register(formData.name, formData.email, formData.password);
 
   //    navigate("/auth/login", { replace: true });
- // navigate("/auth/pending-email-verification");
+      if(user && !user.data.isVerified){
+       navigate("/auth/pending-email-verification"); 
+      }
+    
     
     } catch (error) {
       console.error(error);
