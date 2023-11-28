@@ -95,7 +95,7 @@ export default function InputForm() {
 
       Swal.fire({
         icon: "success",
-        title: `Your result is: ${response.data.data.result}`,
+        title: `Your harvest season is: ${response.data.data.result}`,
         padding: "3em",
         color: "##006400",
         backdrop: `
