@@ -57,7 +57,7 @@ export default function Register() {
       await register(formData.name, formData.email, formData.password);
 
   //    navigate("/auth/login", { replace: true });
- navigate("/auth/pending-email-verification");
+ // navigate("/auth/pending-email-verification");
     
     } catch (error) {
       console.error(error);
