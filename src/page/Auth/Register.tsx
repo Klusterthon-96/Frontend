@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import PasswordInput, { TextInput } from "../../components/input";
 import { useAuth } from "../../Context/authContext";
@@ -7,7 +7,7 @@ import { useAuth } from "../../Context/authContext";
 export default function Register() {
   const { register } = useAuth();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [isLoadingButton, setIsLoadingButton] = useState(false);
   const [error, setError] = useState("");
