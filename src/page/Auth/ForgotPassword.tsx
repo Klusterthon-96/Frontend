@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 function ForgotPassword() {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
-  const url = `https://backend-8fbc.onrender.com/api/v1/auth/request-password-reset?email=${email}`;
+  const url = `${process.env.REACT_APP_BACKEND_URL}/auth/request-password-reset?email=${email}`;
 
   const handleContinue = async () => {
     try {

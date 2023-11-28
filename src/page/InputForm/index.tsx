@@ -59,7 +59,7 @@ export default function InputForm() {
     const initSession = async () => {
       await axios
         .post(
-          "https://backend-8fbc.onrender.com/api/v1/session/",
+          `${process.env.REACT_APP_BACKEND_URL}/session/`,
           {},
           {
             withCredentials: true,
@@ -81,7 +81,7 @@ export default function InputForm() {
 
     try {
       const response = await axios.put(
-        "https://backend-8fbc.onrender.com/api/v1/session/",
+        `${process.env.REACT_APP_BACKEND_URL}/session/`,
         formData,
         {
           withCredentials: true,

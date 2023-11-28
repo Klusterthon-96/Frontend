@@ -10,7 +10,7 @@ function EmailVerification() {
   const { token: urlToken } = useParams();
   const [apiError, setApiError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const simulateApiCall = async () => {
       try {
@@ -36,14 +36,14 @@ const navigate = useNavigate()
             },
           }
         );
-        const data = {
-          user: response.data.data,
-          accessToken: user.data.accessToken,
-        };
-        localStorage.removeItem("user");
-        setUser(data);
+        // const data = {
+        //   user: response.data.data,
+        //   accessToken: user.data.accessToken,
+        // };
+        localStorage.setItem("isVerified", response.data.data.isVerified);
+        // setUser(data);
         setIsLoading(false);
-        navigate('/dashboard')
+        navigate("/dashboard");
       } catch (error) {
         setIsLoading(false);
         setApiError("An error occurred while verifying email.");
@@ -51,7 +51,7 @@ const navigate = useNavigate()
     };
 
     simulateApiCall();
-  }, [urlToken, user.data.accessToken, setUser,navigate]); // Dependency on urlToken ensures the effect runs when the token changes
+  }, [urlToken, user.data.accessToken, setUser, navigate]); // Dependency on urlToken ensures the effect runs when the token changes
 
   return (
     <>

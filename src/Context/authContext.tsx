@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }: Props) => {
       if (response.status === 201) {
         const registeredUser = response.data;
         setUser(registeredUser);
-
+        localStorage.setItem("isVerified", response.data.user.isVerified);
         Swal.fire({
           icon: "success",
           title: `Registration successfully!`,
@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }: Props) => {
         // Handle other status codes
         throw new Error(`Registration failed with status ${response.status}`);
       }
-    } catch (error:any) {
+    } catch (error: any) {
       const errorMessage =
         error.response?.data?.message || "Registration failed";
       await Swal.fire({
@@ -96,7 +96,7 @@ export const AuthProvider = ({ children }: Props) => {
     }
   };
   const login = async (email: string, password: string) => {
-     await axios
+    await axios
       .post(
         `${domainUrl}/auth/login`,
         {
@@ -118,7 +118,7 @@ export const AuthProvider = ({ children }: Props) => {
           text: `${e.response.data.message}`,
         });
       });
-   return Promise.resolve(`${domainUrl}/auth/register`);
+    return Promise.resolve(`${domainUrl}/auth/register`);
     // Handle the data, update state, or perform any other necessary actions
   };
   const logout = async (navigate: any) => {

@@ -56,46 +56,45 @@ export default function HomePage() {
 
   const token = user?.data?.accessToken;
 
-  console.log(user);
-
   const firstName = user?.data?.user?.name.split(" ")[0];
 
   useEffect(() => {
     const initSession = async () => {
-      await axios
-        .post(
-          "https://backend-8fbc.onrender.com/api/v1/session/",
-          {},
-          {
-            withCredentials: true,
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then((result) => {
-          // const data = result.data;
-        })
-        .catch((error) => console.log("error", error));
+      try {
+        if (token) {
+          await axios.post(
+            `${process.env.REACT_APP_BACKEND_URL}/session/`,
+            {},
+            {
+              withCredentials: true,
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+        }
+      } catch (error) {
+        console.error("Error initializing session:", error);
+      }
     };
 
     initSession();
-  }, [token]);
 
-  if (user?.data.user.isVerified === false) {
-    Swal.fire({
-      icon: "error",
-      title: "Email Verification!",
-      text: `Please check your inbox for your verification link!`,
-      confirmButtonColor: "#006400",
-    }).then(() => {
-    navigate("/auth/pending-email-verification");
-    });
-  }
+    if (user && !localStorage.getItem("isVerified")) {
+      Swal.fire({
+        icon: "error",
+        title: "Email Verification!",
+        text: `Please check your inbox for your verification link!`,
+        confirmButtonColor: "#006400",
+      }).then(() => {
+        navigate("/auth/pending-email-verification");
+      });
+    }
+  }, [token, user, navigate]);
 
   if (!user || !token) {
     navigate("/");
-    // <Navigate to="/" />;
+    return null;
   }
 
   return (
