@@ -56,8 +56,8 @@ export const AuthProvider = ({ children }: Props) => {
   }, [user]);
 
   const register = async (name: string, email: string, password: string) => {
-     await axios
-      .post(
+    try {
+      const response = await axios.post(
         `${domainUrl}/auth/register`,
         {
           name,
@@ -65,32 +65,35 @@ export const AuthProvider = ({ children }: Props) => {
           password,
         },
         { withCredentials: true }
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          const registeredUser = res.data;
-          setUser(registeredUser);
+      );
 
-             Swal.fire({
-        icon: "success",
-        title: `Registration successfully!`,
-                text: `Please check your inbox for your verification link!`,
-               confirmButtonColor: "#006400",
-      })
-    
+      if (response.status === 201) {
+        const registeredUser = response.data;
+        setUser(registeredUser);
 
-          return `${domainUrl}/auth/register`;
-        }
-        return Promise.resolve(`${domainUrl}/auth/register`);
-      })
-      .catch(async (e) => {
-        await Swal.fire({
-          icon: "error",
-          text: `${e.response.data.message}`,
+        Swal.fire({
+          icon: "success",
+          title: `Registration successfully!`,
+          text: `Please check your inbox for your verification link!`,
+          confirmButtonColor: "#006400",
         });
-        // return Promise.resolve(`${domainUrl}/auth/register`);
+
+        return `${domainUrl}/auth/register`;
+      } else {
+        // Handle other status codes
+        throw new Error(`Registration failed with status ${response.status}`);
+      }
+    } catch (error:any) {
+      const errorMessage =
+        error.response?.data?.message || "Registration failed";
+      await Swal.fire({
+        icon: "error",
+        text: errorMessage,
       });
-  // return Promise.resolve(`${domainUrl}/auth/register`);
+
+      // You can return a Promise with the error message or handle it differently
+      return Promise.reject(errorMessage);
+    }
   };
   const login = async (email: string, password: string) => {
      await axios
