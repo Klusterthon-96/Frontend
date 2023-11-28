@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }: Props) => {
   const register = async (name: string, email: string, password: string) => {
      await axios
       .post(
-        ${domainUrl}/auth/register,
+        `${domainUrl}/auth/register`,
         {
           name,
           email,
@@ -70,23 +70,23 @@ export const AuthProvider = ({ children }: Props) => {
         if (res.status === 200) {
           const registeredUser = res.data;
           setUser(registeredUser);
-          return ${domainUrl}/auth/register;
+          return `${domainUrl}/auth/register`;
         }
-        return Promise.resolve(${domainUrl}/auth/register);
+        return Promise.resolve(`${domainUrl}/auth/register`);
       })
       .catch(async (e) => {
         await Swal.fire({
           icon: "error",
-          text: ${e.response.data.message},
+          text: `${e.response.data.message}`,
         });
-        return Promise.resolve(${domainUrl}/auth/register);
+        return Promise.resolve(`${domainUrl}/auth/register`);
       });
-  return Promise.resolve(${domainUrl}/auth/register);
+  return Promise.resolve(`${domainUrl}/auth/register`);
   };
   const login = async (email: string, password: string) => {
      await axios
       .post(
-        ${domainUrl}/auth/login,
+        `${domainUrl}/auth/login`,
         {
           email,
           password,
@@ -97,25 +97,25 @@ export const AuthProvider = ({ children }: Props) => {
         if (res.status === 200) {
           const data = res.data;
           setUser(data);
-          return ${domainUrl}/auth/login;
+          return `${domainUrl}/auth/login`;
         }
       })
       .catch(async (e) => {
         await Swal.fire({
           icon: "error",
-          text: ${e.response.data.message},
+          text: `${e.response.data.message}`,
         });
       });
-   return Promise.resolve(${domainUrl}/auth/register);
+   return Promise.resolve(`${domainUrl}/auth/register`);
     // Handle the data, update state, or perform any other necessary actions
   };
   const logout = async (navigate: any) => {
     await axios
-      .delete(${domainUrl}/auth/logout, { withCredentials: true })
+      .delete(`${domainUrl}/auth/logout`, { withCredentials: true })
       .then((res) => {
         console.log(res);
         localStorage.removeItem("user");
-        navigate(/auth/login);
+        navigate(`/auth/login`);
       });
   };
 
