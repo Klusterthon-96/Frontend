@@ -17,11 +17,9 @@ function ForgotPassword() {
       await axios
         .get(url)
         .then((res) => {
-          console.log(res);
           setOpen(true);
         })
         .catch((e) => {
-          console.log(e.response.status);
           Swal.fire({
             icon: "error",
             text: `${e.response.data.message}`,

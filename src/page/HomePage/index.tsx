@@ -68,7 +68,7 @@ export default function HomePage() {
             text: `Please check your inbox for your verification link!`,
             confirmButtonColor: "#006400",
           }).then(() => {
-            navigate("/auth/pending-email-verification");
+            return navigate("/auth/pending-email-verification");
           });
         }
         if (token) {
@@ -84,14 +84,34 @@ export default function HomePage() {
               }
             )
             .catch((error) => {
-              localStorage.clear();
-              navigate("/auth/login");
+              if (
+                error.response.data.message ===
+                "Unauthorized access: Please verify email address"
+              ) {
+                return navigate("/auth/pending-email-verification");
+              } else {
+                Swal.fire({
+                  icon: "error",
+                  title: "Session Error",
+                  text: `Error initializing session`,
+                  confirmButtonColor: "#006400",
+                }).then(() => {
+                  localStorage.clear();
+                  navigate("/auth/login");
+                });
+              }
             });
         }
       } catch (error) {
-        console.error("Error initializing session:", error);
-        localStorage.clear();
-        navigate("/auth/login");
+        Swal.fire({
+          icon: "error",
+          title: "Session Error",
+          text: `Error initializing session`,
+          confirmButtonColor: "#006400",
+        }).then(() => {
+          localStorage.clear();
+          navigate("/auth/login");
+        });
       }
     };
 

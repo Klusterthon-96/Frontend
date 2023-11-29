@@ -69,7 +69,7 @@ export default function InputForm() {
           }
         )
 
-        .catch((error) => console.log("error", error));
+        .catch((error) => console.error("error", error));
     };
 
     initSession();
