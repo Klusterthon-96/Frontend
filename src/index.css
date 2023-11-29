@@ -7,23 +7,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Lacquer&family=Poppins:ital,wght@0,200;0,300;1,100;1,200&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .scroll::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .scroll {
-  scrollbar-width: none;
+    scrollbar-width: none;
 }
 
 .react-select__control {
-  height: 42px;
+    height: 42px;
 }
 
 .react-select__value-container {
-  padding: 8px 12px;
+    padding: 8px 12px;
 }

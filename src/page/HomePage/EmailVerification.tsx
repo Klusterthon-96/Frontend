@@ -2,100 +2,92 @@ import { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import emailConfirm from "../../asset/Confirmed-cuate 1.svg";
 import { useAuth } from "../../Context/authContext";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import React, { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios"; // Import axios
 
 function EmailVerification() {
-  const { user, setUser } = useAuth();
-  const { token: urlToken } = useParams();
-  const [apiError, setApiError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  useEffect(() => {
-    const simulateApiCall = async () => {
-      try {
-        await axios.put(
-          `${process.env.REACT_APP_BACKEND_URL}/auth/email`,
-          {
-            verifyToken: urlToken,
-          },
-          {
-            withCredentials: true,
-            headers: {
-              Authorization: `Bearer ${user.data.accessToken}`,
-            },
-          }
-        );
+    const { user, setUser } = useAuth();
+    const { token: urlToken } = useParams();
+    const [apiError, setApiError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
+    useEffect(() => {
+        const simulateApiCall = async () => {
+            try {
+                await axios.put(
+                    `${process.env.REACT_APP_BACKEND_URL}/auth/email`,
+                    {
+                        verifyToken: urlToken
+                    },
+                    {
+                        withCredentials: true,
+                        headers: {
+                            Authorization: `Bearer ${user.data.accessToken}`
+                        }
+                    }
+                );
 
-        const response = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}/user/me`,
-          {
-            withCredentials: true,
-            headers: {
-              Authorization: `Bearer ${user.data.accessToken}`,
-            },
-          }
-        );
-        // const data = {
-        //   user: response.data.data,
-        //   accessToken: user.data.accessToken,
-        // };
-        localStorage.setItem("isVerified", response.data.data.isVerified);
-        // setUser(data);
-        setIsLoading(false);
-        navigate("/dashboard");
-      } catch (error) {
-        setIsLoading(false);
-        setApiError("An error occurred while verifying email.");
-      }
-    };
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/me`, {
+                    withCredentials: true,
+                    headers: {
+                        Authorization: `Bearer ${user.data.accessToken}`
+                    }
+                });
+                // const data = {
+                //   user: response.data.data,
+                //   accessToken: user.data.accessToken,
+                // };
+                localStorage.setItem("isVerified", response.data.data.isVerified);
+                // setUser(data);
+                setIsLoading(false);
+                navigate("/dashboard");
+            } catch (error) {
+                setIsLoading(false);
+                setApiError("An error occurred while verifying email.");
+            }
+        };
 
-    simulateApiCall();
-  }, [urlToken, user.data.accessToken, setUser, navigate]); // Dependency on urlToken ensures the effect runs when the token changes
+        simulateApiCall();
+    }, [urlToken, user.data.accessToken, setUser, navigate]); // Dependency on urlToken ensures the effect runs when the token changes
 
-  return (
-    <>
-      <div className="absolute top-0 bottom-0 left-0 right-0 bg-white overflow-hidden h-screen w-full outline-none font-sans">
-        <div className="pointer-events-none relative flex m-2 min-h-screen w-auto translate-y-[-50px] items-center transition-all duration-300 ease-in-out md:my-7 md:mx-auto md:h-auto">
-          <div className="pointer-events-auto relative bg-clip-padding lg:w-[400px] p-4 mx-auto bg-white rounded-lg text-center">
-            <div className="flex items-center justify-end mb-8">
-              <button
-                type="button"
-                className="box-content rounded-none p-1 border-none opacity-50 text-xl "
-                aria-label="Close"
-                // onClick={() => setOpen(false)}
-              >
-                <AiOutlineClose size={26} color="#000" />
-              </button>
-            </div>
-            {isLoading ? (
-              <p>Loading...</p>
-            ) : apiError ? (
-              <div>
-                <h2 className="text-[28px] font-semibold">Error</h2>
-                <p>{apiError}</p>
-              </div>
-            ) : (
-              <div>
-                <h2 className="text-[28px] font-semibold">
-                  Email has been Verified
-                </h2>
-                <div className="flex justify-center">
-                  <img className="" src={emailConfirm} alt="icon" />
+    return (
+        <>
+            <div className="absolute top-0 bottom-0 left-0 right-0 bg-white overflow-hidden h-screen w-full outline-none font-sans">
+                <div className="pointer-events-none relative flex m-2 min-h-screen w-auto translate-y-[-50px] items-center transition-all duration-300 ease-in-out md:my-7 md:mx-auto md:h-auto">
+                    <div className="pointer-events-auto relative bg-clip-padding lg:w-[400px] p-4 mx-auto bg-white rounded-lg text-center">
+                        <div className="flex items-center justify-end mb-8">
+                            <button
+                                type="button"
+                                className="box-content rounded-none p-1 border-none opacity-50 text-xl "
+                                aria-label="Close"
+                                // onClick={() => setOpen(false)}
+                            >
+                                <AiOutlineClose size={26} color="#000" />
+                            </button>
+                        </div>
+                        {isLoading ? (
+                            <p>Loading...</p>
+                        ) : apiError ? (
+                            <div>
+                                <h2 className="text-[28px] font-semibold">Error</h2>
+                                <p>{apiError}</p>
+                            </div>
+                        ) : (
+                            <div>
+                                <h2 className="text-[28px] font-semibold">Email has been Verified</h2>
+                                <div className="flex justify-center">
+                                    <img className="" src={emailConfirm} alt="icon" />
+                                </div>
+                                <Link to="/dashboard" className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                    Go to Dashboard
+                                </Link>
+                            </div>
+                        )}
+                    </div>
                 </div>
-                <Link
-                  to="/dashboard"
-                  className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Go to Dashboard
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </>
-  );
+            </div>
+        </>
+    );
 }
 
 export default EmailVerification;
