@@ -29,14 +29,6 @@ function EmailVerification() {
                     }
                 );
 
-                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/me`, {
-                    withCredentials: true,
-                    headers: {
-                        Authorization: `Bearer ${user.data.accessToken}`
-                    }
-                });
-
-                localStorage.setItem("isVerified", response.data.data.isVerified);
                 setIsLoading(false);
                 navigate("/auth/login");
             } catch (error: any) {
