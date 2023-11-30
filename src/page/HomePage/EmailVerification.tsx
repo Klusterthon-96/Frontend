@@ -8,7 +8,7 @@ import axios from "axios"; // Import axios
 import Swal from "sweetalert2";
 function EmailVerification() {
     const { user, setUser } = useAuth();
-    const { token: urlToken } = useParams();
+    const { id, token: urlToken } = useParams();
     const [apiError, setApiError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
@@ -18,7 +18,8 @@ function EmailVerification() {
                 await axios.put(
                     `${process.env.REACT_APP_BACKEND_URL}/auth/email`,
                     {
-                        verifyToken: urlToken
+                        verifyToken: urlToken,
+                        userId: id
                     },
                     {
                         withCredentials: true,
@@ -34,13 +35,12 @@ function EmailVerification() {
                         Authorization: `Bearer ${user.data.accessToken}`
                     }
                 });
-               
+
                 localStorage.setItem("isVerified", response.data.data.isVerified);
                 setIsLoading(false);
-                navigate("/dashboard");
+                navigate("/auth/login");
             } catch (error: any) {
-                if (error.response.data.message === "Invalid or expired email verification token"){
-
+                if (error.response.data.message === "Invalid or expired email verification token") {
                     Swal.fire({
                         title: error.response.data.message,
                         icon: "error",
@@ -48,9 +48,9 @@ function EmailVerification() {
                     }).then(() => {
                         setIsLoading(false);
                         setApiError(error.response.data.message);
-                        navigate('/auth/pending-email-verification')
+                        navigate("/auth/login");
                     });
-                }else{
+                } else {
                     Swal.fire({
                         title: error.response.data.message,
                         icon: "error",
@@ -58,14 +58,14 @@ function EmailVerification() {
                     }).then(() => {
                         setIsLoading(false);
                         setApiError(error.response.data.message);
-                         navigate("/auth/login");
+                        navigate("/auth/login");
                     });
                 }
             }
         };
 
         simulateApiCall();
-    }, [urlToken, user.data.accessToken, setUser, navigate]); // Dependency on urlToken ensures the effect runs when the token changes
+    }, [urlToken, user.data.accessToken, setUser, navigate]);
 
     return (
         <>
