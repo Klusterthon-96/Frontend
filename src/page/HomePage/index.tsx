@@ -128,7 +128,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex flex-col mb-10">
-                <p className="text-[22px] lg:text-[28px] max-w-[323px] text-center lg:mx-auto font-medium my-8 leading-8 lg:leading-[42px]">
+                <p className="text-[22px] lg:text-[28px] max-w-[323px] text-center lg:mx-auto font-medium mb-8 leading-8 lg:leading-[42px]">
                     Precision Farming: Boost Yields with Smart Planting and Harvesting predictions
                 </p>
 

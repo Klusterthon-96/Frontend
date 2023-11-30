@@ -12,11 +12,11 @@
     box-sizing: border-box;
 }
 
-.scroll::-webkit-scrollbar {
+.scroll::-webkit-scrollbar, ul::-webkit-scrollbar {
     display: none;
 }
 
-.scroll {
+.scroll, ul {
     scrollbar-width: none;
 }
 

@@ -13,11 +13,13 @@ import ResetPassword from "./page/Auth/ResetPassword";
 import ReferPage from "./page/Referral";
 import EmailVerification from "./page/HomePage/EmailVerification";
 import PendingEmailVerification from "./page/HomePage/PendingEmailVerification";
+import Response from "./page/InputForm/response";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Landing />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
@@ -51,6 +53,7 @@ export const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
+        errorElement: <ErrorPage />,
         element: <Home />,
         children: [
             {
@@ -60,6 +63,10 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/inputs",
                 element: <InputForm />
+            },
+            {
+                path: "/dashboard/response/:id",
+                element: <Response />
             },
             {
                 path: "/dashboard/support",
