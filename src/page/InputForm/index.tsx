@@ -80,24 +80,43 @@ export default function InputForm() {
                     Authorization: `Bearer ${token}`
                 }
             });
+
             setIsLoadingButton(false);
-            setFormData(formData);
 
             Swal.fire({
                 icon: "success",
                 title: `Your harvest season is: ${response.data.data.result}`,
                 padding: "3em",
                 color: "#006400",
-                backdrop: `
-        rgba(0,102,0.4)
-    left top
-    no-repeat
-  `
+                backdrop: `rgba(0,100,0,0.5)`
             });
-        } catch (error) {
+
+            resetForm();
+
+        } catch (error: any) {
             console.error(error);
+
+            Swal.fire({
+                icon: "error",
+                title: `Your harvest season is: ${error.response.data.message}`,
+                padding: "3em",
+                color: "#006400",
+                backdrop: `rgba(0,100,0,0.5)`
+            });
+
             setIsLoadingButton(false);
         }
+    };
+
+    const resetForm = () => {
+        setFormData({
+            label: "",
+            temperature: "",
+            humidity: "",
+            ph: "",
+            water_availability: "",
+            country: ""
+        });
     };
     return (
         <>
@@ -106,14 +125,14 @@ export default function InputForm() {
                     <h1 className="text-2xl font-normal">Information</h1>
                     <p className="text-sm text-[#9E9E9E] mt-5">Enter details of the crop below.</p>
                 </div>
-                <div className="hidden lg:flex justify-center items-center my-8">
+                <div className="hidden lg:flex justify-center items-center">
                     {isLoadingButton ? (
                         <button className="bg-[darkgrey] flex h-14 items-center justify-center min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white cursor-not-allowed ">
-                            <FaSpinner className="text-xl animate-spin mr-2" /> enter details
+                            <FaSpinner className="text-xl animate-spin mr-2" /> generate result
                         </button>
                     ) : (
                         <button onClick={handleSubmit} className="bg-[#006600] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white">
-                            enter details
+                            generate result
                         </button>
                     )}
                 </div>
@@ -193,6 +212,7 @@ export default function InputForm() {
                         <Select
                             className="react-select-container"
                             classNamePrefix="react-select"
+                            menuPlacement="top"
                             required={true}
                             name="country"
                             onChange={(selectedOption) => handleChange(selectedOption, { name: "country" })}
@@ -209,7 +229,7 @@ export default function InputForm() {
                             </button>
                         ) : (
                             <button type="submit" className="bg-[#006400] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white">
-                                enter details
+                                generate result
                             </button>
                         )}
                     </div>

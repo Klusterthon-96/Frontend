@@ -2,19 +2,19 @@ import React from "react";
 export default function HelpCenter() {
     return (
         <>
-            <div className="pb-[100px] font-sans w-full ">
+            <div className="font-sans w-full ">
                 <div className="">
                     <h1 className="text-[22px] lg:text-[32px] font-[600]">Support</h1>
 
                     {/* Temperature Container */}
                     <div className="mt-5 text-xs leading-[18px]">
                         <h4 className="text-base lg:text-xl font-[600]">Temperature</h4>
-                        <p className="mt-[12px] lg:text-base font-normal">
+                        <p className="mt-[12px] text-base lg:text-lg font-normal">
                             Farmers often need to monitor temperature levels to make informed decisions about their crops and livestock. There are several methods to measure temperature on a farm, and
                             the choice depends on the specific needs and resources of the farmer. Here are some common methods:
                         </p>
 
-                        <ul className="list-decimal pl-4">
+                        <ul className="list-decimal pl-4 text-base">
                             <li className="">
                                 Traditional Thermometers:
                                 <ul className="list-disc pl-4">
@@ -67,11 +67,11 @@ export default function HelpCenter() {
                     {/* Humidity Container */}
                     <div className="mt-5 text-xs leading-[18px]">
                         <h4 className="text-base lg:text-xl font-[600]">Humidity</h4>
-                        <p className="mt-[12px] lg:text-base font-normal">
+                        <p className="mt-[12px] text-base lg:text-lg font-normal">
                             Measuring humidity is essential for farmers as it directly influences plant growth, disease development, and the overall health of crops. Here are several methods farmers
                             can use to measure humidity on their farms:
                         </p>
-                        <ul className="list-decimal pl-4">
+                        <ul className="list-decimal pl-4 text-base">
                             <li className="">
                                 Hygrometers:
                                 <ul className="list-disc pl-4">
@@ -141,10 +141,10 @@ export default function HelpCenter() {
                     {/* PH LEVEL CONTAINER */}
                     <div className="mt-5 text-xs leading-[18px]">
                         <h4 className="text-base lg:text-xl font-[600]">PH Level</h4>
-                        <p className="mt-[12px] lg:text-base font-normal">
+                        <p className="mt-[12px] text-base lg:text-lg font-normal">
                             Measuring the pH level of soil is crucial for farmers as it directly affects nutrient availability to plants. Here&apos;s how farmers can measure pH:
                         </p>
-                        <ul className="list-decimal pl-4">
+                        <ul className="list-decimal pl-4 text-base">
                             <li className="">
                                 Soil pH Test Kits:
                                 <ul className="list-disc pl-4">
@@ -242,11 +242,11 @@ export default function HelpCenter() {
                     {/* WATER LEVEL CONTAINER */}
                     <div className="mt-5 mb-[100px] text-xs leading-[18px]">
                         <h4 className="text-base lg:text-xl font-[600]">Water Availability</h4>
-                        <p className="mt-[12px] lg:text-base font-normal">
+                        <p className="mt-[12px] text-base lg:text-lg font-normal">
                             Measuring water availability is crucial for farmers to ensure proper irrigation and optimize water use. Several methods can be employed to assess water availability on a
                             farm:
                         </p>
-                        <ul className="list-decimal pl-4">
+                        <ul className="list-decimal pl-4 text-base">
                             <li className="">
                                 Soil Moisture Sensors:
                                 <ul className="list-disc pl-4">
