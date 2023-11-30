@@ -7,27 +7,27 @@ import { FaSpinner } from "react-icons/fa";
 
 type Session = {
     createdAt: string; // A timestamp indicating when the session was created
-  name: string; // The name associated with the session, e.g., "Prediction for blackgram"
-  query_result: {
-    query: {
-      temperature: number; // Numeric value for temperature
-      humidity: number; // Numeric value for humidity
-      ph: number; // Numeric value for ph
-      water_availability: number; // Numeric value for water availability
-      label: string; // Label associated with the query, e.g., "blackgram"
-      Country: string; // Country associated with the query, e.g., "Kenya"
+    name: string; // The name associated with the session, e.g., "Prediction for blackgram"
+    query_result: {
+        query: {
+            temperature: number; // Numeric value for temperature
+            humidity: number; // Numeric value for humidity
+            ph: number; // Numeric value for ph
+            water_availability: number; // Numeric value for water availability
+            label: string; // Label associated with the query, e.g., "blackgram"
+            Country: string; // Country associated with the query, e.g., "Kenya"
+        };
+        Country: string; // Same as above, the country associated with the query
+        humidity: number; // Same as above, numeric value for humidity
+        label: string; // Same as above, label associated with the query
+        ph: number; // Same as above, numeric value for ph
+        temperature: number; // Same as above, numeric value for temperature
+        water_availability: number; // Same as above, numeric value for water availability
+        result: string; // Result associated with the query, e.g., "summer"
     };
-    Country: string; // Same as above, the country associated with the query
-    humidity: number; // Same as above, numeric value for humidity
-    label: string; // Same as above, label associated with the query
-    ph: number; // Same as above, numeric value for ph
-    temperature: number; // Same as above, numeric value for temperature
-    water_availability: number; // Same as above, numeric value for water availability
-    result: string; // Result associated with the query, e.g., "summer"
-  };
-  updatedAt: string; // A timestamp indicating when the session was last updated
-  userId: string; // User ID associated with the session
-  _id: string; // Unique identifier for the session
+    updatedAt: string; // A timestamp indicating when the session was last updated
+    userId: string; // User ID associated with the session
+    _id: string; // Unique identifier for the session
     // _id: string;
     // name: string;
     // query_result: object; // Update with the actual type of query_result
@@ -60,8 +60,6 @@ export default function Response() {
                     }
                 });
                 setResult(res?.data.data);
-
-                console.log(res?.data.data)
             } catch (error) {
                 console.error("error", error);
             }

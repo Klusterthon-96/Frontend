@@ -38,7 +38,7 @@ const navList = [
         name: "refer family & friends",
         to: "/dashboard/refer",
         icon: <HiOutlineGift />
-    },
+    }
 ];
 
 export default function SideBar() {
@@ -93,7 +93,6 @@ export default function SideBar() {
                 });
                 setSessions(response.data.data.sessions);
 
-                // console.log(response.data.data.sessions)
                 setIsLoading(false);
             } catch (error) {
                 console.error("error", error);
@@ -106,7 +105,7 @@ export default function SideBar() {
 
     return (
         <aside className={`hidden lg:flex absolute top-[65px] bg-white h-screen`}>
-            <nav className="flex flex-col justify-between h-[82%] w-[252px] p-2">
+            <nav className="flex flex-col justify-between h-[88%] w-[252px] p-2">
                 <ul className="">
                     {navItems.map((item) => (
                         <NavLink
@@ -114,7 +113,7 @@ export default function SideBar() {
                             to={item.to}
                             className={({ isActive }) =>
                                 isActive
-                                    ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
+                                    ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-green-900 font-semibold"
                                     : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize"
                             }
                         >
@@ -127,14 +126,14 @@ export default function SideBar() {
                 {/* SESSIONS HISTORY LINK */}
 
                 {!isLoading ? (
-                    <ul className="mt-[30px] h-[60%] overflow-y-scroll">
+                    <ul className="my-[30px] h-[60%] overflow-y-scroll">
                         {sessions?.map((item: Session) => (
                             <li key={item._id}>
                                 <NavLink
                                     to={`/dashboard/response/${item._id}`}
                                     className={({ isActive }) =>
                                         isActive
-                                            ? "bg-[#8AB88A] py-3 px-2 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
+                                            ? "bg-[#8AB88A] py-3 px-2 flex items-center text-base gap-4 w-full capitalize rounded-xl text-green-900 font-semibold"
                                             : "py-3 px-2 flex items-center text-base gap-4 w-full capitalize"
                                     }
                                 >
@@ -161,7 +160,7 @@ export default function SideBar() {
                                 to={item.to}
                                 className={({ isActive }) =>
                                     isActive
-                                        ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
+                                        ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-green-900 font-semibold"
                                         : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize"
                                 }
                             >

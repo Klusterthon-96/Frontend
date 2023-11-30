@@ -106,7 +106,7 @@ export default function MenuBar() {
 
     return (
         <aside className={`lg:hidden flex z-10 absolute top-[65px] bg-white h-screen`}>
-            <nav className="flex flex-col justify-between h-[82%] w-[252px] p-2">
+            <nav className="flex flex-col justify-between h-[88%] w-[252px] p-2">
                 <ul className="">
                     {navItems.map((item) => (
                         <NavLink
@@ -126,7 +126,7 @@ export default function MenuBar() {
 
                 {/* SESSIONS HISTORY LINK */}
 
-                {isLoading ? (
+                {!isLoading ? (
                     <ul className="mt-[30px] h-[60%] overflow-y-scroll">
                         {sessions?.map((item: Session) => (
                             <li key={item._id}>

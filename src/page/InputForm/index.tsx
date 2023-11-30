@@ -109,15 +109,19 @@ export default function InputForm() {
     };
 
     const resetForm = () => {
-        setFormData({
+        setFormData((prevFormData) => ({
+            ...prevFormData,
             label: "",
             temperature: "",
             humidity: "",
             ph: "",
             water_availability: "",
             country: ""
-        });
+        }));
     };
+
+    // Check if any required field is not selected
+    const isDisabled = Object.values(formData).some((value) => !value);
     return (
         <>
             <div className="rounded-xl bg-white p-3 h-[102px] flex flex-col lg:flex-row lg:justify-between lg:items-center">
@@ -131,7 +135,7 @@ export default function InputForm() {
                             <FaSpinner className="text-xl animate-spin mr-2" /> generate result
                         </button>
                     ) : (
-                        <button onClick={handleSubmit} className="bg-[#006600] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white">
+                        <button onClick={handleSubmit} disabled={isDisabled} className="bg-[#006600] min-h-[48px] disabled:bg-[darkgrey] capitalize px-6 py-2 rounded-[32px] text-white">
                             generate result
                         </button>
                     )}
@@ -207,7 +211,7 @@ export default function InputForm() {
                             placeholder={"Water Availability?"}
                         />
                     </div>
-                    <div className="mt-5 mb-[100px]">
+                    <div className="mt-5">
                         <label htmlFor="Country">Country</label>
                         <Select
                             className="react-select-container"
@@ -222,13 +226,13 @@ export default function InputForm() {
                         />
                     </div>
 
-                    <div className="flex lg:hidden justify-center items-center mt-8">
+                    <div className="flex lg:hidden justify-center mb-[100px] items-center mt-8">
                         {isLoadingButton ? (
                             <button className="bg-[darkgrey] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white cursor-not-allowed ">
                                 <FaSpinner className="text-xl animate-spin mr-2" /> enter details
                             </button>
                         ) : (
-                            <button type="submit" className="bg-[#006400] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white">
+                            <button type="submit" disabled={isDisabled} className="bg-[#006400] w-full disabled:bg-[darkgrey] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white">
                                 generate result
                             </button>
                         )}
