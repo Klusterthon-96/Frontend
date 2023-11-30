@@ -28,9 +28,15 @@ function EmailVerification() {
                         }
                     }
                 );
+                Swal.fire({
+                    title: "Email Verified successfully",
+                    icon: "success",
+                    confirmButtonText: "Login"
+                }).then(() => {
+                    setIsLoading(false);
 
-                setIsLoading(false);
-                navigate("/auth/login");
+                    navigate("/auth/login");
+                });
             } catch (error: any) {
                 if (error.response.data.message === "Invalid or expired email verification token") {
                     Swal.fire({

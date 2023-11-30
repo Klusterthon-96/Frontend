@@ -53,7 +53,7 @@ function PendingEmailVerification() {
             <div className="text-center">
                 <h2 className="text-[28px] text-center font-[600]">Email Confirmation</h2>
                 <p className="text-[20px] text-center mt-[20px] mb-[12px] font-[400]">
-                    We&aposve sent a confirmation email to your inbox. If you haven&apost received it, please click the button below.
+                    We&apos;ve sent a confirmation email to your inbox. If you haven&apos;t received it, please click the button below.
                 </p>
                 <div className="flex justify-center items-center">
                     <Button backgroundColor={backgroundColor} title={"Resend Confirmation Email"} onClick={resendEmailVerification} disabled={isButtonDisabled} />
