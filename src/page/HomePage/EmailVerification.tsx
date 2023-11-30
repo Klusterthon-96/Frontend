@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import emailConfirm from "../../asset/Confirmed-cuate 1.svg";
 import { useAuth } from "../../Context/authContext";
 import React, { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios"; // Import axios
-
+import Swal from "sweetalert2";
 function EmailVerification() {
     const { user, setUser } = useAuth();
     const { token: urlToken } = useParams();
@@ -33,17 +34,33 @@ function EmailVerification() {
                         Authorization: `Bearer ${user.data.accessToken}`
                     }
                 });
-                // const data = {
-                //   user: response.data.data,
-                //   accessToken: user.data.accessToken,
-                // };
+               
                 localStorage.setItem("isVerified", response.data.data.isVerified);
-                // setUser(data);
                 setIsLoading(false);
                 navigate("/dashboard");
-            } catch (error) {
-                setIsLoading(false);
-                setApiError("An error occurred while verifying email.");
+            } catch (error: any) {
+                if (error.response.data.message === "Invalid or expired email verification token"){
+
+                    Swal.fire({
+                        title: error.response.data.message,
+                        icon: "error",
+                        confirmButtonText: "Back"
+                    }).then(() => {
+                        setIsLoading(false);
+                        setApiError(error.response.data.message);
+                        navigate('/auth/pending-email-verification')
+                    });
+                }else{
+                    Swal.fire({
+                        title: error.response.data.message,
+                        icon: "error",
+                        confirmButtonText: "Back"
+                    }).then(() => {
+                        setIsLoading(false);
+                        setApiError(error.response.data.message);
+                         navigate("/auth/login");
+                    });
+                }
             }
         };
 
@@ -71,6 +88,10 @@ function EmailVerification() {
                             <div>
                                 <h2 className="text-[28px] font-semibold">Error</h2>
                                 <p>{apiError}</p>
+
+                                <Link to="/auth/pending-email-verification" className="mt-10 bg-green-500 hover:bg-green-700 text-white font-bold my-10 py-2 px-4 rounded">
+                                    Back
+                                </Link>
                             </div>
                         ) : (
                             <div>
