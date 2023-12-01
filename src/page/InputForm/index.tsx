@@ -71,6 +71,14 @@ export default function InputForm() {
         initSession();
     }, [token]);
 
+    useEffect(() => {
+        if (!socket.connected) {
+            socket.on("connect", () => {
+                console.log("Socket connected");
+            });
+        }
+    }, [token]);
+
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         setIsLoadingButton(true);
@@ -96,7 +104,8 @@ export default function InputForm() {
                     });
 
                     setIsLoadingButton(false);
-                    socket.emit("session", response.data.data);
+
+                    await socket.emit("session", response.data.data)
                     Swal.fire({
                         icon: "success",
                         title: `Your harvest season is: ${response.data.data.result}`,
