@@ -12,14 +12,27 @@
     box-sizing: border-box;
 }
 
-.scroll::-webkit-scrollbar, ul::-webkit-scrollbar {
-    display: none;
+
+/* width */
+html::-webkit-scrollbar,
+ul::-webkit-scrollbar,
+.scroll {
+    width: 10px;
 }
 
-.scroll, ul {
-    scrollbar-width: none;
+/* Track */
+html::-webkit-scrollbar-track,
+ul::-webkit-scrollbar,
+.scroll {
+    box-shadow: inset 0 0 5px grey;
 }
 
+/* Handle */
+html::-webkit-scrollbar-thumb,
+ul::-webkit-scrollbar,
+.scroll {
+    background: grey;
+}
 .react-select__control {
     height: 42px;
 }
