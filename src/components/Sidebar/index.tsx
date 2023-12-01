@@ -110,14 +110,11 @@ export default function SideBar() {
         const handleNewSession = (result: Session) => {
             setSessions((prevSessions: any) => [result, ...prevSessions]);
         };
-
-        socket.on("connect", () => {
-            console.log("Socket connected");
+        console.log(socket);
+        if (socket.connected) {
+            console.log("connection");
             socket.on("session received", handleNewSession);
-        });
-        return () => {
-            socket.off("session received", handleNewSession);
-        };
+        }
     }, [socket]);
 
     return (
