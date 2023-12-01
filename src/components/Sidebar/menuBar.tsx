@@ -50,11 +50,7 @@ export default function MenuBar() {
             <NavLink
               key={item.id}
               to={item.to}
-              className={({ isActive }) =>
-                isActive
-                  ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
-                  : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize"
-              }
+              className={({ isActive }) => (isActive ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]" : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize")}
             >
               <span>{item.icon}</span>
               <span>{item.name}</span>
@@ -68,11 +64,7 @@ export default function MenuBar() {
               <NavLink
                 key={item.id}
                 to={item.to}
-                className={({ isActive }) =>
-                  isActive
-                    ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]"
-                    : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize"
-                }
+                className={({ isActive }) => (isActive ? "bg-[#8AB88A] py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize rounded-xl text-[#004700]" : "py-3 px-2 mb-3 flex items-center text-base gap-4 w-full capitalize")}
               >
                 <span>{item.icon}</span>
                 <span>{item.name}</span>
@@ -80,17 +72,13 @@ export default function MenuBar() {
             ))}
           </ul>
 
-          <div className="flex flex-row mt-10 justify-between items-center">
+          <div className="flex flex-row mt-7 justify-between items-center">
             <div className="flex flex-row space-x-2 items-center">
               <img src={Avatar} alt="" className="h-10 w-10 rounded-full" />
 
               <span className="flex flex-col w-[132px]">
-                <span className="font-semibold">
-                  {user && user?.data.user.name}
-                </span>
-                <span className="break-all text-sm text-[grey/60]">
-                  {user && user?.data.user.email}
-                </span>
+                <span className="font-semibold">{user && user?.data.user.name}</span>
+                <span className="break-all text-sm text-[grey/60]">{user && user?.data.user.email}</span>
               </span>
             </div>
 
