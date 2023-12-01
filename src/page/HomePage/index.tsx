@@ -115,6 +115,62 @@ export default function HomePage() {
         initSession();
     }, [token, user, navigate]);
 
+    const initSession = async () => {
+        try {
+            if (user && localStorage.getItem("isVerified") === "false") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Email Verification!",
+                    text: `Please check your inbox for your verification link!`,
+                    confirmButtonColor: "#006400"
+                }).then(() => {
+                    return navigate("/auth/pending-email-verification");
+                });
+            }
+            if (token) {
+                await axios
+                    .post(
+                        `${process.env.REACT_APP_BACKEND_URL}/session/`,
+                        {},
+                        {
+                            withCredentials: true,
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        }
+                    )
+                    .then(() => {
+                        navigate("/dashboard/inputs");
+                    })
+                    .catch((error) => {
+                        if (error.response.data.message === "Unauthorized access: Please verify email address") {
+                            return navigate("/auth/pending-email-verification");
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Session Error",
+                                text: `Error initializing session`,
+                                confirmButtonColor: "#006400"
+                            }).then(() => {
+                                localStorage.clear();
+                                navigate("/auth/login");
+                            });
+                        }
+                    });
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Session Error",
+                text: `Error initializing session`,
+                confirmButtonColor: "#006400"
+            }).then(() => {
+                localStorage.clear();
+                navigate("/auth/login");
+            });
+        }
+    };
+
     if (!user || !token) {
         navigate("/");
         return null;
@@ -144,7 +200,7 @@ export default function HomePage() {
                     ))}
                 </div>
                 <div className="mr-auto lg:flex lg:justify-center lg:items-center mt-5 mb-[100px] lg:mr-0">
-                    <Link to={"/dashboard/inputs"} className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white">
+                    <Link to={"/dashboard/inputs"} onClick={initSession} className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white">
                         enter crop details
                     </Link>
                 </div>

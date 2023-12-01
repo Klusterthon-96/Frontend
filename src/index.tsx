@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./Context/authContext";
+import {SocketProvider} from '../src/socket'
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
     <AuthProvider>
-        <App />
+        <SocketProvider url="http://localhost:4001">
+            <App />
+        </SocketProvider>
     </AuthProvider>
 );
 

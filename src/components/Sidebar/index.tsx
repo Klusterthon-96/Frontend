@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from "react";
 import { MdInput } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
@@ -10,6 +11,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useSocket } from "../../socket";
 
 type Session = {
     _id: string;
@@ -42,6 +44,7 @@ const navList = [
 ];
 
 export default function SideBar() {
+    const socket = useSocket();
     const { user } = useAuth();
 
     const [isLoading, setIsLoading] = useState(false);
@@ -102,6 +105,20 @@ export default function SideBar() {
 
         getAllSession();
     }, [token]);
+
+    useEffect(() => {
+        const handleNewSession = (result: Session) => {
+            setSessions((prevSessions: any) => [result, ...prevSessions]);
+        };
+
+        socket.on("connect", () => {
+            console.log("Socket connected");
+            socket.on("session received", handleNewSession);
+        });
+        return () => {
+            socket.off("session received", handleNewSession);
+        };
+    }, [socket]);
 
     return (
         <aside className={`hidden lg:flex absolute top-[65px] bg-white h-screen`}>
