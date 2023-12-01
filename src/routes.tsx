@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
                 element: <ResetPassword />
             },
             {
-                path: "/auth/email-verification/:token",
+                path: "/auth/email-verification/:id/:token",
                 element: <EmailVerification />
             },
             {
