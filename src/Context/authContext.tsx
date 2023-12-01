@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { ReactNode, useState, useEffect } from "react";
 import axios from "axios";
@@ -31,9 +32,9 @@ type Props = {
 const defaultState: AuthProps = {
   register: async () => "",
   login: async () => "",
-  logout: () => {},
-  setUser: () => {},
-  user: {} as User,
+  logout: () => { },
+  setUser: () => { },
+  user: {} as User
 };
 
 const domainUrl: string = process.env.REACT_APP_BACKEND_URL || "";
@@ -62,7 +63,7 @@ export const AuthProvider = ({ children }: Props) => {
         {
           name,
           email,
-          password,
+          password
         },
         { withCredentials: true }
       );
@@ -75,7 +76,7 @@ export const AuthProvider = ({ children }: Props) => {
           icon: "success",
           title: `Registration successfully!`,
           text: `Please check your inbox for your verification link!`,
-          confirmButtonColor: "#006400",
+          confirmButtonColor: "#006400"
         });
 
         return `${domainUrl}/auth/register`;
@@ -84,11 +85,10 @@ export const AuthProvider = ({ children }: Props) => {
         throw new Error(`Registration failed with status ${response.status}`);
       }
     } catch (error: any) {
-      const errorMessage =
-        error.response?.data?.message || "Registration failed";
+      const errorMessage = error.response?.data?.message || "Registration failed";
       await Swal.fire({
         icon: "error",
-        text: errorMessage,
+        text: errorMessage
       });
 
       // You can return a Promise with the error message or handle it differently
@@ -101,7 +101,7 @@ export const AuthProvider = ({ children }: Props) => {
         `${domainUrl}/auth/login`,
         {
           email,
-          password,
+          password
         },
         { withCredentials: true }
       );
@@ -112,18 +112,17 @@ export const AuthProvider = ({ children }: Props) => {
         localStorage.setItem("isVerified", response.data.data.user.isVerified);
         Swal.fire({
           icon: "success",
-          text: `Sign in successfully!`,
+          text: `Sign in successfully!`
         });
         return `${domainUrl}/auth/login`;
       } else {
         throw new Error(`Registration failed with status ${response.status}`);
       }
     } catch (error: any) {
-      const errorMessage =
-        error.response?.data?.message || "Registration failed";
+      const errorMessage = error.response?.data?.message || "Registration failed";
       await Swal.fire({
         icon: "error",
-        text: errorMessage,
+        text: errorMessage
       });
 
       // You can return a Promise with the error message or handle it differently
@@ -131,13 +130,11 @@ export const AuthProvider = ({ children }: Props) => {
     }
   };
   const logout = async (navigate: any) => {
-    await axios
-      .delete(`${domainUrl}/auth/logout`, { withCredentials: true })
-      .then((res) => {
-        localStorage.removeItem("user");
-        localStorage.removeItem("isVerified");
-        navigate(`/auth/login`);
-      });
+    await axios.delete(`${domainUrl}/auth/logout`, { withCredentials: true }).then(() => {
+      localStorage.removeItem("user");
+      localStorage.removeItem("isVerified");
+      navigate(`/auth/login`);
+    });
   };
 
   const values = {
@@ -145,7 +142,7 @@ export const AuthProvider = ({ children }: Props) => {
     login,
     logout,
     setUser,
-    user,
+    user
   };
 
   return <authContext.Provider value={values}>{children}</authContext.Provider>;

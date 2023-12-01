@@ -13,66 +13,73 @@ import ResetPassword from "./page/Auth/ResetPassword";
 import ReferPage from "./page/Referral";
 import EmailVerification from "./page/HomePage/EmailVerification";
 import PendingEmailVerification from "./page/HomePage/PendingEmailVerification";
+import Response from "./page/InputForm/response";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Landing />,
-    children: [
-      {
+    {
         path: "/",
-        element: <LandingPage />,
-      },
-      {
-        path: "/auth/login",
-        element: <LoginPage />,
-      },
-      {
-        path: "/auth/register",
-        element: <Register />,
-      },
-      {
-        path: "/auth/forgot-password",
-        element: <ForgotPassword />,
-      },
-      {
-        path: "/auth/reset-password/:id/:token",
-        element: <ResetPassword />,
-      },
-      {
-        path: "/auth/email-verification/:token",
-        element: <EmailVerification />,
-      },
-      {
-        path: "/auth/pending-email-verification",
-        element: <PendingEmailVerification />,
-      },
-    ],
-  },
-  {
-    path: "/dashboard",
-    element: <Home />,
-    children: [
-      {
+        element: <Landing />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "/",
+                element: <LandingPage />
+            },
+            {
+                path: "/auth/login",
+                element: <LoginPage />
+            },
+            {
+                path: "/auth/register",
+                element: <Register />
+            },
+            {
+                path: "/auth/forgot-password",
+                element: <ForgotPassword />
+            },
+            {
+                path: "/auth/reset-password/:id/:token",
+                element: <ResetPassword />
+            },
+            {
+                path: "/auth/email-verification/:id/:token",
+                element: <EmailVerification />
+            },
+            {
+                path: "/auth/pending-email-verification",
+                element: <PendingEmailVerification />
+            }
+        ]
+    },
+    {
         path: "/dashboard",
-        element: <HomePage />,
-      },
-      {
-        path: "/dashboard/inputs",
-        element: <InputForm />,
-      },
-      {
-        path: "/dashboard/support",
-        element: <HelpCenter />,
-      },
-      {
-        path: "/dashboard/refer",
-        element: <ReferPage />,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <ErrorPage />,
-  },
+        errorElement: <ErrorPage />,
+        element: <Home />,
+        children: [
+            {
+                path: "/dashboard",
+                element: <HomePage />
+            },
+            {
+                path: "/dashboard/inputs",
+                element: <InputForm />
+            },
+            {
+                path: "/dashboard/response/:id",
+                element: <Response />
+            },
+            {
+                path: "/dashboard/support",
+                element: <HelpCenter />
+            },
+            {
+                path: "/dashboard/refer",
+                element: <ReferPage />
+            }
+        ]
+    },
+    {
+        path: "*",
+        element: <ErrorPage />
+    }
 ]);

@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { Link ,useNavigate} from "react-router-dom";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import PasswordInput, { TextInput } from "../../components/input";
 import { useAuth } from "../../Context/authContext";
+import Logo from '../../asset/Logo.svg'
 
 export default function Register() {
   const { register } = useAuth();
-// const { user } = useAuth();
-
-
+  // const { user } = useAuth();
 
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export default function Register() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    password: "",
+    password: ""
   });
 
   const isValidEmail = (email: string) => {
@@ -35,7 +35,7 @@ export default function Register() {
   const handleChange = (e: any) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
     setIsLoadingButton(false);
     setError("");
@@ -53,9 +53,7 @@ export default function Register() {
     }
 
     if (!isStrongPassword(formData.password) || formData.password.length < 8) {
-      setError(
-        "Password must contain 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
-      );
+      setError("Password must contain 8 characters, one uppercase letter, one lowercase letter, one number and one special character");
       setIsLoadingButton(false);
       return;
     }
@@ -63,7 +61,7 @@ export default function Register() {
     try {
       await register(formData.name, formData.email, formData.password);
       navigate("/auth/pending-email-verification");
-    } catch (error:any) {
+    } catch (error: any) {
       console.error(error);
       setError(error);
     } finally {
@@ -78,6 +76,9 @@ export default function Register() {
         <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-[inherit] overflow-hidden lg:hidden" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
           <div className="flex justify-center items-center h-screen">
             <div className="p-4 md:w-3/5 mx-auto">
+              <Link to={'/'}><img src={Logo} className="m-auto h-[100px]" alt="Agro Assitant Logo" /><div className=" font-Lacq text-2xl text-white mb-4 lg:text-black">
+                <h1 className="capitalize text-center">Agro Assistance</h1>
+              </div></Link>
               <div className="text-center lg:text-start text-white lg:text-black">
                 <h2 className="font-semibold text-3xl xl:text-[44px] ">Create Account</h2>
                 <p className="mt-2 text-sm lg:text-base xl:text-xl">Its’s easy just take a minute and provide the details</p>
@@ -98,16 +99,16 @@ export default function Register() {
                 </div>
                 <div className="justify-center flex text-white items-center mt-5">
                   {isLoadingButton ? (
-                    <button className="flex min-h-[auto] h-14 items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-[32px] w-full my-5">
+                    <button className="flex min-h-[auto] h-14 items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-[32px] w-full">
                       <FaSpinner className="text-xl animate-spin mr-2" /> Register
                     </button>
                   ) : (
-                    <button type="submit" className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5">
+                    <button type="submit" className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full">
                       Register
                     </button>
                   )}
                 </div>
-                <p className="text-[red] w-3/5 mt-3 text-sm">{error && error}</p>
+                <p className="text-[red] mt-3 mx-auto text-sm">{error && error}</p>
               </form>
 
               <div className="flex flex-col items-center justify-center text-sm text-white lg:text-black">
@@ -121,6 +122,10 @@ export default function Register() {
 
         {/* DESKTOP VIEW */}
         <div className="p-4 hidden lg:block">
+          <Link to={'/'}><img src={Logo} className="m-auto h-[100px]" alt="Agro Assitant Logo" />
+            <div className=" font-Lacq text-2xl text-white mb-4 lg:text-black">
+              <h1 className="capitalize text-center">Agro Assistance</h1>
+            </div></Link>
           <div className="text-center lg:text-start">
             <h2 className="font-normal text-3xl xl:text-[44px]">Create Account</h2>
             <p className="mt-2 text-sm lg:text-base xl:text-xl">Its’s easy just take a minute and provide the details</p>
@@ -141,16 +146,16 @@ export default function Register() {
             </div>
             <div className="justify-center flex text-white items-center mt-5">
               {isLoadingButton ? (
-                <button className="flex min-h-[auto] h-14 items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-[32px] w-full my-5">
+                <button className="flex min-h-[auto] h-14 items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-[32px] w-full">
                   <FaSpinner className="text-xl animate-spin mr-2" /> Register
                 </button>
               ) : (
-                <button type="submit" className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full my-5">
+                <button type="submit" className="bg-[#006400] min-h-[auto] h-14 px-6 py-2 rounded-[32px] font-bold w-full">
                   Register
                 </button>
               )}
             </div>
-            <p className="text-[red] mt-3 text-sm w-3/5">{error && error}</p>
+            <p className="text-[red] mt-3 text-sm">{error && error}</p>
           </form>
 
           <Link to="/auth/login" className="mt-3 text-sm text-right">
@@ -163,7 +168,7 @@ export default function Register() {
           className="hidden lg:flex bg-cover bg-center lg:bg-RegWallpaper w-full h-screen"
           style={{
             backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
+            backgroundSize: "contain"
           }}
         ></div>
       </div>

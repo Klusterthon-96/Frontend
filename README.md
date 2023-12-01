@@ -4,8 +4,8 @@ Welcome to the Agro Assistant Frontend! This React application serves as the use
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
-- [Live URL](#live-url)
+-   [Getting Started](#getting-started)
+-   [Live URL](#live-url)
 
 ## Getting Started
 
@@ -15,8 +15,8 @@ These instructions will help you set up the project on your local machine for de
 
 Make sure you have the following installed on your machine:
 
-- [Node.js](https://nodejs.org/) - JavaScript runtime
-- [npm](https://www.npmjs.com/) - Node package manager
+-   [Node.js](https://nodejs.org/) - JavaScript runtime
+-   [npm](https://www.npmjs.com/) - Node package manager
 
 ### Installation
 
@@ -38,7 +38,7 @@ cd Frontend
 npm install
 ```
 
-4. Eniroment variables: check the ```.env.sample``` to know how to put the backend URL
+4. Eniroment variables: check the `.env.sample` to know how to put the backend URL
 
 ### Usage
 
