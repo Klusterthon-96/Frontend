@@ -226,7 +226,7 @@ export default function InputForm() {
                         />
                     </div>
 
-                    <div className="flex lg:hidden justify-center mb-[100px] items-center mt-8">
+                    <div className="flex lg:hidden justify-center mb-[130px] items-center mt-8">
                         {isLoadingButton ? (
                             <button className="bg-[darkgrey] min-h-[48px] capitalize px-6 py-2 rounded-[32px] text-white cursor-not-allowed ">
                                 <FaSpinner className="text-xl animate-spin mr-2" /> enter details

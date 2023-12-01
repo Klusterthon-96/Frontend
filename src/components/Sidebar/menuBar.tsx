@@ -127,7 +127,7 @@ export default function MenuBar() {
                 {/* SESSIONS HISTORY LINK */}
 
                 {!isLoading ? (
-                    <ul className="mt-[30px] h-[60%] overflow-y-scroll">
+                    <ul className="mt-[30px] h-[50%] overflow-y-scroll">
                         {sessions?.map((item: Session) => (
                             <li key={item._id}>
                                 <NavLink
@@ -171,7 +171,7 @@ export default function MenuBar() {
                         ))}
                     </ul>
 
-                    <div className="flex flex-row mt-10 justify-between items-center">
+                    <div className="flex flex-row mt-7 justify-between items-center">
                         <div className="flex flex-row space-x-2 items-center">
                             <img src={Avatar} alt="" className="h-10 w-10 rounded-full" />
 
