@@ -9,7 +9,7 @@ import {SocketProvider} from '../src/socket'
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
     <AuthProvider>
-        <SocketProvider url="http://localhost:4001">
+        <SocketProvider url="https://backend-8fbc.onrender.com">
             <App />
         </SocketProvider>
     </AuthProvider>
