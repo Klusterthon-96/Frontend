@@ -143,7 +143,7 @@ export default function HomePage() {
                         </div>
                     ))}
                 </div>
-                <div className="mr-auto lg:flex lg:justify-center lg:items-center my-5 lg:mr-0">
+                <div className="mr-auto lg:flex lg:justify-center lg:items-center mt-5 mb-[100px] lg:mr-0">
                     <Link to={"/dashboard/inputs"} className="bg-[#006400] capitalize px-6 py-2 rounded-[32px] text-white">
                         enter crop details
                     </Link>
