@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from "react";
 import { MdInput } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
@@ -10,6 +11,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useSocket } from "../../socket";
 
 const navItems = [
     {
@@ -43,6 +45,8 @@ type Session = {
 
 export default function MenuBar() {
     const { user } = useAuth();
+
+    const socket = useSocket();
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -104,6 +108,20 @@ export default function MenuBar() {
         getAllSession();
     }, [token]);
 
+    useEffect(() => {
+        const handleNewSession = (result: Session) => {
+            setSessions((prevSessions: any) => [result, ...prevSessions]);
+        };
+
+        socket.on("connect", () => {
+            console.log("Socket connected");
+            socket.on("session received", handleNewSession);
+        });
+        return () => {
+            socket.off("session received", handleNewSession);
+        };
+    }, [socket]);
+
     return (
         <aside className={`lg:hidden flex z-10 absolute top-[65px] bg-white h-screen`}>
             <nav className="flex flex-col justify-between h-[88%] w-[252px] p-2">
@@ -127,7 +145,7 @@ export default function MenuBar() {
                 {/* SESSIONS HISTORY LINK */}
 
                 {!isLoading ? (
-                    <ul className="mt-[30px] h-[60%] overflow-y-scroll">
+                    <ul className="mt-[30px] h-[50%] overflow-y-scroll">
                         {sessions?.map((item: Session) => (
                             <li key={item._id}>
                                 <NavLink
@@ -171,7 +189,7 @@ export default function MenuBar() {
                         ))}
                     </ul>
 
-                    <div className="flex flex-row mt-10 justify-between items-center">
+                    <div className="flex flex-row mt-7 justify-between items-center">
                         <div className="flex flex-row space-x-2 items-center">
                             <img src={Avatar} alt="" className="h-10 w-10 rounded-full" />
 
