@@ -33,12 +33,12 @@ ul::-webkit-scrollbar-thumb,
     background: grey;
 } */
 
-html::-webkit-scrollbar, .scroll, ul::-webkit-scrollbar {
+html::-webkit-scrollbar, .scroll::-webkit-scrollbar, ul::-webkit-scrollbar {
     display: none;
 }
 
-html::-webkit-scrollbar,.scroll,
-ul {
+html::-webkit-scrollbar,.scroll::-webkit-scrollbar,
+ul::-webkit-scrollbar {
     scrollbar-width: none;
 }
 
