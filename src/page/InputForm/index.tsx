@@ -105,7 +105,7 @@ export default function InputForm() {
 
                     setIsLoadingButton(false);
 
-                    await socket.emit("session", response.data.data)
+                    await socket.emit("session", response.data.data);
                     Swal.fire({
                         icon: "success",
                         title: `Your harvest season is: ${response.data.data.result}`,
