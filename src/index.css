@@ -13,25 +13,35 @@
 }
 
 /* width */
-html::-webkit-scrollbar,
+/* html::-webkit-scrollbar,
 ul::-webkit-scrollbar,
 .scroll::-webkit-scrollbar {
     width: 10px;
-}
+} */
 
 /* Track */
-html::-webkit-scrollbar-track,
+/* html::-webkit-scrollbar-track,
 ul::-webkit-scrollbar-track,
 .scroll::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
-}
+} */
 
 /* Handle */
-html::-webkit-scrollbar-thumb,
+/* html::-webkit-scrollbar-thumb,
 ul::-webkit-scrollbar-thumb,
 .scroll::-webkit-scrollbar-thumb {
     background: grey;
+} */
+
+html::-webkit-scrollbar, .scroll, ul::-webkit-scrollbar {
+    display: none;
 }
+
+html::-webkit-scrollbar,.scroll,
+ul {
+    scrollbar-width: none;
+}
+
 .react-select__control {
     height: 42px;
 }
