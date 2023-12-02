@@ -6,6 +6,7 @@ import { countries, cropType, humidityType, pHType, temperatureType, waterType }
 import { FaSpinner } from "react-icons/fa6";
 import { useAuth } from "../../Context/authContext";
 import Swal from "sweetalert2";
+import { useSocket } from "../../socket";
 
 const selectStyles = {
     control: (styles: any) => ({
@@ -27,6 +28,7 @@ const selectStyles = {
 };
 
 export default function InputForm() {
+    const socket = useSocket();
     const { user } = useAuth();
 
     const [isLoadingButton, setIsLoadingButton] = useState(false);
@@ -69,30 +71,51 @@ export default function InputForm() {
         initSession();
     }, [token]);
 
+    useEffect(() => {
+        if (!socket.connected) {
+            socket.on("connect", () => {
+                console.log("Socket connected");
+            });
+        }
+    }, [token]);
+
     const handleSubmit = async (event: any) => {
         event.preventDefault();
         setIsLoadingButton(true);
 
         try {
-            const response = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/session/`, formData, {
-                withCredentials: true,
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+            await axios
+                .post(
+                    `${process.env.REACT_APP_BACKEND_URL}/session`,
+                    {},
+                    {
+                        withCredentials: true,
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }
+                )
+                .then(async () => {
+                    const response = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/session/`, formData, {
+                        withCredentials: true,
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
 
-            setIsLoadingButton(false);
+                    setIsLoadingButton(false);
 
-            Swal.fire({
-                icon: "success",
-                title: `Your harvest season is: ${response.data.data.result}`,
-                padding: "3em",
-                color: "#006400",
-                backdrop: `rgba(0,100,0,0.5)`
-            });
+                    await socket.emit("session", response.data.data);
+                    Swal.fire({
+                        icon: "success",
+                        title: `Your harvest season is: ${response.data.data.result}`,
+                        padding: "3em",
+                        color: "#006400",
+                        backdrop: `rgba(0,100,0,0.5)`
+                    });
 
-            resetForm();
-
+                    resetForm();
+                });
         } catch (error: any) {
             console.error(error);
 

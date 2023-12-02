@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
 import PasswordInput, { TextInput } from "../../components/input";
 import { useAuth } from "../../Context/authContext";
-import Logo from '../../asset/Logo.svg'
+import Logo from "../../asset/Logo.svg";
 
 export default function LoginPage() {
     const { login } = useAuth();
@@ -73,10 +73,12 @@ export default function LoginPage() {
                 <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-[inherit] overflow-hidden lg:hidden" style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
                     <div className="flex justify-center items-center h-screen">
                         <div className="p-4 md:w-3/5 mx-auto">
-                            <Link to={'/'}><img src={Logo} className="m-auto h-[100px]" alt="Agro Assitant Logo" />
+                            <Link to={"/"}>
+                                <img src={Logo} className="m-auto h-[100px]" alt="Agro Assitant Logo" />
                                 <div className=" font-Lacq text-2xl text-white mb-4 lg:text-black">
                                     <h1 className="capitalize text-center">Agro Assistance</h1>
-                                </div></Link>
+                                </div>
+                            </Link>
                             <div className="text-center lg:text-start text-white lg:text-black">
                                 <h2 className="font-semibold text-3xl xl:text-[44px] ">Welcome back</h2>
                                 <p className="mt-2 text-sm lg:text-base xl:text-xl">Its’s easy just take a minute and provide the details</p>
@@ -118,10 +120,12 @@ export default function LoginPage() {
 
                 {/* DESKTOP VIEW */}
                 <div className="p-4 hidden lg:block">
-                    <Link to={'/'}><img src={Logo} className="m-auto h-[100px]" alt="Agro Assitant Logo" />
+                    <Link to={"/"}>
+                        <img src={Logo} className="m-auto h-[100px]" alt="Agro Assitant Logo" />
                         <div className=" font-Lacq text-2xl text-white mb-4 lg:text-black">
                             <h1 className="capitalize text-center">Agro Assistance</h1>
-                        </div></Link>
+                        </div>
+                    </Link>
 
                     <div className="text-center lg:text-start text-white lg:text-black">
                         <h2 className="font-semibold text-3xl xl:text-[44px] ">Welcome back</h2>
